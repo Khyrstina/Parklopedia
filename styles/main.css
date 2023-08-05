@@ -1,0 +1,160 @@
+
+
+.header-img {
+    margin-right: 1rem;
+    max-width: 100%;
+}
+
+html, body {
+    margin: 0;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0; 
+}
+
+.header {
+    background-color: #666666;
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header .hero {
+    display: flex;
+    align-items: center;
+
+}
+.hero .centered {
+    font-size: 2.5rem;
+    text-shadow: #666666;
+}
+
+.header-title {
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+#main-nav {
+    background-color: #000;
+    display: none;
+    padding: 0 1rem 1rem;
+    position: absolute;
+}
+
+#main-nav.active {
+    display: block;
+}
+
+#menu-trigger {
+margin-top: .25rem;
+}
+
+#main-nav a {
+    font-size: 1rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+#wrapper {
+    height: auto;
+    vertical-align: bottom;
+    width: 100%;
+}
+
+.main {
+    flex: 1;
+}
+
+.main h1 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.main label {
+    display: block;
+    margin-bottom: .25rem;
+}
+
+button {
+    background-color: #596633;
+    border: 1px solid #3b4422;
+    color: #fff;
+    text-shadow:#666666;
+}
+
+.main button {
+    font-size: 1rem;
+    padding: .5rem 1rem;
+}
+
+.sidebar {
+    display: none;
+    margin-left: 2rem;
+    min-width: 20%;
+}
+
+.visuallyHidden {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+/*text over image
+/* Container holding the image and the text */
+.hero {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+  
+
+  .bottom-left {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+  }
+  
+
+  .top-left {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+  }
+  
+
+  .top-right {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+  }
+  
+
+  .bottom-right {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+  }
+  
+
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }

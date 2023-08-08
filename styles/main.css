@@ -45,26 +45,54 @@ ul {
     padding: 1rem;
 }
 
-#main-nav {
-    background-color: #000;
-    display: none;
-    padding: 0 1rem 1rem;
-    position: absolute;
+.sidepanel {
+    height: 250px;
+    width: 0;
+    position: fixed;
+    z-index:1;
+    top: 0;
+    left: 0;
+    background-color: #596633;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
 }
 
-#main-nav.active {
-    display: block;
-}
-
-#menu-trigger {
-margin-top: .25rem;
-}
-
-#main-nav a {
-    font-size: 1rem;
-    color: #fff;
+.sidepanel ul li a {
+    padding: 8px 8px 8px 32px;
     text-decoration: none;
+    font-size: 25px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
 }
+
+.sidepanel ul li a:hover {
+    color: lightgray;
+}
+
+.sidepanel .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #596633;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+}
+
+.openbtn:hover {
+    background-color: #3b4422;
+}
+
+
 
 #wrapper {
     height: auto;
@@ -86,17 +114,6 @@ margin-top: .25rem;
     margin-bottom: .25rem;
 }
 
-button {
-    background-color: #596633;
-    border: 1px solid #3b4422;
-    color: #fff;
-    text-shadow:#666666;
-}
-
-.main button {
-    font-size: 1rem;
-    padding: .5rem 1rem;
-}
 
 .sidebar {
     display: none;
@@ -157,4 +174,11 @@ button {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  /* Start Screen Size Info*/
+
+  @media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
   }

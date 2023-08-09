@@ -6,29 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="description" content="Find out information on National Parks" />
 
-    <link href="/styles/main.css" rel="stylesheet" />
+    <link href="styles/main.css" rel="stylesheet" />
 
     <title>National Parks</title>
 </head>
 
 <body>
     <header class="header">
-        <div class="container">
-            <img class="header-img" src="images/GeneratedNationalPark.png" alt=""/>
-            <div class="bottom-left"></div>
-            <div class="top-left"></div>
-            <div class="top-right"></div>
-            <div class="bottom-right"></div>
-            <div class="centered">Parklopedia</div>
+
+            <div class="hero">
+                <img class="header-img" src="images/GeneratedNationalPark.png" alt=""/>
+                <div class="bottom-left"></div>
+                <div class="top-left"></div>
+                <div class="top-right"></div>
+                <div class="bottom-right"></div>
+                <div class="centered">Parklopedia</div>
+            </div>
+
+        <span class="header-title">Welcome National Park Explorers</span>
+        <div id="mySidepanel" class="sidepanel">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="searchpage.html">Search</a></li>
+            </ul>
           </div>
-        <span class="header-title">National Park Explorers</span>
+          
+          <button class="openbtn" onclick="openNav()">&#9776; Toggle Sidepanel</button>
     </header>
 
-<nav id ="main-nav" class="navigation" aria-label="site">
-    <ul>
-        <li><a href="index.html">Home</a></li>
-    </ul>
-</nav>
+
 
 <div id="wrapper">
     <main id="main" class="main" tabindex="-1">
@@ -37,30 +45,28 @@
     Find your escape to the untamed. 
 </p>
 
-<h2>THIS IS GOING TO BE THE ABOUT PAGE!</h2>
+<h2>Here is where there will be information about the project including:</h2>
 <ol>
-    <li>One of the ways you can search will go here</li>
-    <li>One of the ways you can search will go here</li>
-    <li>One of the ways you can search will go here</li>
-    <li>One of the ways you can search will go here</li>
+    <li>Where the API information can be found</li>
+    <li>Links to National Park official information</li>
+    <li>Where to find me on social media</li>
+    <li>How to get in touch with me</li>
 </ol>
     </main>
 </div>
-
-
 
     <footer class="footer">
         <nav class="navigation" aria-label="site">
             <ul>
                 <li><a href="link.org">Home</a></li>
-                <li><a href="link.org">About</a></li>
-                <li><a href="link.org">Parks</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="link.org">search</a></li>
             </ul>
         </nav>
         <p>Designed and Maintained By: Khyrstina Smith</p>
         <p><a href="sitemap.html">Site</a></p>
     </footer>
-<script src="/js/navigation.js"></script>
+<script src="js/navigation.js"></script>
 </body>
 
 </html>

@@ -14,9 +14,9 @@ html, body {
     font-size: 1rem;
     line-height: 1.5;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
-    
     background-color: #adb8bd;
 }
 
@@ -28,7 +28,14 @@ ul {
     margin: 0;
     padding: 0; 
     display: flex;
-    flex-direction:column
+    flex-direction:column;
+    flex-wrap: wrap;
+}
+
+article {
+    display: flex;
+    flex-wrap: wrap;
+    color:#262724; 
 }
 
 label {
@@ -137,30 +144,84 @@ label {
 
 #wrapper {
     height: auto;
-    vertical-align: bottom;
     width: 90%;
     display: flex;
-    justify-content: left;
+    flex-wrap: wrap;
+    justify-content: center;
     padding-left: 5%;
     padding-right: 5%;
     background-color: #afbcac;
 }
 
+
+
+.searchWrapper {
+    height: auto;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #afbcac;
+}
+
+.searchWrapper label, p {
+    margin: 1em;
+    color:#262724;
+    font-weight: 600;
+    text-align: left;
+}
+
+.searchWrapper select, input {
+    background-color: transparent;
+    font-weight: 600;
+    color: #262724;
+    box-shadow: 0px 3px 7px #262724;
+    margin: 1em;
+}
+
+
 .main {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .main h1 {
     margin-top: 0;
-    display: flex;
+
+}
+
+
+
+.park .parkImage {
+    max-width: 100%;
+    height: auto;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+ article ul {
     justify-content: center;
+    align-content:center;
 }
 
-.main label {
-    display: block;
-    margin-bottom: .25rem;
+#jsonContainer ul li{
+    height: auto;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    background-color: #afbcac;
 }
 
+#jsonContainer ul li div ul li {
+align-items: flex-start;
+font-weight: 600;
+}
 
 .sidebar {
     display: none;

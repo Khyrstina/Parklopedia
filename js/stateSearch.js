@@ -16,7 +16,7 @@ async function getParks(selectedState) {
         let data = await resp.json();
         console.log(apiUrl);
         return data.data;
-    } 
+    }
     catch (error) {
         console.log(error);
         console.log(apiUrl);
@@ -29,19 +29,25 @@ async function renderParks(selectedState) {
 
     parks.forEach(park => {
         let htmlSegment = `
-            <div class="park">
-                <img src="${park.images[0]?.url || ''}">
-                <h2>${park.fullName}</h2>
+            <ul>
+            <li class="park">
+                <h2>${park.fullName}</h2> <br>
+
+                <img src="${park.images[0]?.url || ''}" class="parkImage" alt="park image">
+
                 <div class="info">
-                    <p>
-                        ${park.url}
-                        ${park.addresses[0]?.city || ''}
-                        ${park.addresses[0]?.postalCode || ''}
-                        ${park.contacts.phoneNumbers[0]?.phoneNumber || ''}
-                        ${park.description || ''}
-                    </p>
+                    <ul>
+                        <li> ${park.images[0]?.caption || ''}</li>
+                        <li><a href="${park.url || ''}">Click here for the NPS entry on this park.</a> </li>
+                        <li>Address: ${park.addresses[0]?.line1} ${park.addresses[0]?.line2}, ${park.addresses[0]?.city}, 
+                        ${park.addresses[0]?.postalCode || ''}</li>
+                        <li>Phone Number: ${park.contacts.phoneNumbers[0]?.phoneNumber || ''}</li>
+                        <li class="description">${park.description || ''}</li>  
+
+                    </ul>
                 </div>
-            </div>
+            </li>
+            </ul>
         `;
         html += htmlSegment;
     });

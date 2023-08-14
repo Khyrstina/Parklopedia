@@ -4,6 +4,8 @@
     margin-right: 1rem;
     max-width: 100%;
     border-radius: 5px; 
+    box-shadow: 0px 3px 10px #262724;
+
 }
 
 html, body {
@@ -11,6 +13,11 @@ html, body {
     font-family:Georgia, 'Times New Roman', Times, serif;
     font-size: 1rem;
     line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    background-color: #adb8bd;
 }
 
 ul li {
@@ -20,6 +27,8 @@ ul li {
 ul {
     margin: 0;
     padding: 0; 
+    display: flex;
+    flex-direction:column
 }
 
 label {
@@ -27,34 +36,47 @@ label {
     margin-bottom: 10px;
 }
 .header {
-    background-color: #666666;
+    background-color: #bcbdad;
     color: #fff;
     padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-shadow: 2px 2px 3px  #262724;
 }
 
 .header .hero {
     display: flex;
     align-items: center;
-
 }
+
 .hero .centered {
     font-size: 2.5rem;
-    text-shadow: #666666;
 }
 
 .header-title {
-    font-size: 2rem;
-    padding: 1rem;
+    color: #262724;
+    font-size: 1.5rem;
+    padding: 1rem 1rem 0rem 1rem;
+    text-align: center;
+    font-weight: 900;
+    text-shadow: none;
+}
+
+.header-attribution {
+    color: #262724;
+    font-size: .75rem;
+    padding: 0rem 1rem 1rem 1rem;
+    text-align: center;
+    font-weight: 900;
+    text-shadow: none;
 }
 
 .sidepanel {
     height: 250px;
     width: 0;
     position: fixed;
-    z-index:1;
+    z-index: 1;
     top: 0;
     left: 0;
     background-color: #596633;
@@ -62,10 +84,11 @@ label {
     padding-top: 60px;
     transition: 0.5s;
     border-radius: 5px; 
+    box-shadow: 0px 3px 15px #262724;
 }
 
 .sidepanel ul li a {
-    padding: 8px 8px 8px 32px;
+    padding: 20px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
     color: #fff;
@@ -74,7 +97,8 @@ label {
 }
 
 .sidepanel ul li a:hover {
-    color: lightgray;
+    text-shadow: 2px 2px 3px  #262724;
+    transition-duration: .25s;
 }
 
 .sidepanel .closebtn {
@@ -84,20 +108,29 @@ label {
     font-size: 36px;
     margin-left: 50px;
     border-radius: 5px; 
+    color: #fff;
+    text-decoration: none;
+}
+
+.sidepanel .closebtn:hover {
+    text-shadow: 2px 2px 3px  #262724;
+    transition-duration: .25s;
 }
 
 .openbtn {
     font-size: 20px;
     cursor: pointer;
     background-color: #596633;
-    color: white;
+    color: #fff;
     padding: 10px 15px;
     border: none;
     border-radius: 5px; 
+    box-shadow: 0px 3px 10px #262724;
 }
 
 .openbtn:hover {
     background-color: #3b4422;
+    transition-duration: .25s;
 }
 
 
@@ -105,7 +138,12 @@ label {
 #wrapper {
     height: auto;
     vertical-align: bottom;
-    width: 100%;
+    width: 90%;
+    display: flex;
+    justify-content: left;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: #afbcac;
 }
 
 .main {
@@ -114,7 +152,8 @@ label {
 
 .main h1 {
     margin-top: 0;
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .main label {
@@ -140,12 +179,35 @@ label {
     width: 1px;
 }
 
+footer {
+    font-size: .75rem;
+    display: flex;
+    flex-direction: column;
+}
+
+footer p {
+    text-align:center
+}
+
+footer ul {
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+footer ul li {
+    padding: 0rem 2rem;
+}
+
+footer ul li a {
+    text-decoration: none;
+}
 /*text over image
 /* Container holding the image and the text */
 .hero {
     position: relative;
     text-align: center;
-    color: white;
+    color: #fff;
   }
   
 
@@ -189,4 +251,8 @@ label {
   @media screen and (max-height: 450px) {
     .sidebar {padding-top: 15px;}
     .sidebar a {font-size: 18px;}
+
+    .hero .centered {
+        font-size: 2rem;
+    }
   }

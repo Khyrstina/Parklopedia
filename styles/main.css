@@ -3,6 +3,7 @@
 .header-img {
     margin-right: 1rem;
     max-width: 100%;
+    border-radius: 5px; 
 }
 
 html, body {
@@ -60,6 +61,7 @@ label {
     overflow-x: hidden;
     padding-top: 60px;
     transition: 0.5s;
+    border-radius: 5px; 
 }
 
 .sidepanel ul li a {
@@ -81,6 +83,7 @@ label {
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
+    border-radius: 5px; 
 }
 
 .openbtn {
@@ -90,6 +93,7 @@ label {
     color: white;
     padding: 10px 15px;
     border: none;
+    border-radius: 5px; 
 }
 
 .openbtn:hover {

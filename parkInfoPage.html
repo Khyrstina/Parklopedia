@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="Find out information on National Parks" />
+
+    <link href="styles/parkInfo.css" rel="stylesheet" />
+
+    <title>National Parks</title>
+</head>
+
+
+<body>
+    <header class="header">
+
+        <div class="hero">
+            <img class="header-img" src="images/GeneratedNationalPark.png" alt="" />
+            <div class="bottom-left"></div>
+            <div class="top-left"></div>
+            <div class="top-right"></div>
+            <div class="bottom-right"></div>
+            <div class="centered">Parklopedia</div>
+        </div>
+        <button class="openbtn" onclick="openNav()">&#9776; Toggle Sidepanel</button>
+
+
+        <nav id="mySidepanel" class="sidepanel">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="searchpage.html">Search</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+
+
+    <div id="wrapper">
+        <main id="main" class="main" tabindex="-1">
+
+                <h1 id="parkName">Welcome to Parklopedia!</h1>
+                <p>
+                    <span class="header-title">"Adventure is worthwhile in itself."</span>
+                    <br>
+                    <span class="header-attribution">-Amelia Earhart</span>
+                </p>
+            </div>
+        </main>
+
+
+        <div class="image-carousel">
+            <div class="carousel-slide">
+                <img src="image1.jpg" alt="Image 1">
+            </div>
+            <div class="carousel-slide">
+                <img src="image2.jpg" alt="Image 2">
+            </div>
+            <div class="carousel-slide">
+                <img src="image1.jpg" alt="Image 3">
+            </div>
+            <div class="carousel-slide">
+                <img src="image2.jpg" alt="Image 4">
+            </div>
+            
+        </div>
+        <button class="prev-button" onclick="changeSlide(-1)">Previous</button>
+        <button class="next-button" onclick="changeSlide(1)">Next</button>
+        
+        
+        <article id="parkInfoContainer" class="parkInfoContainer"></article>
+
+
+    <footer class="footer">
+        <nav class="navigation" aria-label="site">
+            <ul>
+                <li><a href="link.org">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="link.org">Search</a></li>
+            </ul>
+        </nav>
+        <p>Designed and Maintained By: Khyrstina Smith</p>
+        <p><a href="sitemap.html">Sitemap</a></p>
+    </footer>
+    <script src="js/navigation.js"></script>
+    <script src="js/parkInfo.js"></script>
+</body>
+
+</html>

@@ -78,7 +78,7 @@ async function renderParks(selectedState, numberOfResults, resultsArrayBeginning
 
 
         let htmlSegment = `
-            <ul>
+        <ul>
             <li class="park ${backgroundClass}">
                 <h2>${park.fullName}</h2> <br>
 
@@ -88,6 +88,7 @@ async function renderParks(selectedState, numberOfResults, resultsArrayBeginning
                     <ul>
                         <li> ${park.images[0]?.caption || ''}</li>
                         <li><a href="${park.url || ''}">Click here for the NPS entry on this park.</a> </li>
+                        <li>Park ID: ${park.id} </li>
                         <li>Address: ${park.addresses[0]?.line1} ${park.addresses[0]?.line2}, ${park.addresses[0]?.city}, 
                         ${park.addresses[0]?.postalCode || ''}</li>
                         <li>Phone Number: ${park.contacts.phoneNumbers[0]?.phoneNumber || ''}</li>
@@ -97,7 +98,10 @@ async function renderParks(selectedState, numberOfResults, resultsArrayBeginning
                 </div>     
             </li>
             </ul>
+            <button class="parkInfoBtn" onclick="startParkInfoReq('${park.id}')">See all Park Info Here</button>
+
         `;
+
         html += htmlSegment;
     });
 
@@ -125,4 +129,10 @@ function clearSearchResults() {
     jsonContainer.innerHTML = '';
     resultsArrayBeginning = 0;
     loadMoreButton.style.display = 'block'; //show load more button again
+}
+
+function startParkInfoReq(parkId) {
+    sessionStorage.setItem('parkIdSpecific', parkId);
+    window.location.href = '../parkInfoPage.html';
+
 }

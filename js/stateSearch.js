@@ -1,16 +1,37 @@
+const searchForm = document.getElementById('searchForm');
 const stateSelect = document.getElementById('stateId');
-const textBox = document.getElementById('textBox');
+const loadMoreButton = document.getElementsByClassName('loadMoreBtn')[0];
+const resultsSelect = document.getElementById('numberResultsRetrieved');
+const submitSearchButton = document.getElementById('submitSearchBtn')
 
-let apiKey = "";
 
-stateSelect.addEventListener('change', async (event) => {
-    const selectedState = stateSelect.value;
-    textBox.value = selectedState;
-    await renderParks(selectedState);
+
+
+let resultsArrayBeginning = 0;
+let apiKey = "xjubQlWFxnLdE4V2YsZz1z9OJD9nrJG9BnIBpBiX";
+let selectedState = ''; 
+let numberOfResults = '';
+
+stateSelect.addEventListener('change', (event) => {
+    selectedState = stateSelect.value;
 });
 
-async function getParks(selectedState) {
-    let apiUrl = `https://developer.nps.gov/api/v1/parks?limit=10&q=${selectedState}&api_key=${apiKey}`;
+resultsSelect.addEventListener('change', (event) => {
+    numberOfResults = resultsSelect.value;
+});
+
+submitSearchButton.addEventListener('click', async (event) => {
+    event.preventDefault();
+    await renderParks(selectedState, numberOfResults, resultsArrayBeginning)
+});
+
+/* loadMoreButton.addEventListener('click', async (event) => {
+    
+    loadMoreResults(selectedState, resultsArrayBeginning, numberOfResults);
+    }); */
+
+async function getParks(numberOfResults, selectedState, resultsArrayBeginning) {
+    let apiUrl = `https://developer.nps.gov/api/v1/parks?start=${resultsArrayBeginning}limit=${numberOfResults}&q=${selectedState}&api_key=${apiKey}`;
     try {
         let resp = await fetch(apiUrl);
         let data = await resp.json();
@@ -23,8 +44,8 @@ async function getParks(selectedState) {
     }
 }
 
-async function renderParks(selectedState) {
-    let parks = await getParks(selectedState);
+async function renderParks(selectedState, numberOfResults, resultsArrayBeginning) {
+    let parks = await getParks(numberOfResults, selectedState, resultsArrayBeginning);
     let html = '';
 
     parks.forEach(park => {
@@ -45,7 +66,7 @@ async function renderParks(selectedState) {
                         <li class="description">${park.description || ''}</li>  
 
                     </ul>
-                </div>
+                </div>     
             </li>
             </ul>
         `;
@@ -54,6 +75,13 @@ async function renderParks(selectedState) {
 
     let jsonContainer = document.querySelector('.jsonContainer');
     jsonContainer.innerHTML = html;
+
+
+}
+function loadMoreResults (){
+    resultsArrayBeginning += Number(numberOfResults);
+    getParks(numberOfResults, selectedState, resultsArrayBeginning);
+    renderParks(selectedState, numberOfResults, resultsArrayBeginning);
 }
 
-renderParks(stateSelect.value);
+

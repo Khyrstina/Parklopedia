@@ -46,7 +46,8 @@
             </p>
             <h2>Enter the information here:</h2>
 
-            <div class="searchWrapper">
+        <form class="searchWrapper" id="searchForm">
+            <wrapper class="selectStateArea">
             <label for="state-choice">Select a State:</label>
 
             <select name="state" id="stateId">
@@ -103,12 +104,23 @@
                 <option value="Wyoming">Wyoming</option>
 
             </select>
+        </wrapper>
+            <wrapper class="selectNumberArea">
+            <label for="results-choice">Results per page:</label>
+            <select name="resultsRetrieved" id="numberResultsRetrieved">
+                <option value="" selected>  </option>
+                <option value="10"> 10 </option>
+                <option value="15"> 15 </option>
+                <option value="20"> 20 </option>
+            </select>
+        </wrapper>
+            <br>
+            <button type="submit" id="submitSearchBtn">Retrieve Results</button>
+        </form>
 
-            <label>You Chose: </label>
-            <input type="text" id="textBox">
-            </div>
                 <article id="jsonContainer" class="jsonContainer"> Here is where you will see the park information returned</article>
-            
+                <button class="loadMoreBtn" onclick="loadMoreResults()">Load More Results</button>
+
         </main>
     </div>
 

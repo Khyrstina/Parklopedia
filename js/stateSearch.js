@@ -24,6 +24,10 @@ resultsSelect.addEventListener('change', (event) => {
 submitSearchButton.addEventListener('click', async (event) => {
     event.preventDefault();
     totalResults = await getTotalNumberResults(selectedState);
+
+    resultsArrayBeginning = 0;
+    clearSearchResults();
+
     await renderParks(selectedState, numberOfResults, resultsArrayBeginning)
 });
 
@@ -112,3 +116,9 @@ function loadMoreResults (){
 }
 
 
+function clearSearchResults() {
+    let jsonContainer = document.querySelector('.jsonContainer');
+    jsonContainer.innerHTML = '';
+    resultsArrayBeginning = 0;
+    loadMoreButton.style.display = 'block'; //show load more button again
+}

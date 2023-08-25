@@ -3,10 +3,8 @@
     margin-bottom: 1rem;
     max-width: 100%;
     border-radius: 5px;
-    box-shadow: 0px 3px 10px #262724;
-
+    box-shadow: 0px 25px 20px -20px #262724;
 }
-
 html {
     margin: 0;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -95,6 +93,7 @@ label {
     border-radius: 5px;
     width: 100%;
     color: #005E7C;
+    box-shadow: 0px 25px 20px -20px #262724;
 }
 
 
@@ -103,6 +102,7 @@ label {
     padding: 10px 15px;
     border-radius: 5px;
     margin: .75em;
+    box-shadow: 0px 25px 20px -20px #262724;
 }
 
 .backgroundBoxColorOdd{
@@ -110,6 +110,7 @@ label {
     padding: 10px 15px;
     border-radius: 5px;
     margin: .75em;
+    box-shadow: 0px 25px 20px -20px #262724;
 }
 
 .backgroundBoxColorHeader {
@@ -120,6 +121,7 @@ label {
     margin-top: 1.5em;
     width: 100%;
     text-align: center;
+    box-shadow: 0px 25px 20px -20px #262724;
 }
 
 body ol, h2 {

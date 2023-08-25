@@ -80,13 +80,41 @@ article {
     color: #050b04;
 }
 
-.parkInfoContainer img {
+/* Specific to slideshow */
+.slideshow-container {
     max-width: 100%;
+    position: relative;
+    margin: auto;
+  }
+  
+
+  .mySlides img {
+    width: 100%;
     height: auto;
-    padding-bottom: 1rem;
-    padding-top: 1rem;
-    overflow: hidden;
-}
+  }
+  
+
+  .mySlides {
+    display: none;
+  }
+  
+
+  .prev, .next {
+    position: absolute; 
+    cursor: pointer;
+    padding: 16px;
+    font-size: 20px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .prev {
+    left: 20px; 
+  }
+  
+  .next {
+    right: 20px; 
+  }
 
 /*Sidepanel menu specific*/
 .sidepanel {
@@ -205,6 +233,9 @@ footer ul li a {
     color: #fff;
 }
 
+.slideshow-container image {
+    position: relative;
+}
 
 .bottom-left {
     position: absolute;

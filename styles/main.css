@@ -253,16 +253,28 @@ input {
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
-    box-shadow: 0px 3px 10px #262724;
+    box-shadow: 0px 25px 20px -20px #262724;
     width: 100%;
 }
 
-/*NPS StateSearch Results*/
+/* StateSearch Results*/
 .park .parkImage {
     max-width: 100%;
     height: auto;
     padding-bottom: 1rem;
     padding-top: 1rem;
+}
+
+.parkInfoBtn {
+
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #596633;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 25px 20px -20px #262724;
 }
 
 article ul {

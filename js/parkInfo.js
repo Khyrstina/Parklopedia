@@ -1,6 +1,6 @@
 const parkNameHeader = document.getElementById('parkName');
-
 let apiKey = '';
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const parkID = sessionStorage.getItem('parkIDSpecific');
@@ -30,7 +30,6 @@ async function fetchParkDetails(parkId) {
 
             <h2>${park[0].fullName}</h2> <br>
 
-            <img src="${park[0].images[0]?.url || ''}" class="parkImage" alt="park image">
 
             <div class="info">
 
@@ -48,4 +47,66 @@ async function fetchParkDetails(parkId) {
 
     let parkContainer = document.querySelector('.parkInfoContainer');
     parkContainer.innerHTML = html;
+
+    let slideshowContainer = document.querySelector('.slideshow-container');
+
+  // Clear any previous images
+  slideshowContainer.innerHTML = '';
+
+  // Check if there are images to display
+  if (park[0].images && park[0].images.length > 0) {
+    // Iterate through the images and create <img> elements
+    for (let i = 0; i < park[0].images.length; i++) {
+      let imgElement = document.createElement('img');
+      imgElement.src = park[0].images[i].url;
+      imgElement.alt = park[0].images[i].caption || '';
+      
+      // Create a new slide
+      let slide = document.createElement('div');
+      slide.classList.add('mySlides');
+      slide.appendChild(imgElement);
+      
+      // Add the slide to the slideshow container
+      slideshowContainer.appendChild(slide);
+    }
+
+
+    showSlides(0);
+  }
 }
+
+let slideIndex = 0;
+
+function plusSlides(offset) {
+    slideIndex += offset;
+    showSlides(slideIndex);
+  }
+  
+  // back button for images
+  document.querySelector('.prev').addEventListener('click', () => {
+    plusSlides(-1);
+  });
+  //next button for images
+  document.querySelector('.next').addEventListener('click', () => {
+    plusSlides(1);
+  });
+  
+  function showSlides(index) {
+    let slides = document.querySelectorAll('.mySlides');
+  
+
+    if (index < 0) {
+      slideIndex = slides.length - 1;
+    } else if (index >= slides.length) {
+      slideIndex = 0;
+    }
+  
+
+    slides.forEach((slide) => {
+      slide.style.display = 'none';
+    });
+  
+
+    slides[slideIndex].style.display = 'block';
+  }
+  

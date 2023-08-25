@@ -85,6 +85,8 @@ async function renderParks(selectedState, numberOfResults, resultsArrayBeginning
                 <img src="${park.images[0]?.url || ''}" class="parkImage" alt="park image">
 
                 <div class="info">
+                <button class="parkInfoBtn" onclick="startParkInfoReq('${park.id}')">See all Park Info Here</button>
+
                     <ul>
                         <li> ${park.images[0]?.caption || ''}</li>
                         <li><a href="${park.url || ''}">Click here for the NPS entry on this park.</a> </li>
@@ -98,7 +100,6 @@ async function renderParks(selectedState, numberOfResults, resultsArrayBeginning
                 </div>     
             </li>
             </ul>
-            <button class="parkInfoBtn" onclick="startParkInfoReq('${park.id}')">See all Park Info Here</button>
 
         `;
 
@@ -131,8 +132,8 @@ function clearSearchResults() {
     loadMoreButton.style.display = 'block'; //show load more button again
 }
 
-function startParkInfoReq(parkId) {
-    sessionStorage.setItem('parkIdSpecific', parkId);
+function startParkInfoReq(parkID) {
+    sessionStorage.setItem('parkIDSpecific', parkID);
     window.location.href = '../parkInfoPage.html';
 
 }

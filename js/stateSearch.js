@@ -72,10 +72,14 @@ async function renderParks(selectedState, numberOfResults, resultsArrayBeginning
     let parks = await getParks(numberOfResults, selectedState, resultsArrayBeginning);
     let html = '';
 
-    parks.forEach(park => {
+    parks.forEach((park, index) => {
+
+        const backgroundClass = index % 2 === 0 ? 'backgroundBoxColorEven' : 'backgroundBoxColorOdd';
+
+
         let htmlSegment = `
             <ul>
-            <li class="park">
+            <li class="park ${backgroundClass}">
                 <h2>${park.fullName}</h2> <br>
 
                 <img src="${park.images[0]?.url || ''}" class="parkImage" alt="park image">

@@ -8,7 +8,7 @@ const submitSearchButton = document.getElementById('submitSearchBtn')
 
 
 let resultsArrayBeginning = 0;
-let apiKey = "xjubQlWFxnLdE4V2YsZz1z9OJD9nrJG9BnIBpBiX";
+let apiKey = "";
 let selectedState = ''; 
 let numberOfResults = '';
 

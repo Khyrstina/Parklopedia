@@ -6,7 +6,8 @@ const submitSearchButton = document.getElementById('submitSearchBtn')
 
 
 
-
+let currentPage = 1;
+let totalSearchResults = 0;
 let resultsArrayBeginning = 0;
 let apiKey = "";
 let selectedState = ''; 
@@ -22,6 +23,7 @@ resultsSelect.addEventListener('change', (event) => {
 
 submitSearchButton.addEventListener('click', async (event) => {
     event.preventDefault();
+    totalResults = await getTotalNumberResults(selectedState);
     await renderParks(selectedState, numberOfResults, resultsArrayBeginning)
 });
 
@@ -30,12 +32,30 @@ submitSearchButton.addEventListener('click', async (event) => {
     loadMoreResults(selectedState, resultsArrayBeginning, numberOfResults);
     }); */
 
+async function getTotalNumberResults(selectedState) {
+    let apiUrl = `https://developer.nps.gov/api/v1/parks?start=0limit=100&q=${selectedState}&api_key=${apiKey}`;
+    try {
+        let resp = await fetch(apiUrl);
+        let data = await resp.json();
+        totalSearchResults = data.total;
+        console.log(totalSearchResults);
+        return totalSearchResults;
+    }
+    catch (error) {
+        console.log(error);
+        return 0;
+    }
+}
+
+
 async function getParks(numberOfResults, selectedState, resultsArrayBeginning) {
     let apiUrl = `https://developer.nps.gov/api/v1/parks?start=${resultsArrayBeginning}limit=${numberOfResults}&q=${selectedState}&api_key=${apiKey}`;
+    let html = '';
     try {
         let resp = await fetch(apiUrl);
         let data = await resp.json();
         console.log(apiUrl);
+
         return data.data;
     }
     catch (error) {
@@ -76,6 +96,13 @@ async function renderParks(selectedState, numberOfResults, resultsArrayBeginning
     let jsonContainer = document.querySelector('.jsonContainer');
     jsonContainer.innerHTML = html;
 
+    if (totalResults <= resultsArrayBeginning) {
+        let endMessage = '<h2>You have reached the end of the results</h2>';
+        jsonContainer.innerHTML += endMessage;
+        loadMoreButton.style.display = 'none'; // Hiding the load more button
+    } else {
+        loadMoreButton.style.display = 'block'; // Showing the load more button
+    }
 
 }
 function loadMoreResults (){

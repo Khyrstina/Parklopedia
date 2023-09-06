@@ -1,49 +1,102 @@
 const searchForm = document.getElementById('searchForm');
 const stateSelect = document.getElementById('stateId');
-const loadMoreButton = document.getElementsByClassName('loadMoreBtn')[0];
 const resultsSelect = document.getElementById('numberResultsRetrieved');
 const submitSearchButton = document.getElementById('submitSearchBtn')
-
+const previousButton = document.getElementById('previousButton');
+const nextButton = document.getElementById('nextButton');
+const searchAgainBtn = document.getElementById('searchAgainBtn');
 
 
 let currentPage = 1;
-let totalSearchResults = 0;
-let resultsArrayBeginning = 0;
+let totalAvailableSearchResults = 0;
+let beginningParksArray = 0;
 let apiKey = "";
 let selectedState = ''; 
-let numberOfResults = '';
+let requestedNumResults = '';
+
 
 stateSelect.addEventListener('change', (event) => {
     selectedState = stateSelect.value;
 });
 
 resultsSelect.addEventListener('change', (event) => {
-    numberOfResults = resultsSelect.value;
+    requestedNumResults = resultsSelect.value;
 });
 
 submitSearchButton.addEventListener('click', async (event) => {
     event.preventDefault();
     totalResults = await getTotalNumberResults(selectedState);
 
-    resultsArrayBeginning = 0;
+    beginningParksArray = 0;
     clearSearchResults();
 
-    await renderParks(selectedState, numberOfResults, resultsArrayBeginning)
+    await renderParks(selectedState, requestedNumResults, beginningParksArray)
+    submitSearchButton.style.display = 'none';
+    nextButton.style.display = 'block';
 });
 
-/* loadMoreButton.addEventListener('click', async (event) => {
-    
-    loadMoreResults(selectedState, resultsArrayBeginning, numberOfResults);
-    }); */
+previousButton.addEventListener('click', () => {
+    if (currentPage > 1) {
+        currentPage--;
+        beginningParksArray -= requestedNumResults;
+        renderParks(selectedState, requestedNumResults, beginningParksArray);
+    }
+    updatePaginationButtons();
+});
+
+nextButton.addEventListener('click', () => {
+    const totalPages = Math.ceil(totalAvailableSearchResults / requestedNumResults);
+    if (currentPage < totalPages) {
+        currentPage++;
+        beginningParksArray += requestedNumResults;
+        renderParks(selectedState, requestedNumResults, beginningParksArray);
+    }
+    updatePaginationButtons();
+});
+
+searchAgainBtn.addEventListener('click', () => {
+
+    clearSearchResults();
+
+    searchAgainBtn.style.display = 'none';
+
+    currentPage = 1; 
+    totalAvailableSearchResults = 0;
+    selectedState = ''; 
+    requestedNumResults = ''; 
+
+  
+    stateSelect.value = '';
+    resultsSelect.value = '';
+
+
+    submitSearchButton.style.display = 'inline-block';
+});
+
+submitSearchButton.addEventListener('click', async (event) => {
+    event.preventDefault();
+    totalResults = await getTotalNumberResults(selectedState);
+
+    beginningParksArray = 0;
+    clearSearchResults();
+
+    await renderParks(selectedState, requestedNumResults, beginningParksArray);
+
+    // Show the "Search Again" button and hide the "Submit" button
+    searchAgainBtn.style.display = 'inline-block';
+    submitSearchButton.style.display = 'none';
+});
+
+
 
 async function getTotalNumberResults(selectedState) {
     let apiUrl = `https://developer.nps.gov/api/v1/parks?start=0limit=100&q=${selectedState}&api_key=${apiKey}`;
     try {
         let resp = await fetch(apiUrl);
         let data = await resp.json();
-        totalSearchResults = data.total;
-        console.log(totalSearchResults);
-        return totalSearchResults;
+        totalAvailableSearchResults = data.total;
+        console.log(totalAvailableSearchResults);
+        return totalAvailableSearchResults;
     }
     catch (error) {
         console.log(error);
@@ -74,12 +127,12 @@ async function renderParks(selectedState, numberOfResults, resultsArrayBeginning
 
     parks.forEach((park, index) => {
 
-        const backgroundClass = index % 2 === 0 ? 'backgroundBoxColorEven' : 'backgroundBoxColorOdd';
+        const backgroundSelectionClass = index % 2 === 0 ? 'backgroundBoxColorEven' : 'backgroundBoxColorOdd';
 
 
         let htmlSegment = `
         <ul>
-            <li class="park ${backgroundClass}">
+            <li class="park ${backgroundSelectionClass}">
                 <h2>${park.fullName}</h2> <br>
 
                 <img src="${park.images[0]?.url || ''}" class="parkImage" alt="park image">
@@ -104,32 +157,35 @@ async function renderParks(selectedState, numberOfResults, resultsArrayBeginning
         `;
 
         html += htmlSegment;
+        updatePaginationButtons();
     });
 
     let jsonContainer = document.querySelector('.jsonContainer');
     jsonContainer.innerHTML = html;
 
-    if (totalResults <= resultsArrayBeginning) {
+    if (totalAvailableSearchResults <= resultsArrayBeginning) {
         let endMessage = '<h2>You have reached the end of the results</h2>';
         jsonContainer.innerHTML += endMessage;
-        loadMoreButton.style.display = 'none'; // Hiding the load more button
-    } else {
-        loadMoreButton.style.display = 'block'; // Showing the load more button
-    }
 
-}
-function loadMoreResults (){
-    resultsArrayBeginning += Number(numberOfResults);
-    getParks(numberOfResults, selectedState, resultsArrayBeginning);
-    renderParks(selectedState, numberOfResults, resultsArrayBeginning);
+    } 
 }
 
+function updatePaginationButtons() {
+    const totalPages = Math.ceil(totalAvailableSearchResults / requestedNumResults);
+    nextButton.disabled = currentPage === totalPages;
+}
+
+function nextPage() {
+    beginningParksArray += Number(requestedNumResults);
+    getParks(requestedNumResults, selectedState, beginningParksArray);
+    renderParks(selectedState, requestedNumResults, beginningParksArray);
+}
 
 function clearSearchResults() {
     let jsonContainer = document.querySelector('.jsonContainer');
     jsonContainer.innerHTML = '';
-    resultsArrayBeginning = 0;
-    loadMoreButton.style.display = 'block'; //show load more button again
+    beginningParksArray = 0;
+
 }
 
 function startParkInfoReq(parkID) {

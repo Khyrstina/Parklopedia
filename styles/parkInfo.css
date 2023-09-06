@@ -1,13 +1,95 @@
-.header-img {
+*, *:before, *:after {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 40px;
+    font-family: 'Open Sans', 'sans-serif';
+    background-color: #fff;
+    color: #444;
+  }
+  
+  h1, p {
+    margin: 0 0 1em 0;
+  }
+  
+  .gridLayout {
+    max-width: 940px;
+    margin: 0 20px;
+    display: grid;
+    grid-gap: 10px;
+  }
+  
+  @media screen and (min-width: 600px) {
+  
+    .block-a, .block-b, .block-c {
+      float: left;
+      width: 19.1489%;
+    }
+  
+    .parkInfoContainer {
+      float: right;
+      width: 79.7872%;
+    }
+  
+    .gridLayout {
+      margin: 0 auto;
+      grid-template-columns: 1fr 3fr;
+      grid-auto-rows: minmax(150px, auto);
+    }
+    
+    .parkInfoContainer .parkFullNameHeader {
+      grid-column: 1;
+      clear: both;
+    }
+    
+    .block-a {
+      grid-column: 1;
+      grid-row: 2;
+    }
+    
+    .block-b {
+      grid-column: 1;
+      grid-row: 4;
+    }
+    
+    .block-c {
+      grid-column: 1;
+      grid-row: 6;
+    }
+    
+    .parkInfoContainer {
+      grid-column: 2;
+      grid-row: 2 / 7;
+    }
+  
+  }
+  
+  .gridLayout > * {
+    background-color: #444;
+    color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
+    margin-bottom: 10px;
+  }
+  
+  @supports (display: grid) {
+    .gridLayout > * {
+      width: auto;
+      margin: 0;
+    }
+  }
+  
+  .header-img {
     margin-right: 1rem;
     margin-bottom: 1rem;
     max-width: 100%;
     border-radius: 5px;
     box-shadow: 0px 25px 20px -20px #262724;
-
-}
-
-html {
+  }
+  
+  html {
     margin: 0;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 1rem;
@@ -15,27 +97,30 @@ html {
     background-color: #e0f3dd;
     display: flex;
     flex-direction: column;
-}
-
-ul li {
+  }
+  
+  ul li {
     list-style-type: none;
-}
-
-ul {
+  }
+  
+  ul {
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-}
-
-article {
-    display: flex;
-    flex-wrap: wrap;
+  }
+  
+  article {
+    max-width: 940px;
+    margin: 0 20px;
+    display: grid;
+    grid-gap: 1em;
     color: #050b04;
-}
-
-.header {
+    margin-bottom: 1em;
+  }
+  
+  .header {
     color: #fff;
     padding: 1rem;
     display: flex;
@@ -43,13 +128,13 @@ article {
     align-items: center;
     text-shadow: 2px 2px 3px #262724;
     background-color: #e0f3dd;
-}
-
-.hero .centered {
+  }
+  
+  .hero .centered {
     font-size: 2.5rem;
-}
-
-.header-title {
+  }
+  
+  .header-title {
     color: #050b04;
     font-size: 1.5rem;
     padding: 1rem 1rem 0rem 1rem;
@@ -57,9 +142,9 @@ article {
     font-weight: 900;
     text-shadow: none;
     width: 100%;
-}
-
-.header-attribution {
+  }
+  
+  .header-attribution {
     color: #050b04;
     font-size: .75rem;
     padding: 0rem 1rem 1rem 1rem;
@@ -67,9 +152,9 @@ article {
     font-weight: 900;
     text-shadow: none;
     width: 100%;
-}
-
-.main {
+  }
+  
+  .main {
     height: auto;
     width: 90%;
     display: flex;
@@ -78,29 +163,26 @@ article {
     padding: 5%;
     background-color: #e0f3dd;
     color: #050b04;
-}
-
-/* Specific to slideshow */
-.slideshow-container {
+  }
+  
+  /* Specific to slideshow */
+  .slideshow-container {
     max-width: 100%;
     position: relative;
     margin: auto;
   }
   
-
   .mySlides img {
     width: 100%;
     height: auto;
   }
   
-
   .mySlides {
     display: none;
   }
   
-
   .prev, .next {
-    position: absolute; 
+    position: absolute;
     cursor: pointer;
     padding: 16px;
     font-size: 20px;
@@ -109,15 +191,15 @@ article {
   }
   
   .prev {
-    left: 20px; 
+    left: 20px;
   }
   
   .next {
-    right: 20px; 
+    right: 20px;
   }
-
-/*Sidepanel menu specific*/
-.sidepanel {
+  
+  /* Sidepanel menu specific */
+  .sidepanel {
     height: 250px;
     width: 0;
     position: fixed;
@@ -130,23 +212,23 @@ article {
     transition: 0.5s;
     border-radius: 5px;
     box-shadow: 0px 3px 15px #262724;
-}
-
-.sidepanel ul li a {
+  }
+  
+  .sidepanel ul li a {
     padding: 20px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
     color: #fff;
     display: block;
     transition: 0.3s;
-}
-
-.sidepanel ul li a:hover {
+  }
+  
+  .sidepanel ul li a:hover {
     text-shadow: 2px 2px 3px #262724;
     transition-duration: .25s;
-}
-
-.sidepanel .closebtn {
+  }
+  
+  .sidepanel .closebtn {
     position: absolute;
     top: 0;
     right: 25px;
@@ -155,14 +237,14 @@ article {
     border-radius: 5px;
     color: #fff;
     text-decoration: none;
-}
-
-.sidepanel .closebtn:hover {
+  }
+  
+  .sidepanel .closebtn:hover {
     text-shadow: 2px 2px 3px #262724;
     transition-duration: .25s;
-}
-
-.openbtn {
+  }
+  
+  .openbtn {
     font-size: 20px;
     cursor: pointer;
     background-color: #596633;
@@ -171,14 +253,14 @@ article {
     border: none;
     border-radius: 5px;
     box-shadow: 0px 3px 10px #262724;
-}
-
-.openbtn:hover {
+  }
+  
+  .openbtn:hover {
     background-color: #3b4422;
     transition-duration: .25s;
-}
-
-article ul li {
+  }
+  
+  article ul li {
     height: auto;
     width: 90%;
     display: flex;
@@ -188,102 +270,10 @@ article ul li {
     align-items: center;
     justify-content: center;
     align-content: center;
-}
-
-.visuallyHidden {
+  }
+  
+  .visuallyHidden {
     border: 0;
     clip: rect(0, 0, 0, 0);
     height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-}
-
-footer {
-    font-size: .75rem;
-    display: flex;
-    flex-direction: column;
-    background-color: #e0f3dd;
-}
-
-footer p {
-    text-align: center
-}
-
-footer ul {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-footer ul li {
-    padding: 0rem 2rem;
-}
-
-footer ul li a {
-    text-decoration: none;
-}
-
-/*Text over Image specific*/
-.hero {
-    position: relative;
-    text-align: center;
-    color: #fff;
-}
-
-.slideshow-container image {
-    position: relative;
-}
-
-.bottom-left {
-    position: absolute;
-    bottom: 8px;
-    left: 16px;
-}
-
-
-.top-left {
-    position: absolute;
-    top: 8px;
-    left: 16px;
-}
-
-
-.top-right {
-    position: absolute;
-    top: 8px;
-    right: 16px;
-}
-
-
-.bottom-right {
-    position: absolute;
-    bottom: 8px;
-    right: 16px;
-}
-
-
-.centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-/* Start Screen Size Info*/
-
-@media screen and (max-height: 450px) {
-    .sidebar {
-        padding-top: 15px;
-    }
-
-    .sidebar a {
-        font-size: 18px;
-    }
-
-    .hero .centered {
-        font-size: 2rem;
-    }
-}
+  }

@@ -28,7 +28,7 @@ async function fetchParkDetails(parkId) {
 
     let html = `
 
-            <h2>${park[0].fullName}</h2> <br>
+            <h2 class="parkFullNameHeader">${park[0].fullName}</h2> <br>
 
 
             <div class="info">
@@ -50,23 +50,22 @@ async function fetchParkDetails(parkId) {
 
     let slideshowContainer = document.querySelector('.slideshow-container');
 
-  // Clear any previous images
+  // Clearing previous images
   slideshowContainer.innerHTML = '';
 
-  // Check if there are images to display
   if (park[0].images && park[0].images.length > 0) {
-    // Iterate through the images and create <img> elements
+
     for (let i = 0; i < park[0].images.length; i++) {
       let imgElement = document.createElement('img');
       imgElement.src = park[0].images[i].url;
       imgElement.alt = park[0].images[i].caption || '';
       
-      // Create a new slide
+// Create a new slide
       let slide = document.createElement('div');
       slide.classList.add('mySlides');
       slide.appendChild(imgElement);
       
-      // Add the slide to the slideshow container
+
       slideshowContainer.appendChild(slide);
     }
 

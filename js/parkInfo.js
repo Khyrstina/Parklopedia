@@ -1,6 +1,6 @@
-const parkNameHeader = document.getElementById('parkName');
-let apiKey = '';
+import { apiKey } from './config.js';
 
+const parkNameHeader = document.getElementById('parkName');
 
 document.addEventListener('DOMContentLoaded', () => {
     const parkID = sessionStorage.getItem('parkIDSpecific');
@@ -25,10 +25,10 @@ async function getParkInfo(parkID) {
 
 async function fetchParkDetails(parkId) {
     let park = await getParkInfo(parkId); 
+    const parkNameHeader = document.getElementById('parkName');
+    parkNameHeader.textContent = park[0].fullName;
 
     let html = `
-
-            <h2 class="parkFullNameHeader">${park[0].fullName}</h2> <br>
 
 
             <div class="info">
@@ -43,9 +43,9 @@ async function fetchParkDetails(parkId) {
 
             </div>     
 
-    `;
+    ` ;
 
-    let parkContainer = document.querySelector('.parkInfoContainer');
+    let parkContainer = document.querySelector('.mainParkInformation');
     parkContainer.innerHTML = html;
 
     let slideshowContainer = document.querySelector('.slideshow-container');

@@ -1,86 +1,4 @@
-*, *:before, *:after {
-    box-sizing: border-box;
-  }
-  
-  body {
-    margin: 40px;
-    font-family: 'Open Sans', 'sans-serif';
-    background-color: #fff;
-    color: #444;
-  }
-  
-  h1, p {
-    margin: 0 0 1em 0;
-  }
-  
-  .gridLayout {
-    max-width: 940px;
-    margin: 0 20px;
-    display: grid;
-    grid-gap: 10px;
-  }
-  
-  @media screen and (min-width: 600px) {
-  
-    .block-a, .block-b, .block-c {
-      float: left;
-      width: 19.1489%;
-    }
-  
-    .parkInfoContainer {
-      float: right;
-      width: 79.7872%;
-    }
-  
-    .gridLayout {
-      margin: 0 auto;
-      grid-template-columns: 1fr 3fr;
-      grid-auto-rows: minmax(150px, auto);
-    }
-    
-    .parkInfoContainer .parkFullNameHeader {
-      grid-column: 1;
-      clear: both;
-    }
-    
-    .block-a {
-      grid-column: 1;
-      grid-row: 2;
-    }
-    
-    .block-b {
-      grid-column: 1;
-      grid-row: 4;
-    }
-    
-    .block-c {
-      grid-column: 1;
-      grid-row: 6;
-    }
-    
-    .parkInfoContainer {
-      grid-column: 2;
-      grid-row: 2 / 7;
-    }
-  
-  }
-  
-  .gridLayout > * {
-    background-color: #444;
-    color: #fff;
-    border-radius: 5px;
-    padding: 20px;
-    font-size: 150%;
-    margin-bottom: 10px;
-  }
-  
-  @supports (display: grid) {
-    .gridLayout > * {
-      width: auto;
-      margin: 0;
-    }
-  }
-  
+
   .header-img {
     margin-right: 1rem;
     margin-bottom: 1rem;
@@ -163,6 +81,106 @@
     padding: 5%;
     background-color: #e0f3dd;
     color: #050b04;
+  }
+
+  /* Grid Layout */ 
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: .5fr 1fr 1fr 1fr .5fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "parkName parkName parkName"
+      "weather mainParkInformation mainParkInformation"
+      "contact mainParkInformation mainParkInformation"
+      "alerts mainParkInformation mainParkInformation"
+      "footer footer footer";
+      justify-content: space-around; 
+      align-content: center; 
+  }
+  
+  .weather { 
+    grid-area: weather; 
+    background-color: #abc4b4;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin: .75em;
+    box-shadow: 0px 25px 20px -20px #262724;}
+
+  .contact { 
+    grid-area: contact;
+    background-color: #abc4b4;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin: .75em;
+    box-shadow: 0px 25px 20px -20px #262724;
+   }
+  .alerts { 
+    grid-area: alerts;
+    background-color: #abc4b4;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin: .75em;
+    box-shadow: 0px 25px 20px -20px #262724;
+   }
+  .mainParkInformation { 
+    grid-area: mainParkInformation;
+    background-color: #abc4b4;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin: .75em;
+    box-shadow: 0px 25px 20px -20px #262724
+  }
+  .parkName { 
+    grid-area: parkName;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #c5ecb1;
+    padding: 5px 15px;
+    border-radius: 5px;
+    margin: .75em;
+    box-shadow: 0px 25px 20px -20px #262724 
+    font-size 1.2rem;
+    line-height: 1;
+  }
+  .footer{
+    grid-area: footer;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #c5ecb1;
+    padding: 5px 15px;
+    border-radius: 5px;
+    margin: .75em;
+    box-shadow: 0px 25px 20px -20px #262724 
+  }
+  
+  .footer ul{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .footer ul li{
+    padding: .5em;
+  }
+
+  @media screen and (max-width: 600px) {
+    .container {
+      grid-template-columns: 1fr; 
+      grid-template-areas:
+        "parkName"
+        "mainParkInformation"
+        "weather"
+        "contact"
+        "alerts"
+        "footer";
+    }
   }
   
   /* Specific to slideshow */
@@ -277,3 +295,16 @@
     clip: rect(0, 0, 0, 0);
     height: 1px;
   }
+
+  .hero {
+    position: relative;
+    text-align: center;
+    color: #fff;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

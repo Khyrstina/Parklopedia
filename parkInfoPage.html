@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="Find out information on National Parks" />
+
+    <link href="styles/parkInfo.css" rel="stylesheet" />
+
+    <title>National Parks</title>
+</head>
+
+
+<body>
+    <header class="header">
+
+        <div class="hero">
+            <img class="header-img" src="images/GeneratedNationalPark.png" alt="" />
+            <div class="bottom-left"></div>
+            <div class="top-left"></div>
+            <div class="top-right"></div>
+            <div class="bottom-right"></div>
+            <div class="centered">Parklopedia</div>
+        </div>
+        <button class="openbtn" onclick="openNav()">&#9776; Toggle Sidepanel</button>
+
+
+        <nav id="mySidepanel" class="sidepanel">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="searchpage.html">Search</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+
+
+    <div id="wrapper">
+        <main id="main" class="main" tabindex="-1">
+
+            <h1 id="header-title">Welcome to Parklopedia!</h1>
+            <p>
+                <span class="header-title">"Adventure is worthwhile in itself."</span>
+                <br>
+                <span class="header-attribution">-Amelia Earhart</span>
+            </p>
+    </div>
+    </main>
+
+
+    <div class="slideshow-container">
+        <div class="mySlides">
+            <img src="" alt="Slideshow Image 1">
+        </div>
+        <div class="mySlides">
+            <img src="" alt="Slideshow Image 2">
+        </div>
+
+    </div>
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    <div class="container">
+        <h2 class="parkName" id="parkName"> Name Of Park </h2>
+        <article id="parkInfoContainer" class="mainParkInformation"></article>
+        <div class="weather"> This is where the weather would go. It's hot. Or it's cold.</div>
+        <div class="contact"> This is how to contact the park, the hours are never. Contact info is just making bear
+            noises into the night.</div>
+        <div class="alerts"> Breaking news! Trees are real! That's right, I know it's hard to believe but they do in
+            fact exist.</div>
+        <footer class="footer">
+            <nav class="navigation" aria-label="site">
+                <ul>
+                    <li><a href="link.org">Home</a></li>
+                    <li><a href="about.html">About Project</a></li>
+                    <li><a href="link.org">About Me</a></li>
+                </ul>
+            </nav>
+            <p>Designed and Maintained By: Khyrstina Smith</p>
+            <p><a href="sitemap.html">Sitemap Will Go Here</a></p>
+        </footer>
+    </div>
+
+    </div>
+    <script src="js/navigation.js"></script>
+    <script type="module" src="js/config.js"></script>
+    <script type="module" src="js/parkInfo.js"></script>
+
+</body>
+
+</html>

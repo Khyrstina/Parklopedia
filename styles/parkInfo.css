@@ -1,0 +1,310 @@
+
+  .header-img {
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    max-width: 100%;
+    border-radius: 5px;
+    box-shadow: 0px 25px 20px -20px #262724;
+  }
+  
+  html {
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    background-color: #e0f3dd;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  ul li {
+    list-style-type: none;
+  }
+  
+  ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  
+  article {
+    max-width: 940px;
+    margin: 0 20px;
+    display: grid;
+    grid-gap: 1em;
+    color: #050b04;
+    margin-bottom: 1em;
+  }
+  
+  .header {
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-shadow: 2px 2px 3px #262724;
+    background-color: #e0f3dd;
+  }
+  
+  .hero .centered {
+    font-size: 2.5rem;
+  }
+  
+  .header-title {
+    color: #050b04;
+    font-size: 1.5rem;
+    padding: 1rem 1rem 0rem 1rem;
+    text-align: center;
+    font-weight: 900;
+    text-shadow: none;
+    width: 100%;
+  }
+  
+  .header-attribution {
+    color: #050b04;
+    font-size: .75rem;
+    padding: 0rem 1rem 1rem 1rem;
+    text-align: center;
+    font-weight: 900;
+    text-shadow: none;
+    width: 100%;
+  }
+  
+  .main {
+    height: auto;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 5%;
+    background-color: #e0f3dd;
+    color: #050b04;
+  }
+
+  /* Grid Layout */ 
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: .5fr 1fr 1fr 1fr .5fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "parkName parkName parkName"
+      "weather mainParkInformation mainParkInformation"
+      "contact mainParkInformation mainParkInformation"
+      "alerts mainParkInformation mainParkInformation"
+      "footer footer footer";
+      justify-content: space-around; 
+      align-content: center; 
+  }
+  
+  .weather { 
+    grid-area: weather; 
+    background-color: #abc4b4;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin: .75em;
+    box-shadow: 0px 25px 20px -20px #262724;}
+
+  .contact { 
+    grid-area: contact;
+    background-color: #abc4b4;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin: .75em;
+    box-shadow: 0px 25px 20px -20px #262724;
+   }
+  .alerts { 
+    grid-area: alerts;
+    background-color: #abc4b4;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin: .75em;
+    box-shadow: 0px 25px 20px -20px #262724;
+   }
+  .mainParkInformation { 
+    grid-area: mainParkInformation;
+    background-color: #abc4b4;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin: .75em;
+    box-shadow: 0px 25px 20px -20px #262724
+  }
+  .parkName { 
+    grid-area: parkName;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #c5ecb1;
+    padding: 5px 15px;
+    border-radius: 5px;
+    margin: .75em;
+    box-shadow: 0px 25px 20px -20px #262724 
+    font-size 1.2rem;
+    line-height: 1;
+  }
+  .footer{
+    grid-area: footer;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #c5ecb1;
+    padding: 5px 15px;
+    border-radius: 5px;
+    margin: .75em;
+    box-shadow: 0px 25px 20px -20px #262724 
+  }
+  
+  .footer ul{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .footer ul li{
+    padding: .5em;
+  }
+
+  @media screen and (max-width: 600px) {
+    .container {
+      grid-template-columns: 1fr; 
+      grid-template-areas:
+        "parkName"
+        "mainParkInformation"
+        "weather"
+        "contact"
+        "alerts"
+        "footer";
+    }
+  }
+  
+  /* Specific to slideshow */
+  .slideshow-container {
+    max-width: 100%;
+    position: relative;
+    margin: auto;
+  }
+  
+  .mySlides img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .mySlides {
+    display: none;
+  }
+  
+  .prev, .next {
+    position: absolute;
+    cursor: pointer;
+    padding: 16px;
+    font-size: 20px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .prev {
+    left: 20px;
+  }
+  
+  .next {
+    right: 20px;
+  }
+  
+  /* Sidepanel menu specific */
+  .sidepanel {
+    height: 250px;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #596633;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+    border-radius: 5px;
+    box-shadow: 0px 3px 15px #262724;
+  }
+  
+  .sidepanel ul li a {
+    padding: 20px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidepanel ul li a:hover {
+    text-shadow: 2px 2px 3px #262724;
+    transition-duration: .25s;
+  }
+  
+  .sidepanel .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .sidepanel .closebtn:hover {
+    text-shadow: 2px 2px 3px #262724;
+    transition-duration: .25s;
+  }
+  
+  .openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #596633;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 3px 10px #262724;
+  }
+  
+  .openbtn:hover {
+    background-color: #3b4422;
+    transition-duration: .25s;
+  }
+  
+  article ul li {
+    height: auto;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+  }
+  
+  .visuallyHidden {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+  }
+
+  .hero {
+    position: relative;
+    text-align: center;
+    color: #fff;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

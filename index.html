@@ -11,50 +11,53 @@
     <title>National Parks</title>
 </head>
 
+
 <body>
     <header class="header">
 
-            <div class="hero">
-                <img class="header-img" src="images/GeneratedNationalPark.png" alt=""/>
-                <div class="bottom-left"></div>
-                <div class="top-left"></div>
-                <div class="top-right"></div>
-                <div class="bottom-right"></div>
-                <div class="centered">Parklopedia</div>
-            </div>
+        <div class="hero">
+            <img class="header-img" src="images/GeneratedNationalPark.png" alt="" />
+            <div class="bottom-left"></div>
+            <div class="top-left"></div>
+            <div class="top-right"></div>
+            <div class="bottom-right"></div>
+            <div class="centered">Parklopedia</div>
+        </div>
+        <button class="openbtn" onclick="openNav()">&#9776; Toggle Sidepanel</button>
 
-        <span class="header-title">"Adventure is worthwhile in itself."</span>
-        <span class="header-attribution">-Amelia Earhart</span>
-        <div id="mySidepanel" class="sidepanel">
+
+        <nav id="mySidepanel" class="sidepanel">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="searchpage.html">Search</a></li>
             </ul>
-          </div>
-          
-          <button class="openbtn" onclick="openNav()">&#9776; Toggle Sidepanel</button>
+        </nav>
+
     </header>
 
 
 
-<div id="wrapper">
-    <main id="main" class="main" tabindex="-1">
-<h1>Welcome to Parklopedia!</h1>
-<p> 
-    Find your escape to the untamed. 
-</p>
+    <div id="wrapper">
+        <main id="main" class="main" tabindex="-1">
 
-<h2>Here is an overview of the number of ways you can search and find information:</h2>
-<ol>
-    <li>Search by State to find National Parks nearest you</li>
-    <li>Find activities near you at National Parks</li>
-    <li>Another way</li>
-    <li>Another way part 2</li>
-</ol>
-    </main>
-</div>
+                <h1>Welcome to Parklopedia!</h1>
+                <p class="backgroundBoxColor">
+                    <span class="header-title">"Adventure is worthwhile in itself."</span>
+                    <br>
+                    <span class="header-attribution">-Amelia Earhart</span>
+                </p>
+            </div>
+            <h2 class="backgroundBoxColorEven">What the page contains:</h2>
+            <ol>
+                <li>Search by State to find National Parks nearest you</li>
+                <li>Find activities near you at National Parks</li>
+                <li>Another way</li>
+                <li>Another way part 2</li>
+            </ol>
+        </main>
+
 
     <footer class="footer">
         <nav class="navigation" aria-label="site">
@@ -67,7 +70,7 @@
         <p>Designed and Maintained By: Khyrstina Smith</p>
         <p><a href="sitemap.html">Sitemap</a></p>
     </footer>
-<script src="js/navigation.js"></script>
+    <script src="js/navigation.js"></script>
 </body>
 
 </html>

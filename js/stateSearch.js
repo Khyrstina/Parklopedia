@@ -1,53 +1,200 @@
+import { apiKey } from './config.js';
+
+const searchForm = document.getElementById('searchForm');
 const stateSelect = document.getElementById('stateId');
-const textBox = document.getElementById('textBox');
+const resultsSelect = document.getElementById('numberResultsRetrieved');
+const submitSearchButton = document.getElementById('submitSearchBtn')
+const previousButton = document.getElementById('previousButton');
+const nextButton = document.getElementById('nextButton');
+const searchAgainBtn = document.getElementById('searchAgainBtn');
 
-let apiKey = "";
 
-stateSelect.addEventListener('change', async (event) => {
-    const selectedState = stateSelect.value;
-    textBox.value = selectedState;
-    await renderParks(selectedState);
+let currentPage = 1;
+let totalAvailableSearchResults = 0;
+let beginningParksArray = 0;
+let selectedState = ''; 
+let requestedNumResults = '';
+
+
+stateSelect.addEventListener('change', (event) => {
+    selectedState = stateSelect.value;
 });
 
-async function getParks(selectedState) {
-    let apiUrl = `https://developer.nps.gov/api/v1/parks?limit=10&q=${selectedState}&api_key=${apiKey}`;
+resultsSelect.addEventListener('change', (event) => {
+    requestedNumResults = resultsSelect.value;
+});
+
+submitSearchButton.addEventListener('click', async (event) => {
+    event.preventDefault();
+    totalAvailableSearchResults = await getTotalNumberResults(selectedState);
+
+    beginningParksArray = 0;
+    clearSearchResults();
+
+    await renderParks(selectedState, requestedNumResults, beginningParksArray)
+    submitSearchButton.style.display = 'none';
+    nextButton.style.display = 'block';
+});
+
+previousButton.addEventListener('click', () => {
+    if (currentPage > 1) {
+        currentPage--;
+        beginningParksArray -= requestedNumResults;
+        renderParks(selectedState, requestedNumResults, beginningParksArray);
+    }
+    updatePaginationButtons();
+});
+
+nextButton.addEventListener('click', () => {
+    const totalPages = Math.ceil(totalAvailableSearchResults / requestedNumResults);
+    if (currentPage < totalPages) {
+        currentPage++;
+        beginningParksArray += requestedNumResults;
+        renderParks(selectedState, requestedNumResults, beginningParksArray);
+    }
+    updatePaginationButtons();
+});
+
+searchAgainBtn.addEventListener('click', () => {
+
+    clearSearchResults();
+
+    searchAgainBtn.style.display = 'none';
+
+    currentPage = 1; 
+    totalAvailableSearchResults = 0;
+    selectedState = ''; 
+    requestedNumResults = ''; 
+
+  
+    stateSelect.value = '';
+    resultsSelect.value = '';
+
+
+    submitSearchButton.style.display = 'inline-block';
+});
+
+submitSearchButton.addEventListener('click', async (event) => {
+    event.preventDefault();
+    totalAvailableSearchResults = await getTotalNumberResults(selectedState);
+
+    beginningParksArray = 0;
+    clearSearchResults();
+
+    await renderParks(selectedState, requestedNumResults, beginningParksArray);
+
+    // Show the "Search Again" button and hide the "Submit" button
+    searchAgainBtn.style.display = 'inline-block';
+    submitSearchButton.style.display = 'none';
+});
+
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('parkInfoBtn')) {
+        const parkID = event.target.getAttribute('dataParkID');
+        startParkInfoReq(parkID);
+    }
+});
+
+async function getTotalNumberResults(selectedState) {
+    let apiUrl = `https://developer.nps.gov/api/v1/parks?start=0limit=100&q=${selectedState}&api_key=${apiKey}`;
+    try {
+        let resp = await fetch(apiUrl);
+        let data = await resp.json();
+        totalAvailableSearchResults = data.total;
+        console.log(totalAvailableSearchResults);
+        return totalAvailableSearchResults;
+    }
+    catch (error) {
+        console.log(error);
+        return 0;
+    }
+}
+
+
+async function getParks(numberOfResults, selectedState, resultsArrayBeginning) {
+    let apiUrl = `https://developer.nps.gov/api/v1/parks?start=${resultsArrayBeginning}limit=${numberOfResults}&q=${selectedState}&api_key=${apiKey}`;
+    let html = '';
     try {
         let resp = await fetch(apiUrl);
         let data = await resp.json();
         console.log(apiUrl);
+
         return data.data;
-    } 
+    }
     catch (error) {
         console.log(error);
         console.log(apiUrl);
     }
 }
 
-async function renderParks(selectedState) {
-    let parks = await getParks(selectedState);
+async function renderParks(selectedState, numberOfResults, resultsArrayBeginning) {
+    let parks = await getParks(numberOfResults, selectedState, resultsArrayBeginning);
     let html = '';
 
-    parks.forEach(park => {
+    parks.forEach((park, index) => {
+
+        const backgroundSelectionClass = index % 2 === 0 ? 'backgroundBoxColorEven' : 'backgroundBoxColorOdd';
+
+
         let htmlSegment = `
-            <div class="park">
-                <img src="${park.images[0]?.url || ''}">
-                <h2>${park.fullName}</h2>
+        <ul>
+            <li class="park ${backgroundSelectionClass}">
+                <h2>${park.fullName}</h2> <br>
+
+                <img src="${park.images[0]?.url || ''}" class="parkImage" alt="park image">
+
                 <div class="info">
-                    <p>
-                        ${park.url}
-                        ${park.addresses[0]?.city || ''}
-                        ${park.addresses[0]?.postalCode || ''}
-                        ${park.contacts.phoneNumbers[0]?.phoneNumber || ''}
-                        ${park.description || ''}
-                    </p>
-                </div>
-            </div>
+                <button class="parkInfoBtn" dataParkID="${park.id}"">See all Park Info Here</button>
+                <ul>
+                        <li> ${park.images[0]?.caption || ''}</li>
+                        <li><a href="${park.url || ''}">Click here for the NPS entry on this park.</a> </li>
+                        <li>Park ID: ${park.id} </li>
+                        <li>Address: ${park.addresses[0]?.line1} ${park.addresses[0]?.line2}, ${park.addresses[0]?.city}, 
+                        ${park.addresses[0]?.postalCode || ''}</li>
+                        <li>Phone Number: ${park.contacts.phoneNumbers[0]?.phoneNumber || ''}</li>
+                        <li class="description">${park.description || ''}</li>  
+
+                    </ul>
+                </div>     
+            </li>
+            </ul>
+
         `;
+
         html += htmlSegment;
+        updatePaginationButtons();
     });
 
     let jsonContainer = document.querySelector('.jsonContainer');
     jsonContainer.innerHTML = html;
+
+    if (totalAvailableSearchResults <= resultsArrayBeginning) {
+        let endMessage = '<h2>You have reached the end of the results</h2>';
+        jsonContainer.innerHTML += endMessage;
+
+    } 
 }
 
-renderParks(stateSelect.value);
+function updatePaginationButtons() {
+    const totalPages = Math.ceil(totalAvailableSearchResults / requestedNumResults);
+    nextButton.disabled = currentPage === totalPages;
+}
+
+function nextPage() {
+    beginningParksArray += Number(requestedNumResults);
+    getParks(requestedNumResults, selectedState, beginningParksArray);
+    renderParks(selectedState, requestedNumResults, beginningParksArray);
+}
+
+function clearSearchResults() {
+    let jsonContainer = document.querySelector('.jsonContainer');
+    jsonContainer.innerHTML = '';
+    beginningParksArray = 0;
+
+}
+
+function startParkInfoReq(parkID) {
+    sessionStorage.setItem('parkIDSpecific', parkID);
+    window.location.href = '../parkInfoPage.html';
+
+}

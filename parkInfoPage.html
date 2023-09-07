@@ -42,7 +42,7 @@
     <div id="wrapper">
         <main id="main" class="main" tabindex="-1">
 
-                <h1 id="parkName">Welcome to Parklopedia!</h1>
+                <h1 id="header-title">Welcome to Parklopedia!</h1>
                 <p>
                     <span class="header-title">"Adventure is worthwhile in itself."</span>
                     <br>
@@ -64,27 +64,30 @@
           <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
           <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
-        <wrapper class="gridLayout">
-        <article id="parkInfoContainer" class="parkInfoContainer"></article>
-        <div class="block-a"> This is where the weather would go. It's hot. Or it's cold.</div>
-        <div class="block-b"> This is how to contact the park, the hours are never. Contact info is just making bear noises into the night.</div>
-        <div class="block-c"> Breaking news! Trees are real! That's right, I know it's hard to believe but they do in fact exist.</div>
+        <div class="container">
+        <h2 class="parkName" id="parkName"> Name Of Park </h2>
+        <article id="parkInfoContainer" class="mainParkInformation"></article>
+        <div class="weather"> This is where the weather would go. It's hot. Or it's cold.</div>
+        <div class="contact"> This is how to contact the park, the hours are never. Contact info is just making bear noises into the night.</div>
+        <div class="alerts"> Breaking news! Trees are real! That's right, I know it's hard to believe but they do in fact exist.</div>
+        <footer class="footer">
+            <nav class="navigation" aria-label="site">
+                <ul>
+                    <li><a href="link.org">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="link.org">Search</a></li>
+                </ul>
+            </nav>
+            <p>Designed and Maintained By: Khyrstina Smith</p>
+            <p><a href="sitemap.html">Sitemap</a></p>
+        </footer>
+        </div>
 
-    </wrapper>
-    <footer class="footer">
-        <nav class="navigation" aria-label="site">
-            <ul>
-                <li><a href="link.org">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="link.org">Search</a></li>
-            </ul>
-        </nav>
-        <p>Designed and Maintained By: Khyrstina Smith</p>
-        <p><a href="sitemap.html">Sitemap</a></p>
-    </footer>
-
+</div>
     <script src="js/navigation.js"></script>
-    <script src="js/parkInfo.js"></script>
+    <script type="module" src="js/config.js"></script>
+    <script type="module" src="js/parkInfo.js"></script>
+
 </body>
 
 </html>

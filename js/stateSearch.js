@@ -1,3 +1,5 @@
+import { apiKey } from './config.js';
+
 const searchForm = document.getElementById('searchForm');
 const stateSelect = document.getElementById('stateId');
 const resultsSelect = document.getElementById('numberResultsRetrieved');
@@ -10,7 +12,6 @@ const searchAgainBtn = document.getElementById('searchAgainBtn');
 let currentPage = 1;
 let totalAvailableSearchResults = 0;
 let beginningParksArray = 0;
-let apiKey = "";
 let selectedState = ''; 
 let requestedNumResults = '';
 
@@ -25,7 +26,7 @@ resultsSelect.addEventListener('change', (event) => {
 
 submitSearchButton.addEventListener('click', async (event) => {
     event.preventDefault();
-    totalResults = await getTotalNumberResults(selectedState);
+    totalAvailableSearchResults = await getTotalNumberResults(selectedState);
 
     beginningParksArray = 0;
     clearSearchResults();
@@ -75,7 +76,7 @@ searchAgainBtn.addEventListener('click', () => {
 
 submitSearchButton.addEventListener('click', async (event) => {
     event.preventDefault();
-    totalResults = await getTotalNumberResults(selectedState);
+    totalAvailableSearchResults = await getTotalNumberResults(selectedState);
 
     beginningParksArray = 0;
     clearSearchResults();
@@ -87,7 +88,12 @@ submitSearchButton.addEventListener('click', async (event) => {
     submitSearchButton.style.display = 'none';
 });
 
-
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('parkInfoBtn')) {
+        const parkID = event.target.getAttribute('dataParkID');
+        startParkInfoReq(parkID);
+    }
+});
 
 async function getTotalNumberResults(selectedState) {
     let apiUrl = `https://developer.nps.gov/api/v1/parks?start=0limit=100&q=${selectedState}&api_key=${apiKey}`;
@@ -138,9 +144,8 @@ async function renderParks(selectedState, numberOfResults, resultsArrayBeginning
                 <img src="${park.images[0]?.url || ''}" class="parkImage" alt="park image">
 
                 <div class="info">
-                <button class="parkInfoBtn" onclick="startParkInfoReq('${park.id}')">See all Park Info Here</button>
-
-                    <ul>
+                <button class="parkInfoBtn" dataParkID="${park.id}"">See all Park Info Here</button>
+                <ul>
                         <li> ${park.images[0]?.caption || ''}</li>
                         <li><a href="${park.url || ''}">Click here for the NPS entry on this park.</a> </li>
                         <li>Park ID: ${park.id} </li>

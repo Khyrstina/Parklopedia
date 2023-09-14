@@ -1,5 +1,4 @@
 
-
 let slideIndex = 0;
 
 export function initializeSlides(park) {

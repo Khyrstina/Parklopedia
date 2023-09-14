@@ -12,7 +12,7 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 1rem;
     line-height: 1.5;
-    background-color: #e0f3dd;
+    background-color: #E8F4F0;
     display: flex;
     flex-direction: column;
   }
@@ -45,7 +45,7 @@
     flex-direction: column;
     align-items: center;
     text-shadow: 2px 2px 3px #262724;
-    background-color: #e0f3dd;
+    background-color: #E8F4F0;
   }
   
   .hero .centered {
@@ -79,7 +79,7 @@
     flex-wrap: wrap;
     justify-content: center;
     padding: 5%;
-    background-color: #e0f3dd;
+    background-color: #E8F4F0;
     color: #050b04;
   }
 
@@ -90,6 +90,7 @@
     grid-template-rows: .5fr 1fr 1fr 1fr .5fr;
     gap: 0px 0px;
     grid-auto-flow: row;
+    
     grid-template-areas:
       "parkName parkName parkName"
       "weather mainParkInformation mainParkInformation"
@@ -102,50 +103,50 @@
   
   .weather { 
     grid-area: weather; 
-    background-color: #abc4b4;
-    padding: 10px 15px;
+    background-color: #8AC6D0;
     border-radius: 5px;
     margin: .75em;
-    box-shadow: 0px 25px 20px -20px #262724;}
+    padding: 20px; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
 
   .contact { 
     grid-area: contact;
-    background-color: #abc4b4;
-    padding: 10px 15px;
+    background-color: #f0e1c0ff;
     border-radius: 5px;
     margin: .75em;
-    box-shadow: 0px 25px 20px -20px #262724;
+    padding: 20px; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
    }
   .alerts { 
     grid-area: alerts;
-    background-color: #abc4b4;
-    padding: 10px 15px;
+    background-color: #e9c46aff;
     border-radius: 5px;
     margin: .75em;
-    box-shadow: 0px 25px 20px -20px #262724;
+    padding: 20px; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
    }
   .mainParkInformation { 
     grid-area: mainParkInformation;
-    background-color: #abc4b4;
-    padding: 10px 15px;
+    background-color: #C2E1D1;
     border-radius: 5px;
     margin: .75em;
-    box-shadow: 0px 25px 20px -20px #262724
+    padding: 20px; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   }
   .parkName { 
     grid-area: parkName;
+    color: #ffff;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #c5ecb1;
-    padding: 5px 15px;
+    background-color: #706993;
     border-radius: 5px;
     margin: .75em;
-    box-shadow: 0px 25px 20px -20px #262724 
-    font-size 1.2rem;
-    line-height: 1;
+    padding: 20px; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   }
   .footer{
     grid-area: footer;
@@ -154,11 +155,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #c5ecb1;
-    padding: 5px 15px;
+    background-color: #abc4b4;
     border-radius: 5px;
     margin: .75em;
-    box-shadow: 0px 25px 20px -20px #262724 
+    padding: 20px; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   }
   
   .footer ul{
@@ -173,6 +174,7 @@
   @media screen and (max-width: 600px) {
     .container {
       grid-template-columns: 1fr; 
+      grid-template-rows: .5fr 1fr 1fr 1fr .5fr;
       grid-template-areas:
         "parkName"
         "mainParkInformation"
@@ -193,6 +195,7 @@
   .mySlides img {
     width: 100%;
     height: auto;
+    border-radius: 5px;
   }
   
   .mySlides {
@@ -224,7 +227,7 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #596633;
+    background-color: #706993;
     overflow-x: hidden;
     padding-top: 60px;
     transition: 0.5s;
@@ -265,7 +268,7 @@
   .openbtn {
     font-size: 20px;
     cursor: pointer;
-    background-color: #596633;
+    background-color: #706993;
     color: #fff;
     padding: 10px 15px;
     border: none;
@@ -274,7 +277,7 @@
   }
   
   .openbtn:hover {
-    background-color: #3b4422;
+    background-color: #327A81;
     transition-duration: .25s;
   }
   

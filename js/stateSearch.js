@@ -1,9 +1,8 @@
-import { apiKey } from './config.js';
+import {apiKey} from "./config.js";
 
-const searchForm = document.getElementById('searchForm');
 const stateSelect = document.getElementById('stateId');
 const resultsSelect = document.getElementById('numberResultsRetrieved');
-const submitSearchButton = document.getElementById('submitSearchBtn')
+const submitSearchButton = document.getElementById('submitSearchBtn');
 const previousButton = document.getElementById('previousButton');
 const nextButton = document.getElementById('nextButton');
 const searchAgainBtn = document.getElementById('searchAgainBtn');
@@ -12,9 +11,9 @@ const searchAgainBtn = document.getElementById('searchAgainBtn');
 let currentPage = 1;
 let totalAvailableSearchResults = 0;
 let beginningParksArray = 0;
-let selectedState = ''; 
+let selectedState = '';
 let requestedNumResults = '';
-
+let fetchingData = false; // Add a flag to prevent concurrent requests
 
 stateSelect.addEventListener('change', (event) => {
     selectedState = stateSelect.value;
@@ -26,53 +25,56 @@ resultsSelect.addEventListener('change', (event) => {
 
 submitSearchButton.addEventListener('click', async (event) => {
     event.preventDefault();
-    totalAvailableSearchResults = await getTotalNumberResults(selectedState);
-
-    beginningParksArray = 0;
-    clearSearchResults();
-
-    await renderParks(selectedState, requestedNumResults, beginningParksArray)
-    submitSearchButton.style.display = 'none';
-    nextButton.style.display = 'block';
+    
+    if (!fetchingData) {
+        fetchingData = true; //prevents multiple requests by "opening the door"
+        totalAvailableSearchResults = await getTotalNumberResults(selectedState);
+        beginningParksArray = 0;
+        clearSearchResults();
+        await renderParks(selectedState, requestedNumResults, beginningParksArray);
+        submitSearchButton.style.display = 'none';
+        nextButton.style.display = 'block';
+        fetchingData = false; //prevents multiple requests by "closing the door"
+    }
 });
 
 previousButton.addEventListener('click', () => {
-    if (currentPage > 1) {
+    if (!fetchingData && currentPage > 1) {
+        fetchingData = true;
         currentPage--;
         beginningParksArray -= requestedNumResults;
         renderParks(selectedState, requestedNumResults, beginningParksArray);
+        fetchingData = false;
     }
     updatePaginationButtons();
 });
 
 nextButton.addEventListener('click', () => {
-    const totalPages = Math.ceil(totalAvailableSearchResults / requestedNumResults);
-    if (currentPage < totalPages) {
-        currentPage++;
-        beginningParksArray += requestedNumResults;
-        renderParks(selectedState, requestedNumResults, beginningParksArray);
+    if (!fetchingData) {
+        const totalPages = Math.ceil(totalAvailableSearchResults / requestedNumResults);
+        if (currentPage < totalPages) {
+            fetchingData = true;
+            currentPage++;
+            beginningParksArray += requestedNumResults;
+            renderParks(selectedState, requestedNumResults, beginningParksArray);
+            fetchingData = false;
+        }
+        updatePaginationButtons();
     }
-    updatePaginationButtons();
 });
 
 searchAgainBtn.addEventListener('click', () => {
-
     clearSearchResults();
-
     searchAgainBtn.style.display = 'none';
-
-    currentPage = 1; 
+    currentPage = 1;
     totalAvailableSearchResults = 0;
-    selectedState = ''; 
-    requestedNumResults = ''; 
-
-  
+    selectedState = '';
+    requestedNumResults = '';
     stateSelect.value = '';
     resultsSelect.value = '';
-
-
     submitSearchButton.style.display = 'inline-block';
 });
+
 
 submitSearchButton.addEventListener('click', async (event) => {
     event.preventDefault();
@@ -111,26 +113,23 @@ async function getTotalNumberResults(selectedState) {
 }
 
 
-async function getParks(numberOfResults, selectedState, resultsArrayBeginning) {
+async function getAllParks(numberOfResults, selectedState, resultsArrayBeginning) {
     let apiUrl = `https://developer.nps.gov/api/v1/parks?start=${resultsArrayBeginning}limit=${numberOfResults}&q=${selectedState}&api_key=${apiKey}`;
     let html = '';
     try {
         let resp = await fetch(apiUrl);
         let data = await resp.json();
-        console.log(apiUrl);
 
         return data.data;
     }
     catch (error) {
         console.log(error);
-        console.log(apiUrl);
     }
 }
 
 async function renderParks(selectedState, numberOfResults, resultsArrayBeginning) {
-    let parks = await getParks(numberOfResults, selectedState, resultsArrayBeginning);
+    let parks = await getAllParks(numberOfResults, selectedState, resultsArrayBeginning);
     let html = '';
-
     parks.forEach((park, index) => {
 
         const backgroundSelectionClass = index % 2 === 0 ? 'backgroundBoxColorEven' : 'backgroundBoxColorOdd';
@@ -182,7 +181,7 @@ function updatePaginationButtons() {
 
 function nextPage() {
     beginningParksArray += Number(requestedNumResults);
-    getParks(requestedNumResults, selectedState, beginningParksArray);
+    getAllParks(requestedNumResults, selectedState, beginningParksArray);
     renderParks(selectedState, requestedNumResults, beginningParksArray);
 }
 

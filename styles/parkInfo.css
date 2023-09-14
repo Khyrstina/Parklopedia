@@ -134,6 +134,23 @@
     padding: 20px; 
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   }
+  .mainParkInformation button {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #706993;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 3px 10px #262724;
+  }
+  .mainParkInformation button a{
+    color: #fff;
+    text-decoration: none;
+  }
+  .mainParkInformation button:hover {
+    background-color: #327A81;
+    transition-duration: .25s;
+  }
   .parkName { 
     grid-area: parkName;
     color: #ffff;

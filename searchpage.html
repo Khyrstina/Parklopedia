@@ -48,7 +48,7 @@
 
             <form class="searchWrapper" id="searchForm">
                 <wrapper class="selectStateArea">
-                    <label for="state-choice">Select a State:</label>
+                    <label for="stateId">Select a State:</label>
 
                     <select name="state" id="stateId">
                         <option value="" selected></option>
@@ -106,7 +106,7 @@
                     </select>
                 </wrapper>
                 <wrapper class="selectNumberArea">
-                    <label for="results-choice">Results per page:</label>
+                    <label for="numberResultsRetrieved">Results per page:</label>
                     <select name="resultsRetrieved" id="numberResultsRetrieved">
                         <option value="" selected> </option>
                         <option value="10"> 10 </option>
@@ -118,9 +118,9 @@
 
                 <button type="submit" id="submitSearchBtn">Retrieve Results</button>
                 <button id="previousButton" style="display: none" >Previous</button>
-                <button id="nextButton" onclick="nextPage()" style="display: none">Next</button>
+                <button id="nextButton" onclick="" style="display: none">Next</button>
                 <button id="searchAgainBtn" style="display: none">Search Again</button>
-
+                <p class="maxResultsReturned"> </p>
             </form>
 
             <article id="jsonContainer" class="jsonContainer"> Here is where you will see the park information returned
@@ -144,8 +144,10 @@
         <p><a href="sitemap.html">Site</a></p>
     </footer>
     <script src="js/navigation.js"></script>
-    <script type="module" src="js/stateSearch.js"></script>
     <script type="module" src="js/config.js"></script>
+    <script type="module" src="js/stateSearch.js"></script>
+    <script type="module" src="js/parkAPI.js"></script>
+
 
 
 </body>

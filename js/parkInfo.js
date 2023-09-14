@@ -1,6 +1,8 @@
 import { apiKey } from './config.js';
 
-const parkNameHeader = document.getElementById('parkName');
+
+let latitude = '';
+let longitude = '';
 
 document.addEventListener('DOMContentLoaded', () => {
     const parkID = sessionStorage.getItem('parkIDSpecific');
@@ -12,13 +14,11 @@ async function getParkInfo(parkID) {
     try {
         let resp = await fetch(apiUrl);
         let data = await resp.json();
-        console.log(apiUrl);
 
         return data.data; 
     }
     catch (error) {
         console.log(error);
-        console.log(apiUrl);
     }
 }
 
@@ -28,25 +28,72 @@ async function fetchParkDetails(parkId) {
     const parkNameHeader = document.getElementById('parkName');
     parkNameHeader.textContent = park[0].fullName;
 
+    // Get today's date in yyyy-mm-dd format
+const today = new Date().toISOString().split('T')[0];
+
+let todaysOperatingHours = '';
+// Find the operating hours for today
+const operatingHoursToday = park[0].operatingHours.find((hours) => {
+  return hours.exceptions.some((exception) => {
+    return today >= exception.startDate && today <= exception.endDate;
+  });
+});
+
+if (operatingHoursToday) {
+  const { description } = operatingHoursToday;
+  todaysOperatingHours = description;
+} else {
+  todaysOperatingHours = 'Operating hours for today not found.';
+}
+
     let html = `
 
 
             <div class="info">
 
-                    <p> ${park[0].images[0]?.caption || ''}</p>
-                    <p><a href="${park[0].url || ''}">Click here for the NPS entry on this park.</a> </p>
-                    <p>Park ID: ${park[0].id} </p>
-                    <p>Address: ${park[0].addresses[0]?.line1} ${park[0].addresses[0]?.line2}, ${park[0].addresses[0]?.city}, 
-                    ${park[0].addresses[0]?.postalCode || ''}</p>
-                    <p>Phone Number: ${park[0].contacts.phoneNumbers[0]?.phoneNumber || ''}</p>
+                    <h3>Park Description: </h3>
                     <p class="description">${park[0].description || ''}</p>  
-
+                    <h3>Seasonal Information: </h3>
+                    <p>${park[0].weatherInfo}</p>
+                    <p><a href="${park[0].url || ''}">Click here for the NPS entry on this park.</a> </p>
+                    <h3>Today's Operating Hours: </h3>
+                    <p>${todaysOperatingHours}</p>
             </div>     
 
     ` ;
 
     let parkContainer = document.querySelector('.mainParkInformation');
     parkContainer.innerHTML = html;
+    
+    const weatherStats = document.querySelector('.weather');
+    latitude = park[0].latitude;
+    longitude = park[0].longitude;
+    weatherStats.textContent = getLatLon(latitude, longitude);
+
+  
+
+    const contactInformation = document.querySelector('.contact');
+    const entranceFees = park[0].entranceFees;
+    let feeInformation = '';
+    if (entranceFees && entranceFees.length > 0) {
+      entranceFees.forEach((fee) => {
+        const feeTitle = fee.title;
+        const feeDescription = fee.description;
+        const feeCost = fee.cost;
+
+        feeInformation += `<p>${feeTitle}: ${feeDescription} - Cost: ${feeCost}</p>`;
+      });
+    } else {
+      feeInformation = 'No entrance fee information could be retrieved for this park.';
+    
+    }
+
+
+    let addressHTML = `<h4>Address: </h4><p> ${park[0].addresses[0]?.line1} ${park[0].addresses[0]?.line2}, ${park[0].addresses[0]?.city}, ${park[0].addresses[0]?.stateCode}, ${park[0].addresses[0]?.postalCode} </p>`;
+    let phoneHTML = `<h4>Phone Number: </h4><p> ${park[0].contacts.phoneNumbers[0]?.phoneNumber} </p>`;
+    let feesHTML = '<h4>Entrance Fees: </h4>' + `<p> ${feeInformation} </p>`;
+    contactInformation.innerHTML = addressHTML + phoneHTML + feesHTML;
+    
 
     let slideshowContainer = document.querySelector('.slideshow-container');
 
@@ -72,7 +119,11 @@ async function fetchParkDetails(parkId) {
 
     showSlides(0);
   }
+
+
 }
+
+
 
 let slideIndex = 0;
 
@@ -107,5 +158,10 @@ function plusSlides(offset) {
   
 
     slides[slideIndex].style.display = 'block';
+  }
+  
+  function getLatLon(latitude, longitude){
+    let latLon = 'Latitude: ' + latitude + '\n' +' Longitude: ' + longitude;
+    return latLon;
   }
   

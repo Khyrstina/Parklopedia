@@ -1,325 +1,431 @@
+.header-img {
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  max-width: 100%;
+  border-radius: 5px;
+  box-shadow: 0px 25px 20px -20px #262724;
+}
 
-  .header-img {
-    margin-right: 1rem;
-    margin-bottom: 1rem;
-    max-width: 100%;
-    border-radius: 5px;
-    box-shadow: 0px 25px 20px -20px #262724;
-  }
-  
-  html {
-    margin: 0;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 1rem;
-    line-height: 1.5;
-    background-color: #E8F4F0;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  ul li {
-    list-style-type: none;
-  }
-  
-  ul {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-  }
-  
-  article {
-    max-width: 940px;
-    margin: 0 20px;
-    display: grid;
-    grid-gap: 1em;
-    color: #050b04;
-    margin-bottom: 1em;
-  }
-  
-  .header {
-    color: #fff;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-shadow: 2px 2px 3px #262724;
-    background-color: #E8F4F0;
-  }
-  
-  .hero .centered {
-    font-size: 2.5rem;
-  }
-  
-  .header-title {
-    color: #050b04;
-    font-size: 1.5rem;
-    padding: 1rem 1rem 0rem 1rem;
-    text-align: center;
-    font-weight: 900;
-    text-shadow: none;
-    width: 100%;
-  }
-  
-  .header-attribution {
-    color: #050b04;
-    font-size: .75rem;
-    padding: 0rem 1rem 1rem 1rem;
-    text-align: center;
-    font-weight: 900;
-    text-shadow: none;
-    width: 100%;
-  }
-  
-  .main {
-    height: auto;
-    width: 90%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 5%;
-    background-color: #E8F4F0;
-    color: #050b04;
-  }
+html {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  background-color: #E8F4F0;
+  display: flex;
+  flex-direction: column;
+}
 
-  /* Grid Layout */ 
+ul li {
+  list-style-type: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+article {
+  max-width: 940px;
+  margin: 0 20px;
+  display: grid;
+  grid-gap: 1em;
+  color: #050b04;
+  margin-bottom: 1em;
+}
+
+.header {
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-shadow: 2px 2px 3px #262724;
+  background-color: #E8F4F0;
+}
+
+.hero .centered {
+  font-size: 2.5rem;
+}
+
+.header-title {
+  color: #050b04;
+  font-size: 1.5rem;
+  padding: 1rem 1rem 0rem 1rem;
+  text-align: center;
+  font-weight: 900;
+  text-shadow: none;
+  width: 100%;
+}
+
+.header-attribution {
+  color: #050b04;
+  font-size: .75rem;
+  padding: 0rem 1rem 1rem 1rem;
+  text-align: center;
+  font-weight: 900;
+  text-shadow: none;
+  width: 100%;
+}
+
+.main {
+  height: auto;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 5%;
+  background-color: #E8F4F0;
+  color: #050b04;
+}
+
+/* Grid Layout */
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: .5fr 1fr 1fr 1fr .5fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+
+  grid-template-areas:
+    "parkName parkName parkName"
+    "weather mainParkInformation mainParkInformation"
+    "contact mainParkInformation mainParkInformation"
+    "alerts alerts alerts"
+    "footer footer footer";
+  justify-content: space-around;
+  align-content: center;
+}
+
+.weather {
+  grid-area: weather;
+  background-color: #8AC6D0;
+  border-radius: 5px;
+  margin: .75em;
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact {
+  grid-area: contact;
+  background-color: #f0e1c0ff;
+  border-radius: 5px;
+  margin: .75em;
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.alerts {
+  grid-area: alerts;
+  background-color: #e9c46aff;
+  border-radius: 5px;
+  margin: .75em;
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.mainParkInformation {
+  grid-area: mainParkInformation;
+  background-color: #C2E1D1;
+  border-radius: 5px;
+  margin: .75em;
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.mainParkInformation button {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #706993;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 3px 10px #262724;
+}
+
+.mainParkInformation button a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.mainParkInformation button:hover {
+  background-color: #327A81;
+  transition-duration: .25s;
+}
+
+.parkName {
+  grid-area: parkName;
+  color: #ffff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #706993;
+  border-radius: 5px;
+  margin: .75em;
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+  grid-area: footer;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #abc4b4;
+  border-radius: 5px;
+  margin: .75em;
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.footer ul {
+  display: flex;
+  flex-direction: row;
+}
+
+.footer ul li {
+  padding: .5em;
+}
+
+/* Weather Section */
+.weatherContainer {
+  display: grid; 
+  grid-template-columns: 1fr; 
+  grid-template-rows: 3fr 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "currentTemp"
+    "highAndLowTemp"; 
+}
+.currentTemp { 
+  grid-area: currentTemp;
+  text-align: center;
+  font-size: 2.5rem;
+ }
+.highAndLowTemp {
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "maxTemp minTemp"; 
+  grid-area: highAndLowTemp; 
+  justify-items: center;
+}
+.maxTemp { grid-area: maxTemp; }
+.minTemp { grid-area: minTemp; }
+
+.weatherImg {
+  grid-area: weatherImg;
+}
+
+
+
+.threeDayForecastBox {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  justify-items: center;
+}
+
+.datesBox {
+  grid-area: 1 / 1 / 2 / 4;
+}
+
+.dateOne {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.dateTwo {
+  grid-area: 1 / 2 / 2 / 3;
+}
+
+.dateThree {
+  grid-area: 1 / 3 / 2 / 4;
+}
+
+.weatherImgBox {
+  grid-area: 2 / 1 / 3 / 4;
+}
+
+.weatherImgOne {
+  grid-area: 2 / 1 / 3 / 2;
+}
+
+.weatherImgTwo {
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.weatherImgThree {
+  grid-area: 2 / 3 / 3 / 4;
+}
+
+.highLowBox {
+  grid-area: 3 / 1 / 4 / 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+
+}
+
+.highLowOne {
+  grid-area: 3 / 1 / 4 / 2;
+}
+
+.highLowTwo {
+  grid-area: 3 / 2 / 4 / 3;
+}
+
+.highLowThree {
+  grid-area: 3 / 3 / 4 / 4;
+}
+
+
+
+/*Media queries*/
+@media screen and (max-width: 600px) {
   .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: .5fr 1fr 1fr 1fr .5fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    
     grid-template-areas:
-      "parkName parkName parkName"
-      "weather mainParkInformation mainParkInformation"
-      "contact mainParkInformation mainParkInformation"
-      "alerts mainParkInformation mainParkInformation"
-      "footer footer footer";
-      justify-content: space-around; 
-      align-content: center; 
+      "parkName"
+      "mainParkInformation"
+      "weather"
+      "contact"
+      "alerts"
+      "footer";
   }
-  
-  .weather { 
-    grid-area: weather; 
-    background-color: #8AC6D0;
-    border-radius: 5px;
-    margin: .75em;
-    padding: 20px; 
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  }
+}
 
-  .contact { 
-    grid-area: contact;
-    background-color: #f0e1c0ff;
-    border-radius: 5px;
-    margin: .75em;
-    padding: 20px; 
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-   }
-  .alerts { 
-    grid-area: alerts;
-    background-color: #e9c46aff;
-    border-radius: 5px;
-    margin: .75em;
-    padding: 20px; 
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-   }
-  .mainParkInformation { 
-    grid-area: mainParkInformation;
-    background-color: #C2E1D1;
-    border-radius: 5px;
-    margin: .75em;
-    padding: 20px; 
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  .mainParkInformation button {
-    font-size: 20px;
-    cursor: pointer;
-    background-color: #706993;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0px 3px 10px #262724;
-  }
-  .mainParkInformation button a{
-    color: #fff;
-    text-decoration: none;
-  }
-  .mainParkInformation button:hover {
-    background-color: #327A81;
-    transition-duration: .25s;
-  }
-  .parkName { 
-    grid-area: parkName;
-    color: #ffff;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #706993;
-    border-radius: 5px;
-    margin: .75em;
-    padding: 20px; 
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  .footer{
-    grid-area: footer;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #abc4b4;
-    border-radius: 5px;
-    margin: .75em;
-    padding: 20px; 
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .footer ul{
-    display: flex;
-    flex-direction: row;
-  }
+/* Specific to slideshow */
+.slideshow-container {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+}
 
-  .footer ul li{
-    padding: .5em;
-  }
+.mySlides img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
 
-  @media screen and (max-width: 600px) {
-    .container {
-      grid-template-columns: 1fr; 
-      grid-template-rows: .5fr 1fr 1fr 1fr .5fr;
-      grid-template-areas:
-        "parkName"
-        "mainParkInformation"
-        "weather"
-        "contact"
-        "alerts"
-        "footer";
-    }
-  }
-  
-  /* Specific to slideshow */
-  .slideshow-container {
-    max-width: 100%;
-    position: relative;
-    margin: auto;
-  }
-  
-  .mySlides img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-  }
-  
-  .mySlides {
-    display: none;
-  }
-  
-  .prev, .next {
-    position: absolute;
-    cursor: pointer;
-    padding: 16px;
-    font-size: 20px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  .prev {
-    left: 20px;
-  }
-  
-  .next {
-    right: 20px;
-  }
-  
-  /* Sidepanel menu specific */
-  .sidepanel {
-    height: 250px;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #706993;
-    overflow-x: hidden;
-    padding-top: 60px;
-    transition: 0.5s;
-    border-radius: 5px;
-    box-shadow: 0px 3px 15px #262724;
-  }
-  
-  .sidepanel ul li a {
-    padding: 20px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #fff;
-    display: block;
-    transition: 0.3s;
-  }
-  
-  .sidepanel ul li a:hover {
-    text-shadow: 2px 2px 3px #262724;
-    transition-duration: .25s;
-  }
-  
-  .sidepanel .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-    border-radius: 5px;
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  .sidepanel .closebtn:hover {
-    text-shadow: 2px 2px 3px #262724;
-    transition-duration: .25s;
-  }
-  
-  .openbtn {
-    font-size: 20px;
-    cursor: pointer;
-    background-color: #706993;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0px 3px 10px #262724;
-  }
-  
-  .openbtn:hover {
-    background-color: #327A81;
-    transition-duration: .25s;
-  }
-  
-  article ul li {
-    height: auto;
-    width: 90%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-  }
-  
-  .visuallyHidden {
-    border: 0;
-    clip: rect(0, 0, 0, 0);
-    height: 1px;
-  }
+.mySlides {
+  display: none;
+}
 
-  .hero {
-    position: relative;
-    text-align: center;
-    color: #fff;
+.prev,
+.next {
+  position: absolute;
+  cursor: pointer;
+  padding: 16px;
+  font-size: 20px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
+
+/* Sidepanel menu specific */
+.sidepanel {
+  height: 250px;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #706993;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s;
+  border-radius: 5px;
+  box-shadow: 0px 3px 15px #262724;
+}
+
+.sidepanel ul li a {
+  padding: 20px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #fff;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidepanel ul li a:hover {
+  text-shadow: 2px 2px 3px #262724;
+  transition-duration: .25s;
+}
+
+.sidepanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  border-radius: 5px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.sidepanel .closebtn:hover {
+  text-shadow: 2px 2px 3px #262724;
+  transition-duration: .25s;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #706993;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 3px 10px #262724;
+}
+
+.openbtn:hover {
+  background-color: #327A81;
+  transition-duration: .25s;
+}
+
+article ul li {
+  height: auto;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.visuallyHidden {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+}
+
+.hero {
+  position: relative;
+  text-align: center;
+  color: #fff;
 }
 
 .centered {

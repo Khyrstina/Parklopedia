@@ -13,7 +13,6 @@ html {
     line-height: 1.5;
     background-color: #e0f3dd;
     display: flex;
-    flex-direction: column;
 }
 
 ul li {
@@ -23,14 +22,11 @@ ul li {
 ul {
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+
 }
 
 article {
-    display: flex;
-    flex-wrap: wrap;
+
     color: #050b04;
 }
 
@@ -76,17 +72,81 @@ label {
 
 
 .main {
+    margin-top: 1rem;
     height: auto;
     width: 90%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     padding: 5%;
     background-color: #e0f3dd;
     color: #050b04;
 }
+/*Grid*/
+.mainSearchArea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto; 
+    gap: .25rem;
+    text-align: center;
+}
 
-/*Begin styling for background colors*/
+.aboutSearchParagraphBox {
+    width: 100%; 
+    margin-bottom: 1rem;
+}
+
+h2 {
+    width: 100%; 
+}
+
+.selectTextBoxBox,
+.ButtonsBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
+    gap: 1rem; 
+}
+
+.ButtonsBox button {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #706993;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 3px 10px #262724;
+}
+
+.ButtonsBox button:hover {
+    background-color: #327A81;
+    transition-duration: .25s;
+}
+
+.stateTextBox,
+.numResultsBox {
+    flex: 1;
+    font-weight: 600;
+}
+
+.stateDropdownBox,
+.numResultsDropdownBox {
+    flex: 1;
+}
+
+.jsonResultsBox {
+    display:flex;
+    flex-direction: column;
+    padding: 1rem;
+    justify-content: center;
+}
+
+
+
+
+/*Begin styling for background colors */
 .main h1 {
     text-align: center;
     background-color: #c7ccd18e;
@@ -195,56 +255,7 @@ body ol, h2 {
 
 
 /* Search area specific*/
-.searchWrapper {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
 
-.searchWrapper label,
-p {
-    margin: 1em;
-    color: #050b04;
-    font-weight: 600;
-    text-align: left;
-}
-
-.searchWrapper select,
-input {
-    background-color: transparent;
-    font-weight: 600;
-    color: #050b04;
-    box-shadow: 0px 3px 7px #262724;
-    margin: 1em;
-}
-
-.selectNumberArea {
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-    margin-top: 1rem;
-}
-
-.selectStateArea {
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-    margin-top: 1rem;
-}
-
-.searchWrapper button {
-    font-size: 20px;
-    cursor: pointer;
-    background-color: #596633;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0px 3px 10px #262724;
-    margin: .25em;
-}
 
 
 
@@ -253,25 +264,28 @@ input {
     max-width: 100%;
     height: auto;
     padding-bottom: 1rem;
-    padding-top: 1rem;
+    border-radius: 5px;
+    display:block;
+    margin: 0 auto;
 }
 
 .parkInfoBtn {
-
-    font-size: 1rem;
+    font-size: 20px;
     cursor: pointer;
-    background-color: #596633;
+    background-color: #706993;
     color: #fff;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
-    box-shadow: 0px 25px 20px -20px #262724;
+    box-shadow: 0px 3px 10px #262724;
 }
 
-article ul {
-    justify-content: center;
-    align-content: center;
+.parkInfoBtn:hover {
+    background-color: #327A81;
+    transition-duration: .25s;
 }
+
+
 
 #jsonContainer ul li {
     height: auto;
@@ -279,13 +293,15 @@ article ul {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    align-content: center;
 }
 
 #jsonContainer ul li div ul li {
-    align-items: flex-start;
+    display: block;
+    text-align: start;
     font-weight: 600;
+    padding: 0.5rem;
+    margin-left: .5rem;
 }
 
 .sidebar {
@@ -317,6 +333,7 @@ footer p {
 }
 
 footer ul {
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;

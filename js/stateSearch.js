@@ -13,7 +13,8 @@ let totalAvailableSearchResults = 0;
 let beginningParksArray = 0;
 let selectedState = '';
 let requestedNumResults = '';
-let fetchingData = false; // Add a flag to prevent concurrent requests
+let fetchingData = false; 
+let totalPages = 0;
 
 stateSelect.addEventListener('change', (event) => {
     selectedState = stateSelect.value;
@@ -25,16 +26,22 @@ resultsSelect.addEventListener('change', (event) => {
 
 submitSearchButton.addEventListener('click', async (event) => {
     event.preventDefault();
-    
+
     if (!fetchingData) {
-        fetchingData = true; //prevents multiple requests by "opening the door"
+        fetchingData = true;
         totalAvailableSearchResults = await getTotalNumberResults(selectedState);
         beginningParksArray = 0;
         clearSearchResults();
         await renderParks(selectedState, requestedNumResults, beginningParksArray);
+        fetchingData = false;
+
+        totalPages = Math.ceil(totalAvailableSearchResults / requestedNumResults);
+
+        fetchingData = false;
+
+        // Hide the "Submit Search" button and show the "Next" button
         submitSearchButton.style.display = 'none';
         nextButton.style.display = 'block';
-        fetchingData = false; //prevents multiple requests by "closing the door"
     }
 });
 
@@ -51,7 +58,7 @@ previousButton.addEventListener('click', () => {
 
 nextButton.addEventListener('click', () => {
     if (!fetchingData) {
-        const totalPages = Math.ceil(totalAvailableSearchResults / requestedNumResults);
+        
         if (currentPage < totalPages) {
             fetchingData = true;
             currentPage++;
@@ -72,7 +79,10 @@ searchAgainBtn.addEventListener('click', () => {
     requestedNumResults = '';
     stateSelect.value = '';
     resultsSelect.value = '';
+
+    // Show the "Submit Search" button and hide the "Next" button
     submitSearchButton.style.display = 'inline-block';
+    nextButton.style.display = 'none';
 });
 
 
@@ -88,6 +98,7 @@ submitSearchButton.addEventListener('click', async (event) => {
     // Show the "Search Again" button and hide the "Submit" button
     searchAgainBtn.style.display = 'inline-block';
     submitSearchButton.style.display = 'none';
+
 });
 
 document.addEventListener('click', (event) => {
@@ -161,21 +172,25 @@ async function renderParks(selectedState, numberOfResults, resultsArrayBeginning
         `;
 
         html += htmlSegment;
-        updatePaginationButtons();
+
     });
 
     let jsonContainer = document.querySelector('.jsonContainer');
     jsonContainer.innerHTML = html;
 
-    if (totalAvailableSearchResults <= resultsArrayBeginning) {
+    updatePaginationButtons();
+
+    if (currentPage === totalPages) {
         let endMessage = '<h2>You have reached the end of the results</h2>';
         jsonContainer.innerHTML += endMessage;
-
+        nextButton.style.display = 'none';
+        searchAgainBtn.style.display = 'inline-block';
     } 
 }
 
 function updatePaginationButtons() {
     const totalPages = Math.ceil(totalAvailableSearchResults / requestedNumResults);
+    previousButton.disabled = currentPage === 1;
     nextButton.disabled = currentPage === totalPages;
 }
 

@@ -67,8 +67,54 @@
 
     <div class="container">
         <h2 class="parkName" id="parkName"> Name Of Park </h2>
-        <article id="parkInfoContainer" class="mainParkInformation"></article>
-        <div class="weather"> This is where the weather would go. It's hot. Or it's cold.</div>
+        <article id="parkInfoContainer" class="mainParkInformation">
+ 
+                <div class="info">
+    
+                    <h3>Park Description: </h3>
+                    <p id="parkDescription" class="description"></p>  
+                    <h3>Seasonal Information: </h3>
+                    <p id="weatherInfo"></p>
+                    <h3>Special Operating Hours in Effect: </h3>
+                    <p id="todaysOperatingHours"></p>
+                    <h3>Entrance Fees: </h3> 
+                    <p id="feeInformation"> </p>
+                    <button class='npsPageButton'><a id="parkUrl" href="">Click here for the NPS entry on this park.</a></button>
+
+            </div> 
+
+        </article>
+        <div class="weather">
+            <div class="weatherContainer">
+                <div class="currentTemp" id="currentTemp">
+                    <img class="weatherImage" src="" alt="weatherImage">
+                    <span class="temperature" id="temperature"></span>
+                  </div>
+                <div class="highAndLowTemp">
+                <div class="maxTemp" id="maxTemp"></div>
+                <div class="minTemp" id="minTemp"></div>
+                </div>
+              </div>
+                <div class="threeDayForecastBox">
+                <div class="datesBox">    </div>
+                  <div class="dateOne"></div>
+                  <div class="dateTwo"></div>
+                  <div class="dateThree"></div>
+              
+                  <div class="weatherImgBox">    </div>
+                  <div class="weatherImgOne"> <img id="weatherImg1"></div>
+                  <div class="weatherImgTwo"><img id="weatherImg2"></div>
+                  <div class="weatherImgThree"><img id="weatherImg3"></div>
+              
+                  <div class="highLowBox">    </div>
+                  <div class="highLowOne"></div>
+                  <div class="highLowTwo"></div>
+                  <div class="highLowThree"></div>
+              
+              
+              </div>
+        </div>
+
         <div class="contact"> This is how to contact the park, the hours are never. Contact info is just making bear
             noises into the night.</div>
         <div class="alerts"> Breaking news! Trees are real! That's right, I know it's hard to believe but they do in

@@ -1,8 +1,8 @@
-import { getParkInfo, getLatLon } from './parkAPI.js';
+import { getParkInfo } from './parkAPI.js';
 import { initializeSlides, plusSlides } from './slideshow.js';
 import { getAlertsInformation } from './alerts.js';
 import { getWeatherInfo } from './weatherAPI.js';
-import { findCorrectIcon } from './weatherIcon.js';
+import { findCorrectIcon, findCorrectStatus } from './weatherIcon.js';
 
 
 
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeSlides(park);
   });
   fetchParkDetails(parkID);
-})
+});
 
 // back button for images
 document.querySelector('.prev').addEventListener('click', () => {
@@ -53,6 +53,7 @@ async function fetchParkDetails(parkId) {
     todaysOperatingHours = 'Special operating hours for today not found.';
   }
 
+  //Check for Fee information
   const entranceFees = park[0].entranceFees;
   let feeInformation = '';
   if (entranceFees && entranceFees.length > 0) {
@@ -67,26 +68,14 @@ async function fetchParkDetails(parkId) {
 
   }
 
-  let html = `
+// Main Park Information Area
 
+const parkDescriptionText = document.getElementById('parkDescription').innerText = park[0].description || '';
+const weatherInfoText = document.getElementById('weatherInfo').innerText = park[0].weatherInfo;
+const todaysOperatingHoursText = document.getElementById('todaysOperatingHours').innerText = todaysOperatingHours;
+const feeInformationText = document.getElementById('feeInformation').innerHTML = feeInformation;
+const parkUrlHref = document.getElementById('parkUrl').href = park[0].url || '';
 
-            <div class="info">
-
-                    <h3>Park Description: </h3>
-                    <p class="description">${park[0].description || ''}</p>  
-                    <h3>Seasonal Information: </h3>
-                    <p>${park[0].weatherInfo}</p>
-                    <h3>Special Operating Hours in Effect: </h3>
-                    <p>${todaysOperatingHours}</p>
-                    <h3>Entrance Fees: </h3> 
-                    <p> ${feeInformation} </p>
-                    <button class='npsPageButton'><a href="${park[0].url || ''}">Click here for the NPS entry on this park.</a></button>
-            </div>     
-
-    ` ;
-
-  let parkContainer = document.querySelector('.mainParkInformation');
-  parkContainer.innerHTML = html;
 
 
   // Begin .weather 
@@ -94,15 +83,14 @@ async function fetchParkDetails(parkId) {
   longitude = park[0].longitude;
 
   const weatherData = await getWeatherInfo(latitude, longitude);
-  const weatherStats = document.querySelector('.weather');
+
   
   const conditionCode = weatherData.current.condition.code;
-
-
+  
 
 
   const dateStrings = [weatherData.forecast.forecastday[1].date, weatherData.forecast.forecastday[2].date, weatherData.forecast.forecastday[3].date];
-
+//Date Format for MM/DD
   function formatDate(dateStrings) {
     let parts = dateStrings.split('-');
     let month = parts[1];
@@ -118,65 +106,69 @@ async function fetchParkDetails(parkId) {
 
   });
 
- 
-
-
-
-
-
-  let weatherHTML = `
-  <div class="weatherContainer">
-  <div > <img class="mainWeatherImg" src="" alt="">  </div>
-  <div class="currentTemp">${weatherData.current.temp_f}&deg;F</div>
-  <div class="highAndLowTemp">
-  <div class="maxTemp">   
-  ${weatherData.forecast.forecastday[0].day.maxtemp_f}&deg;F </div>
-  <div class="minTemp">
-  ${weatherData.forecast.forecastday[0].day.mintemp_f}&deg;F </div>
-  </div>
-</div>
-  <div class="threeDayForecastBox">
-  <div class="datesBox">    </div>
-    <div class="dateOne">${formattedDateStrings[0]}</div>
-    <div class="dateTwo">${formattedDateStrings[1]}</div>
-    <div class="dateThree">${formattedDateStrings[2]}</div>
-
-    <div class="weatherImgBox">    </div>
-    <div class="weatherImgOne"></div>
-    <div class="weatherImgTwo"></div>
-    <div class="weatherImgThree"></div>
-
-    <div class="highLowBox">    </div>
-    <div class="highLowOne">${weatherData.forecast.forecastday[1].day.maxtemp_f}&deg;F <br> ${weatherData.forecast.forecastday[1].day.mintemp_f}&deg;F</div>
-    <div class="highLowTwo">${weatherData.forecast.forecastday[2].day.maxtemp_f}&deg;F <br> ${weatherData.forecast.forecastday[2].day.mintemp_f}&deg;F</div>
-    <div class="highLowThree">${weatherData.forecast.forecastday[3].day.maxtemp_f}&deg;F <br> ${weatherData.forecast.forecastday[3].day.mintemp_f}&deg;F</div>
-
-
-</div>
-  `;
-
-
-  weatherStats.innerHTML = weatherHTML;
-
+  const currentTempText = document.getElementById('temperature');
+  const maxTempText = document.getElementById('maxTemp');
+  const minTempText = document.getElementById('minTemp');
+  
+  const dateOneText = document.querySelector('.dateOne');
+  const dateTwoText = document.querySelector('.dateTwo');
+  const dateThreeText = document.querySelector('.dateThree');
+  
+  const weatherImgOneSrc = document.getElementById('weatherImg1');
+  const weatherImgTwoSrc = document.getElementById('weatherImg2');
+  const weatherImgThreeSrc = document.getElementById('weatherImg3');
+  
+  const highLowOneText = document.querySelector('.highLowOne');
+  const highLowTwoText = document.querySelector('.highLowTwo');
+  const highLowThreeText = document.querySelector('.highLowThree');
   
   if (conditionCode) {
-    let mainWeatherImg = findCorrectIcon(conditionCode);
-    document.getElementsByClassName("currentTemp").style.backgroundImage=`url(${mainWeatherImg})`;
-    console.log("Condition Code:", conditionCode);
+let mainWeatherImg = await findCorrectIcon(conditionCode);
+let mainWeatherStatus = await findCorrectStatus(conditionCode);
+
+
+    // Set the background image for current Temperature
+    let setWeatherImage = document.querySelector('.weatherImage');
+
+
+    setWeatherImage.src = mainWeatherImg;
+
+    // Set the text for current, min, and max temp for the day
+    currentTempText.innerHTML = `${weatherData.current.temp_f}&deg;F and ${mainWeatherStatus} <br>`;
+    maxTempText.innerHTML = `High: <br> ${weatherData.forecast.forecastday[0].day.maxtemp_f}&deg;F`;
+    minTempText.innerHTML = `Low: <br> ${weatherData.forecast.forecastday[0].day.mintemp_f}&deg;F`;
+  
+    // Set text for date elements
+    dateOneText.innerHTML = formattedDateStrings[0];
+    dateTwoText.innerHTML = formattedDateStrings[1];
+    dateThreeText.innerHTML = formattedDateStrings[2];
+
+    // Set src for weather images in 3 day forecast
+    let weatherImgOneSrcImg = await findCorrectIcon(weatherData.forecast.forecastday[1].day.condition.code);
+    weatherImgOneSrc.src = weatherImgOneSrcImg;
+    let weatherImgTwoSrcImg = await findCorrectIcon(weatherData.forecast.forecastday[2].day.condition.code);
+    weatherImgTwoSrc.src = weatherImgTwoSrcImg;
+    let weatherImgThreeSrcImg = await findCorrectIcon(weatherData.forecast.forecastday[3].day.condition.code);
+    weatherImgThreeSrc.src = weatherImgThreeSrcImg;
+  
+    // Set text for high/low temperature in 3 day forecast
+    highLowOneText.innerHTML = `High: <br> ${weatherData.forecast.forecastday[1].day.maxtemp_f}&deg;F <br> Low: <br> ${weatherData.forecast.forecastday[1].day.mintemp_f}&deg;F`;
+    highLowTwoText.innerHTML = `High: <br> ${weatherData.forecast.forecastday[2].day.maxtemp_f}&deg;F <br> Low: <br> ${weatherData.forecast.forecastday[2].day.mintemp_f}&deg;F`;
+    highLowThreeText.innerHTML = `High: <br> ${weatherData.forecast.forecastday[3].day.maxtemp_f}&deg;F <br> Low: <br> ${weatherData.forecast.forecastday[3].day.mintemp_f}&deg;F`;
   } else {
-    console.error("Element with class 'mainWeatherImg' not found in the DOM.");
+    console.error("Weather Image Not Found.");
     console.log("Condition Code:", conditionCode);
-    console.log("Weathericon src set", mainWeatherImg);
   }
+  
 
   // Begin .contact
   const contactInformation = document.querySelector('.contact');
 
-
-  let addressHTML = `<h4>Address: </h4><p> ${park[0].addresses[0]?.line1} ${park[0].addresses[0]?.line2}, ${park[0].addresses[0]?.city}, ${park[0].addresses[0]?.stateCode}, ${park[0].addresses[0]?.postalCode} </p>`;
-  let phoneHTML = `<h4>Phone Number: </h4><p> ${park[0].contacts.phoneNumbers[0]?.phoneNumber} </p>`;
-  let emailHTML = `<h4>Email Address: </h4> <p> ${park[0].contacts.emailAddresses[0].emailAddress} </p>`;
-  contactInformation.innerHTML = addressHTML + phoneHTML + emailHTML;
+  let addressHeader = `<h3>Contact This Park: </h3>`;
+  let addressHTML = `<h5>Address: </h5><p> ${park[0].addresses[0]?.line1} ${park[0].addresses[0]?.line2}, ${park[0].addresses[0]?.city}, ${park[0].addresses[0]?.stateCode}, ${park[0].addresses[0]?.postalCode} </p>`;
+  let phoneHTML = `<h5>Phone Number: </h5><p> ${park[0].contacts.phoneNumbers[0]?.phoneNumber} </p>`;
+  let emailHTML = `<h5>Email Address: </h5> <p> ${park[0].contacts.emailAddresses[0].emailAddress} </p>`;
+  contactInformation.innerHTML = addressHeader + addressHTML + phoneHTML + emailHTML;
 
   //Begin .alerts
   const alertsInformation = await getAlertsInformation(parkName);

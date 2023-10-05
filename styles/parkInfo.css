@@ -86,7 +86,7 @@ article {
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: .5fr 1fr 1fr 1fr .5fr;
+  grid-template-rows: .25fr 1fr .25fr .5fr .15fr;
   gap: 0px 0px;
   grid-auto-flow: row;
 
@@ -125,6 +125,7 @@ article {
   margin: .75em;
   padding: 20px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
 }
 
 .mainParkInformation {
@@ -200,15 +201,44 @@ article {
   grid-template-columns: 1fr; 
   grid-template-rows: 3fr 1fr; 
   gap: 0px 0px; 
+  padding: 1rem;
   grid-template-areas: 
     "currentTemp"
     "highAndLowTemp"; 
 }
-.currentTemp { 
+
+.currentTemp {
   grid-area: currentTemp;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* Make the container a positioning context */
+  font-size: 1.5rem;
+  padding: 2.5em;
+  color: #ffff;
+}
+
+.weatherImage {
+  position: absolute;
+  max-height: 90%;
+  z-index: -.5; 
+  opacity: 0.75;
+  -webkit-filter: blur(4px);
+  filter: blur(4px);
+}
+
+.temperature {
+  position: relative; /* Make the temperature element stack above the background image */
+  z-index: 1; 
+  display: flex;
+  flex-wrap: wrap;
   text-align: center;
-  font-size: 2.5rem;
- }
+  text-shadow: 2px 2px 2px #050b04;
+}
+
+
+ 
 .highAndLowTemp {
   display: grid; 
   grid-template-columns: 1fr 1fr; 
@@ -218,20 +248,30 @@ article {
     "maxTemp minTemp"; 
   grid-area: highAndLowTemp; 
   justify-items: center;
+  border-top: 1em;
+  align-items: center;
 }
-.maxTemp { grid-area: maxTemp; }
-.minTemp { grid-area: minTemp; }
+.maxTemp { 
+  grid-area: maxTemp; 
+  background-color: #2627241f;
+  border-radius: 5px;
+  padding: 1.5rem;
+}
+.minTemp { 
+  grid-area: minTemp; 
+  background-color: #2627241f;
+  border-radius: 5px;
+  padding: 1.5rem;
+}
 
-.weatherImg {
-  grid-area: weatherImg;
-}
+
 
 
 
 .threeDayForecastBox {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: .15fr .5fr .75fr;
   gap: 0px 0px;
   grid-auto-flow: row;
   justify-items: center;
@@ -239,22 +279,34 @@ article {
 
 .datesBox {
   grid-area: 1 / 1 / 2 / 4;
+
 }
 
 .dateOne {
   grid-area: 1 / 1 / 2 / 2;
+  text-align: center;
+  font-size: 1.25rem;
 }
 
 .dateTwo {
   grid-area: 1 / 2 / 2 / 3;
+  text-align: center;
+  font-size: 1.25rem;
 }
 
 .dateThree {
   grid-area: 1 / 3 / 2 / 4;
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.dateOne .dateTwo .dateThree {
+  vertical-align: center;
 }
 
 .weatherImgBox {
   grid-area: 2 / 1 / 3 / 4;
+
 }
 
 .weatherImgOne {
@@ -269,25 +321,43 @@ article {
   grid-area: 2 / 3 / 3 / 4;
 }
 
+.weatherImgOne img,
+.weatherImgThree img,
+.weatherImgTwo img {
+    max-width: 90%;
+    font-size: 2rem;
+}
+
 .highLowBox {
   grid-area: 3 / 1 / 4 / 4;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   justify-items: center;
+  text-align: center;
 
 }
 
 .highLowOne {
   grid-area: 3 / 1 / 4 / 2;
+  background-color: #2627241f;
+  border-radius: 5px;
+  padding: .75rem;
 }
 
 .highLowTwo {
   grid-area: 3 / 2 / 4 / 3;
+  background-color: #2627241f;
+  border-radius: 5px;
+  padding: .75rem;
 }
 
 .highLowThree {
   grid-area: 3 / 3 / 4 / 4;
+  background-color: #2627241f;
+  background-size: cover;
+  border-radius: 5px;
+  padding: .75rem;
 }
 
 
@@ -434,3 +504,4 @@ article ul li {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+

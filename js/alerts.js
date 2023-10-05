@@ -26,7 +26,7 @@ export async function getAlertsInformation(parkCode) {
                     </p>`;
                 }).join('');
             } else {
-                alertsInformation = 'No alerts information could be retrieved for this park';
+                alertsInformation.innerHTML = 'No alerts information could be retrieved for this park';
             }
         } else {
             alertsInformation = 'Failed to fetch alerts data';
@@ -38,4 +38,5 @@ export async function getAlertsInformation(parkCode) {
 
     return alertsInformation;
 }
+
 

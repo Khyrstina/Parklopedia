@@ -1,47 +1,71 @@
-import {apiKey} from "./config.js";
+import { apiKey } from "./config.js";
+import {usStates} from "./parseStates.js"
+import { validateSearchInput } from "./parseStates.js";
 
-const stateSelect = document.getElementById('stateId');
+
+const suggestionsContainer = document.getElementById('suggestionsContainer');
 const resultsSelect = document.getElementById('numberResultsRetrieved');
-const submitSearchButton = document.getElementById('submitSearchBtn');
 const previousButton = document.getElementById('previousButton');
-const nextButton = document.getElementById('nextButton');
-const searchAgainBtn = document.getElementById('searchAgainBtn');
-
+const nextButtonTop = document.getElementById('nextButtonTop');
+const nextButtonBottom = document.getElementById('nextButtonBottom');
+const searchInput = document.getElementById('searchInput');
+const searchButton = document.getElementById('searchBarButton');
 
 let currentPage = 1;
 let totalAvailableSearchResults = 0;
 let beginningParksArray = 0;
 let selectedState = '';
-let requestedNumResults = '';
-let fetchingData = false; 
+let requestedNumResults = 10;
+let fetchingData = false;
 let totalPages = 0;
 
-stateSelect.addEventListener('change', (event) => {
-    selectedState = stateSelect.value;
-});
-
 resultsSelect.addEventListener('change', (event) => {
-    requestedNumResults = resultsSelect.value;
+    requestedNumResults = event.target.value; 
 });
 
-submitSearchButton.addEventListener('click', async (event) => {
+resultsSelect.addEventListener('input', (event) => {
+    requestedNumResults = event.target.value; 
+});
+
+searchInput.addEventListener('input', () => {
+const inputValue = searchInput.value.toUpperCase();
+const matchingStates = usStates.filter(state => (
+        state.name.includes(inputValue) || state.code.includes(inputValue)
+    ));
+    
+    // Clear previous suggestions
+    suggestionsContainer.innerHTML = '';
+    
+    // Display matching state suggestions
+    matchingStates.forEach(state => {
+        const suggestion = document.createElement('div');
+        suggestion.textContent = state.name + ' (' + state.code + ')';
+        suggestion.addEventListener('click', () => {
+            // Set the input field value to the selected state
+            searchInput.value = state.name;
+            // Clear the suggestions
+            suggestionsContainer.innerHTML = '';
+        });
+        suggestionsContainer.appendChild(suggestion);
+    });
+});
+
+searchButton.addEventListener('click', async (event) => {
     event.preventDefault();
+    const query = searchInput.value;
 
     if (!fetchingData) {
         fetchingData = true;
+        selectedState = await validateSearchInput(query);
         totalAvailableSearchResults = await getTotalNumberResults(selectedState);
+        currentPage = 1;
         beginningParksArray = 0;
         clearSearchResults();
         await renderParks(selectedState, requestedNumResults, beginningParksArray);
         fetchingData = false;
 
         totalPages = Math.ceil(totalAvailableSearchResults / requestedNumResults);
-
-        fetchingData = false;
-
-        // Hide the "Submit Search" button and show the "Next" button
-        submitSearchButton.style.display = 'none';
-        nextButton.style.display = 'block';
+        updatePaginationButtons();
     }
 });
 
@@ -56,50 +80,9 @@ previousButton.addEventListener('click', () => {
     updatePaginationButtons();
 });
 
-nextButton.addEventListener('click', () => {
-    if (!fetchingData) {
-        
-        if (currentPage < totalPages) {
-            fetchingData = true;
-            currentPage++;
-            beginningParksArray += requestedNumResults;
-            renderParks(selectedState, requestedNumResults, beginningParksArray);
-            fetchingData = false;
-        }
-        updatePaginationButtons();
-    }
-});
+nextButtonTop.addEventListener('click', nextPage);
+nextButtonBottom.addEventListener('click', nextPage);
 
-searchAgainBtn.addEventListener('click', () => {
-    clearSearchResults();
-    searchAgainBtn.style.display = 'none';
-    currentPage = 1;
-    totalAvailableSearchResults = 0;
-    selectedState = '';
-    requestedNumResults = '';
-    stateSelect.value = '';
-    resultsSelect.value = '';
-
-    // Show the "Submit Search" button and hide the "Next" button
-    submitSearchButton.style.display = 'inline-block';
-    nextButton.style.display = 'none';
-});
-
-
-submitSearchButton.addEventListener('click', async (event) => {
-    event.preventDefault();
-    totalAvailableSearchResults = await getTotalNumberResults(selectedState);
-
-    beginningParksArray = 0;
-    clearSearchResults();
-
-    await renderParks(selectedState, requestedNumResults, beginningParksArray);
-
-    // Show the "Search Again" button and hide the "Submit" button
-    searchAgainBtn.style.display = 'inline-block';
-    submitSearchButton.style.display = 'none';
-
-});
 
 document.addEventListener('click', (event) => {
     if (event.target.classList.contains('parkInfoBtn')) {
@@ -109,7 +92,7 @@ document.addEventListener('click', (event) => {
 });
 
 async function getTotalNumberResults(selectedState) {
-    let apiUrl = `https://developer.nps.gov/api/v1/parks?start=0limit=100&q=${selectedState}&api_key=${apiKey}`;
+    let apiUrl = `https://developer.nps.gov/api/v1/parks?start=0&limit=100&q=${selectedState}&api_key=${apiKey}`;
     try {
         let resp = await fetch(apiUrl);
         let data = await resp.json();
@@ -125,7 +108,8 @@ async function getTotalNumberResults(selectedState) {
 
 
 async function getAllParks(numberOfResults, selectedState, resultsArrayBeginning) {
-    let apiUrl = `https://developer.nps.gov/api/v1/parks?start=${resultsArrayBeginning}limit=${numberOfResults}&q=${selectedState}&api_key=${apiKey}`;
+
+    let apiUrl = `https://developer.nps.gov/api/v1/parks?stateCode=${selectedState}&start=${resultsArrayBeginning}limit=${numberOfResults}&api_key=${apiKey}`;
     let html = '';
     try {
         let resp = await fetch(apiUrl);
@@ -183,21 +167,38 @@ async function renderParks(selectedState, numberOfResults, resultsArrayBeginning
     if (currentPage === totalPages) {
         let endMessage = '<h2>You have reached the end of the results</h2>';
         jsonContainer.innerHTML += endMessage;
-        nextButton.style.display = 'none';
-        searchAgainBtn.style.display = 'inline-block';
+        nextButtonTop.style.display = 'none';
+        nextButtonBottom.style.display = 'none';
+
     } 
 }
 
 function updatePaginationButtons() {
     const totalPages = Math.ceil(totalAvailableSearchResults / requestedNumResults);
     previousButton.disabled = currentPage === 1;
-    nextButton.disabled = currentPage === totalPages;
+
+
+    if (currentPage === totalPages || totalAvailableSearchResults - beginningParksArray <= requestedNumResults) {
+        nextButtonTop.style.display = 'none';
+        nextButtonBottom.style.display = 'none';
+    } else {
+        nextButtonTop.style.display = 'block';
+        nextButtonBottom.style.display = 'block';
+    }
 }
 
-function nextPage() {
-    beginningParksArray += Number(requestedNumResults);
-    getAllParks(requestedNumResults, selectedState, beginningParksArray);
-    renderParks(selectedState, requestedNumResults, beginningParksArray);
+async function nextPage() {
+    if (!fetchingData) {
+        if (currentPage < totalPages) {
+            fetchingData = true;
+            currentPage++;
+            beginningParksArray += requestedNumResults; 
+            await renderParks(selectedState, requestedNumResults, beginningParksArray);
+            fetchingData = false;
+        }
+        updatePaginationButtons();
+    }
+
 }
 
 function clearSearchResults() {

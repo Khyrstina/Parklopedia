@@ -1,18 +1,23 @@
-.header-img {
-    margin-right: 1rem;
-    margin-bottom: 1rem;
-    max-width: 100%;
-    border-radius: 5px;
-    box-shadow: 0px 25px 20px -20px #262724;
-}
+
 
 html {
-    margin: 0;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 1rem;
-    line-height: 1.5;
-    background-color: #e0f3dd;
+    font-family: 'Open Sans', sans-serif, 'AR One Sans', sans-serif;
+    background-color: #E8F4F0;
+    margin:0px;
+    padding:0px;
+    max-width: 100%;
+}
+
+.body {
     display: flex;
+    flex-direction: column;
+
+}
+
+
+.header-img {
+    max-width: 100%;
+    border-radius: 5px;
 }
 
 ul li {
@@ -22,11 +27,9 @@ ul li {
 ul {
     margin: 0;
     padding: 0;
-
 }
 
 article {
-
     color: #050b04;
 }
 
@@ -37,76 +40,82 @@ label {
 
 .header {
     color: #fff;
-    padding: 1rem;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    text-shadow: 2px 2px 3px #262724;
-    background-color: #e0f3dd;
+
 }
 
 
 .hero .centered {
     font-size: 2.5rem;
+    text-shadow: 2px 2px 3px #262724;
 }
 
-.header-title {
-    color: #050b04;
-    font-size: 1.5rem;
-    padding: 1rem 1rem 0rem 1rem;
-    text-align: center;
-    font-weight: 900;
-    text-shadow: none;
+.catchPhraseBox {
+    background-color: #8ac6d0ff;
+    background-image: url("/images/generatedMtRainier.png");
+    border-radius: 5px;
     width: 100%;
+    height: 21rem;
+    display: flex;
+    flex-direction: column;
+    
 }
 
-.header-attribution {
-    color: #050b04;
-    font-size: .75rem;
-    padding: 0rem 1rem 1rem 1rem;
+.catchPhrase {
+    color: #fff;
+    font-size: 2.5rem;
     text-align: center;
-    font-weight: 900;
-    text-shadow: none;
-    width: 100%;
+    margin: 0;
+    padding-top: 1.5rem;
+
+}
+
+.catchPhraseCont {
+    color: #fff;
+    font-size: 1rem;
+    text-align: center;
+
 }
 
 
-.main {
-    margin-top: 1rem;
-    height: auto;
-    width: 90%;
-    padding: 5%;
-    background-color: #e0f3dd;
-    color: #050b04;
-}
-/*Grid*/
+
+/*Search Area*/
 .mainSearchArea {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: auto; 
-    gap: .25rem;
     text-align: center;
+    background-color: #8ac6d0ff;
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: .25rem;
 }
 
 .aboutSearchParagraphBox {
-    width: 100%; 
+    width: 100%;
     margin-bottom: 1rem;
 }
 
-h2 {
-    width: 100%; 
+
+
+input[type=text] {
+    transition: width 1s ease-in-out;
+    padding: .5rem 1rem;
+    box-sizing: border-box;
 }
 
-.selectTextBoxBox,
+input[type=text]:focus {
+    width:75%
+}
+
+/* start results and pagination*/
 .ButtonsBox {
     display: flex;
-    flex-direction: row;
     justify-content: center;
-    align-items: center;
-    width: 100%; 
-    gap: 1rem; 
 }
 
 .ButtonsBox button {
@@ -125,58 +134,49 @@ h2 {
     transition-duration: .25s;
 }
 
-.stateTextBox,
-.numResultsBox {
-    flex: 1;
-    font-weight: 600;
-}
-
-.stateDropdownBox,
-.numResultsDropdownBox {
-    flex: 1;
-}
-
 .jsonResultsBox {
-    display:flex;
+    display: flex;
     flex-direction: column;
-    padding: 1rem;
     justify-content: center;
+    flex-wrap: wrap;
+}
+
+.nextButtonBottom {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #706993;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 3px 10px #262724;
 }
 
 
 
 
 /*Begin styling for background colors */
-.main h1 {
-    text-align: center;
-    background-color: #c7ccd18e;
-    padding: 10px 15px;
+
+
+.backgroundBoxColorEven {
+    background-color: #abc4b4;
+    padding: .75rem 1rem;
     border-radius: 5px;
     width: 100%;
-    color: #005E7C;
     box-shadow: 0px 25px 20px -20px #262724;
 }
 
-
-.backgroundBoxColorEven{
-    background-color: #abc4b4;
-    padding: 10px 15px;
-    border-radius: 5px;
-    margin: .75em;
-    box-shadow: 0px 25px 20px -20px #262724;
-}
-
-.backgroundBoxColorOdd{
+.backgroundBoxColorOdd {
     background-color: #c5ecb1;
-    padding: 10px 15px;
+    padding: .75rem 1rem;
     border-radius: 5px;
-    margin: .75em;
+    width: 100%;
     box-shadow: 0px 25px 20px -20px #262724;
 }
 
 .backgroundBoxColorHeader {
-    background-color:  #005E7C;
-    padding: 10px 15px;
+    background-color: #005E7C;
+    padding: .75rem 1rem;
     border: none;
     border-radius: 5px;
     margin-top: 1.5em;
@@ -185,31 +185,40 @@ h2 {
     box-shadow: 0px 25px 20px -20px #262724;
 }
 
-body ol, h2 {
-    margin: .5em;
-    color: #050b04;
-} 
 
 /*Sidepanel menu specific*/
 .sidepanel {
-    height: 250px;
+    height: 3rem;
     width: 0;
     position: fixed;
     z-index: 1;
-    top: 0;
-    left: 0;
+    top: 1rem;
+    right: 1rem;
     background-color: #596633;
     overflow-x: hidden;
-    padding-top: 60px;
+    padding-right: 3.5rem;
     transition: 0.5s;
     border-radius: 5px;
-    box-shadow: 0px 3px 15px #262724;
+    box-shadow: 0rem .2rem 1rem #262724;
+    display: flex;
+    align-items: center;
+    display: none;
+}
+
+.sidepanel ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
 }
 
 .sidepanel ul li a {
-    padding: 20px 8px 8px 32px;
+    padding-left: 1rem;
+    padding-right: 1rem;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 1.5rem;
     color: #fff;
     display: block;
     transition: 0.3s;
@@ -220,53 +229,43 @@ body ol, h2 {
     transition-duration: .25s;
 }
 
-.sidepanel .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-    border-radius: 5px;
-    color: #fff;
-    text-decoration: none;
+.menu {
+    display: flex;
+    align-items: center;
 }
 
-.sidepanel .closebtn:hover {
+.openbtn {
+    font-size: 2rem;
+    cursor: pointer;
+    background-color: #ffffff00;
+    color: #fff;
+    padding: .25rem 1rem;
+    border: none;
+}
+
+.openbtn:hover {
     text-shadow: 2px 2px 3px #262724;
     transition-duration: .25s;
 }
 
-.openbtn {
-    font-size: 20px;
-    cursor: pointer;
-    background-color: #596633;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0px 3px 10px #262724;
-}
-
-.openbtn:hover {
-    background-color: #3b4422;
-    transition-duration: .25s;
-}
-
-
-
-/* Search area specific*/
-
-
-
 
 /* StateSearch Results*/
-.park .parkImage {
+#jsonContainer ul li .parkImage {
     max-width: 100%;
     height: auto;
-    padding-bottom: 1rem;
+    overflow: hidden;
     border-radius: 5px;
-    display:block;
-    margin: 0 auto;
+    position: relative; 
+}
+
+#jsonContainer ul li .parkImage img {
+    max-width: 100%;
+    height: auto;
+    transition: transform .5s ease;
+}
+
+#jsonContainer ul li img:hover {
+    transform: scale(1.03);
 }
 
 .parkInfoBtn {
@@ -278,6 +277,7 @@ body ol, h2 {
     border: none;
     border-radius: 5px;
     box-shadow: 0px 3px 10px #262724;
+    margin: 1.15rem;
 }
 
 .parkInfoBtn:hover {
@@ -285,7 +285,10 @@ body ol, h2 {
     transition-duration: .25s;
 }
 
-
+.infoButtonBox {
+    display: flex;
+    justify-content: center;
+}
 
 #jsonContainer ul li {
     height: auto;
@@ -299,15 +302,28 @@ body ol, h2 {
 #jsonContainer ul li div ul li {
     display: block;
     text-align: start;
-    font-weight: 600;
-    padding: 0.5rem;
-    margin-left: .5rem;
+    margin-top: 1rem;
+    margin-left: .25rem;
 }
 
-.sidebar {
-    display: none;
-    margin-left: 2rem;
-    min-width: 20%;
+
+.jsonContainer ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    
+}
+
+.jsonContainer ul li h2 {
+    text-align: center;
+}
+
+#jsonContainer > ul > li
+{
+    width: 96%;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 .visuallyHidden {
@@ -356,9 +372,10 @@ footer ul li a {
 
 
 .bottom-left {
-    position: absolute;
-    bottom: 8px;
-    left: 16px;
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    z-index: 1;
 }
 
 
@@ -370,9 +387,10 @@ footer ul li a {
 
 
 .top-right {
-    position: absolute;
-    top: 8px;
-    right: 16px;
+    position: fixed;
+    top: .75rem;
+    right: 1.25rem;
+    z-index: 2;
 }
 
 
@@ -405,4 +423,3 @@ footer ul li a {
     }
 }
 */
-

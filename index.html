@@ -7,33 +7,39 @@
     <meta name="description" content="Find out information on National Parks" />
 
     <link href="styles/main.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=AR+One+Sans&family=Open+Sans&display=swap" rel="stylesheet">
 
-    <title>National Parks</title>
+    <title>Homepage</title>
 </head>
 
 
 <body>
+    <nav class="menu top-right">
+        <button class="openbtn" id="hamburgerMenu">&#9776;</button>
+    </nav>
     <header class="header">
 
         <div class="hero">
+
+
             <img class="header-img" src="images/GeneratedNationalPark.png" alt="" />
             <div class="bottom-left"></div>
             <div class="top-left"></div>
-            <div class="top-right"></div>
+
             <div class="bottom-right"></div>
             <div class="centered">Parklopedia</div>
+            <div id="mySidepanel" class="sidepanel">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="searchpage.html">Search</a></li>
+                </ul>
+            </div>
         </div>
-        <button class="openbtn" onclick="openNav()">&#9776; Toggle Sidepanel</button>
 
 
-        <nav id="mySidepanel" class="sidepanel">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="searchpage.html">Search</a></li>
-            </ul>
-        </nav>
 
     </header>
 
@@ -42,21 +48,21 @@
     <div id="wrapper">
         <main id="main" class="main" tabindex="-1">
 
-                <h1>Welcome to Parklopedia!</h1>
-                <p class="backgroundBoxColor">
-                    <span class="header-title">"Adventure is worthwhile in itself."</span>
-                    <br>
-                    <span class="header-attribution">-Amelia Earhart</span>
-                </p>
-            </div>
-            <h2 class="backgroundBoxColorEven">What the page contains:</h2>
-            <ol>
-                <li>Search by State to find National Parks nearest you</li>
-                <li>Find activities near you at National Parks</li>
-                <li>Another way</li>
-                <li>Another way part 2</li>
-            </ol>
-        </main>
+            <h1>Welcome to Parklopedia!</h1>
+            <p class="backgroundBoxColor">
+                <span class="header-title">"Adventure is worthwhile in itself."</span>
+                <br>
+                <span class="header-attribution">-Amelia Earhart</span>
+            </p>
+    </div>
+    <h2 class="backgroundBoxColorEven">What the page contains:</h2>
+    <ol>
+        <li>Search by State to find National Parks nearest you</li>
+        <li>Find activities near you at National Parks</li>
+        <li>Another way</li>
+        <li>Another way part 2</li>
+    </ol>
+    </main>
 
 
     <footer class="footer">

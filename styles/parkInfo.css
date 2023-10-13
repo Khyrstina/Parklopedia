@@ -8,7 +8,8 @@
 
 html {
   margin: 0;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: 'AR One Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
   line-height: 1.5;
   background-color: #E8F4F0;
@@ -122,10 +123,11 @@ article {
   grid-area: alerts;
   background-color: #e9c46aff;
   border-radius: 5px;
-  margin: .75em;
+  margin: 0.75em;
   padding: 20px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
+  flex-direction: column;
 }
 
 .mainParkInformation {
@@ -197,14 +199,14 @@ article {
 
 /* Weather Section */
 .weatherContainer {
-  display: grid; 
-  grid-template-columns: 1fr; 
-  grid-template-rows: 3fr 1fr; 
-  gap: 0px 0px; 
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 3fr 1fr;
+  gap: 0px 0px;
   padding: 1rem;
-  grid-template-areas: 
+  grid-template-areas:
     "currentTemp"
-    "highAndLowTemp"; 
+    "highAndLowTemp";
 }
 
 .currentTemp {
@@ -213,7 +215,8 @@ article {
   justify-items: center;
   align-items: center;
   justify-content: center;
-  position: relative; /* Make the container a positioning context */
+  position: relative;
+  /* Make the container a positioning context */
   font-size: 1.5rem;
   padding: 2.5em;
   color: #ffff;
@@ -222,15 +225,16 @@ article {
 .weatherImage {
   position: absolute;
   max-height: 90%;
-  z-index: -.5; 
+  z-index: -.5;
   opacity: 0.75;
   -webkit-filter: blur(4px);
   filter: blur(4px);
 }
 
 .temperature {
-  position: relative; /* Make the temperature element stack above the background image */
-  z-index: 1; 
+  position: relative;
+  /* Make the temperature element stack above the background image */
+  z-index: 1;
   display: flex;
   flex-wrap: wrap;
   text-align: center;
@@ -238,27 +242,29 @@ article {
 }
 
 
- 
+
 .highAndLowTemp {
-  display: grid; 
-  grid-template-columns: 1fr 1fr; 
-  grid-template-rows: 1fr; 
-  gap: 0px 0px; 
-  grid-template-areas: 
-    "maxTemp minTemp"; 
-  grid-area: highAndLowTemp; 
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "maxTemp minTemp";
+  grid-area: highAndLowTemp;
   justify-items: center;
   border-top: 1em;
   align-items: center;
 }
-.maxTemp { 
-  grid-area: maxTemp; 
+
+.maxTemp {
+  grid-area: maxTemp;
   background-color: #2627241f;
   border-radius: 5px;
   padding: 1.5rem;
 }
-.minTemp { 
-  grid-area: minTemp; 
+
+.minTemp {
+  grid-area: minTemp;
   background-color: #2627241f;
   border-radius: 5px;
   padding: 1.5rem;
@@ -324,8 +330,8 @@ article {
 .weatherImgOne img,
 .weatherImgThree img,
 .weatherImgTwo img {
-    max-width: 90%;
-    font-size: 2rem;
+  max-width: 90%;
+  font-size: 2rem;
 }
 
 .highLowBox {
@@ -414,24 +420,37 @@ article {
 
 /* Sidepanel menu specific */
 .sidepanel {
-  height: 250px;
+  height: 3rem;
   width: 0;
   position: fixed;
   z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #706993;
+  top: 1rem;
+  right: 1rem;
+  background-color: #596633;
   overflow-x: hidden;
-  padding-top: 60px;
+  padding-right: 3.5rem;
   transition: 0.5s;
   border-radius: 5px;
-  box-shadow: 0px 3px 15px #262724;
+  box-shadow: 0rem .2rem 1rem #262724;
+  display: flex;
+  align-items: center;
+  display: none;
+}
+
+.sidepanel ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
 }
 
 .sidepanel ul li a {
-  padding: 20px 8px 8px 32px;
+  padding-left: 1rem;
+  padding-right: 1rem;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 1.5rem;
   color: #fff;
   display: block;
   transition: 0.3s;
@@ -442,35 +461,22 @@ article {
   transition-duration: .25s;
 }
 
-.sidepanel .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-  border-radius: 5px;
-  color: #fff;
-  text-decoration: none;
-}
-
-.sidepanel .closebtn:hover {
-  text-shadow: 2px 2px 3px #262724;
-  transition-duration: .25s;
+.menu {
+  display: flex;
+  align-items: center;
 }
 
 .openbtn {
-  font-size: 20px;
+  font-size: 2rem;
   cursor: pointer;
-  background-color: #706993;
+  background-color: #ffffff00;
   color: #fff;
-  padding: 10px 15px;
+  padding: .25rem 1rem;
   border: none;
-  border-radius: 5px;
-  box-shadow: 0px 3px 10px #262724;
 }
 
 .openbtn:hover {
-  background-color: #327A81;
+  text-shadow: 2px 2px 3px #262724;
   transition-duration: .25s;
 }
 
@@ -498,10 +504,39 @@ article ul li {
   color: #fff;
 }
 
+.bottom-left {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 1;
+}
+
+
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+
+
+.top-right {
+  position: fixed;
+  top: .75rem;
+  right: 1.25rem;
+  z-index: 2;
+}
+
+
+.bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}
+
+
 .centered {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-

@@ -7,34 +7,38 @@
     <meta name="description" content="Find out information on National Parks" />
 
     <link href="styles/parkInfo.css" rel="stylesheet" />
-
-    <title>National Parks</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=AR+One+Sans&family=Open+Sans&display=swap" rel="stylesheet">
+    <title>Park Info</title>
 </head>
 
 
 <body>
+    <nav class="menu top-right">
+        <button class="openbtn" id="hamburgerMenu">&#9776;</button>
+    </nav>
     <header class="header">
 
         <div class="hero">
+
+
             <img class="header-img" src="images/GeneratedNationalPark.png" alt="" />
             <div class="bottom-left"></div>
             <div class="top-left"></div>
-            <div class="top-right"></div>
+
             <div class="bottom-right"></div>
             <div class="centered">Parklopedia</div>
+            <div id="mySidepanel" class="sidepanel">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="searchpage.html">Search</a></li>
+                </ul>
+            </div>
         </div>
-        
-        <button class="openbtn" onclick="openNav()">&#9776; Toggle Sidepanel</button>
 
 
-        <nav id="mySidepanel" class="sidepanel">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="searchpage.html">Search</a></li>
-            </ul>
-        </nav>
 
     </header>
 
@@ -68,20 +72,21 @@
     <div class="container">
         <h2 class="parkName" id="parkName"> Name Of Park </h2>
         <article id="parkInfoContainer" class="mainParkInformation">
- 
-                <div class="info">
-    
-                    <h3>Park Description: </h3>
-                    <p id="parkDescription" class="description"></p>  
-                    <h3>Seasonal Information: </h3>
-                    <p id="weatherInfo"></p>
-                    <h3>Special Operating Hours in Effect: </h3>
-                    <p id="todaysOperatingHours"></p>
-                    <h3>Entrance Fees: </h3> 
-                    <p id="feeInformation"> </p>
-                    <button class='npsPageButton'><a id="parkUrl" href="">Click here for the NPS entry on this park.</a></button>
 
-            </div> 
+            <div class="info">
+
+                <h3>Park Description: </h3>
+                <p id="parkDescription" class="description"></p>
+                <h3>Seasonal Information: </h3>
+                <p id="weatherInfo"></p>
+                <h3>Special Operating Hours in Effect: </h3>
+                <p id="todaysOperatingHours"></p>
+                <h3>Entrance Fees: </h3>
+                <p id="feeInformation"> </p>
+                <button class='npsPageButton'><a id="parkUrl" href="">Click here for the NPS entry on this
+                        park.</a></button>
+
+            </div>
 
         </article>
         <div class="weather">
@@ -89,30 +94,30 @@
                 <div class="currentTemp" id="currentTemp">
                     <img class="weatherImage" src="" alt="weatherImage">
                     <span class="temperature" id="temperature"></span>
-                  </div>
-                <div class="highAndLowTemp">
-                <div class="maxTemp" id="maxTemp"></div>
-                <div class="minTemp" id="minTemp"></div>
                 </div>
-              </div>
-                <div class="threeDayForecastBox">
-                <div class="datesBox">    </div>
-                  <div class="dateOne"></div>
-                  <div class="dateTwo"></div>
-                  <div class="dateThree"></div>
-              
-                  <div class="weatherImgBox">    </div>
-                  <div class="weatherImgOne"> <img id="weatherImg1"></div>
-                  <div class="weatherImgTwo"><img id="weatherImg2"></div>
-                  <div class="weatherImgThree"><img id="weatherImg3"></div>
-              
-                  <div class="highLowBox">    </div>
-                  <div class="highLowOne"></div>
-                  <div class="highLowTwo"></div>
-                  <div class="highLowThree"></div>
-              
-              
-              </div>
+                <div class="highAndLowTemp">
+                    <div class="maxTemp" id="maxTemp"></div>
+                    <div class="minTemp" id="minTemp"></div>
+                </div>
+            </div>
+            <div class="threeDayForecastBox">
+                <div class="datesBox"> </div>
+                <div class="dateOne"></div>
+                <div class="dateTwo"></div>
+                <div class="dateThree"></div>
+
+                <div class="weatherImgBox"> </div>
+                <div class="weatherImgOne"> <img id="weatherImg1"></div>
+                <div class="weatherImgTwo"><img id="weatherImg2"></div>
+                <div class="weatherImgThree"><img id="weatherImg3"></div>
+
+                <div class="highLowBox"> </div>
+                <div class="highLowOne"></div>
+                <div class="highLowTwo"></div>
+                <div class="highLowThree"></div>
+
+
+            </div>
         </div>
 
         <div class="contact"> This is how to contact the park, the hours are never. Contact info is just making bear
@@ -128,7 +133,10 @@
                 </ul>
             </nav>
             <p>Designed and Maintained By: Khyrstina Smith</p>
-            <p><div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div></p>
+            <p>
+            <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a
+                    href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+            </p>
             <p><a href="sitemap.html">Sitemap Will Go Here</a></p>
 
         </footer>

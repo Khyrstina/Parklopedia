@@ -10,6 +10,7 @@ const nextButtonTop = document.getElementById('nextButtonTop');
 const nextButtonBottom = document.getElementById('nextButtonBottom');
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchBarButton');
+const selectASuggestionText = document.getElementById('labelSearchInput');
 
 let currentPage = 1;
 let totalAvailableSearchResults = 0;
@@ -28,44 +29,58 @@ resultsSelect.addEventListener('input', (event) => {
 });
 
 searchInput.addEventListener('input', () => {
-const inputValue = searchInput.value.toUpperCase();
-const matchingStates = usStates.filter(state => (
-        state.name.includes(inputValue) || state.code.includes(inputValue)
-    ));
-    
-    // Clear previous suggestions
-    suggestionsContainer.innerHTML = '';
-    
-    // Display matching state suggestions
-    matchingStates.forEach(state => {
-        const suggestion = document.createElement('div');
-        suggestion.textContent = state.name + ' (' + state.code + ')';
-        suggestion.addEventListener('click', () => {
-            // Set the input field value to the selected state
-            searchInput.value = state.name;
-            // Clear the suggestions
-            suggestionsContainer.innerHTML = '';
+    searchButton.style.backgroundColor = "#2a9d8fff";
+    selectASuggestionText.style.color = "black";
+    const inputValue = searchInput.value.toUpperCase();
+    const matchingStates = usStates.filter(state => (
+            state.name.includes(inputValue) || state.code.includes(inputValue)
+        ));
+        
+
+        suggestionsContainer.innerHTML = '';
+        
+
+        matchingStates.forEach(state => {
+            const suggestion = document.createElement('div');
+            suggestion.textContent = state.name + ' (' + state.code + ')';
+            suggestion.addEventListener('click', () => {
+
+                searchInput.value = state.name;
+
+                suggestionsContainer.innerHTML = '';
+            });
+            suggestionsContainer.appendChild(suggestion);
         });
-        suggestionsContainer.appendChild(suggestion);
     });
-});
+    
+
 
 searchButton.addEventListener('click', async (event) => {
     event.preventDefault();
     const query = searchInput.value;
 
-    if (!fetchingData) {
-        fetchingData = true;
+    if (!fetchingData && searchInput.value !== '') {
         selectedState = await validateSearchInput(query);
-        totalAvailableSearchResults = await getTotalNumberResults(selectedState);
-        currentPage = 1;
-        beginningParksArray = 0;
-        clearSearchResults();
-        await renderParks(selectedState, requestedNumResults, beginningParksArray);
-        fetchingData = false;
 
-        totalPages = Math.ceil(totalAvailableSearchResults / requestedNumResults);
-        updatePaginationButtons();
+        if (searchInput && selectedState !== '' ) {
+            fetchingData = true;
+            totalAvailableSearchResults = await getTotalNumberResults(selectedState);
+            currentPage = 1;
+            beginningParksArray = 0;
+            clearSearchResults();
+            await renderParks(selectedState, requestedNumResults, beginningParksArray);
+            fetchingData = false;
+
+            totalPages = Math.ceil(totalAvailableSearchResults / requestedNumResults);
+            updatePaginationButtons();
+        } else {
+            selectASuggestionText.style.color = "red";
+
+        }
+    }
+    else {
+        searchButton.style.backgroundColor = "red";
+        selectASuggestionText.style.color = "red";
     }
 });
 
@@ -96,7 +111,7 @@ async function getTotalNumberResults(selectedState) {
     try {
         let resp = await fetch(apiUrl);
         let data = await resp.json();
-        totalAvailableSearchResults = data.total;
+        totalAvailableSearchResults = data.total - 1;
         console.log(totalAvailableSearchResults);
         return totalAvailableSearchResults;
     }
@@ -109,12 +124,11 @@ async function getTotalNumberResults(selectedState) {
 
 async function getAllParks(numberOfResults, selectedState, resultsArrayBeginning) {
 
-    let apiUrl = `https://developer.nps.gov/api/v1/parks?stateCode=${selectedState}&start=${resultsArrayBeginning}limit=${numberOfResults}&api_key=${apiKey}`;
-    let html = '';
+    let apiUrl = `https://developer.nps.gov/api/v1/parks?stateCode=${selectedState}&start=${resultsArrayBeginning}&limit=${numberOfResults}&api_key=${apiKey}`;
     try {
         let resp = await fetch(apiUrl);
         let data = await resp.json();
-
+        console.log('getAllParks url:'+  apiUrl);
         return data.data;
     }
     catch (error) {
@@ -138,7 +152,9 @@ async function renderParks(selectedState, numberOfResults, resultsArrayBeginning
                 <img src="${park.images[0]?.url || ''}" class="parkImage" alt="park image">
 
                 <div class="info">
+                <div class="infoButtonBox">
                 <button class="parkInfoBtn" dataParkID="${park.id}"">See all Park Info Here</button>
+                </div>
                 <ul>
                         <li> ${park.images[0]?.caption || ''}</li>
                         <li><a href="${park.url || ''}">Click here for the NPS entry on this park.</a> </li>
@@ -164,6 +180,12 @@ async function renderParks(selectedState, numberOfResults, resultsArrayBeginning
 
     updatePaginationButtons();
 
+    if (currentPage === 1) {
+        previousButton.style.display = 'none';
+    } else {
+        previousButton.style.display = 'block';
+    }
+
     if (currentPage === totalPages) {
         let endMessage = '<h2>You have reached the end of the results</h2>';
         jsonContainer.innerHTML += endMessage;
@@ -176,7 +198,6 @@ async function renderParks(selectedState, numberOfResults, resultsArrayBeginning
 function updatePaginationButtons() {
     const totalPages = Math.ceil(totalAvailableSearchResults / requestedNumResults);
     previousButton.disabled = currentPage === 1;
-
 
     if (currentPage === totalPages || totalAvailableSearchResults - beginningParksArray <= requestedNumResults) {
         nextButtonTop.style.display = 'none';

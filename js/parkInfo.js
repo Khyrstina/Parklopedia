@@ -1,5 +1,5 @@
 import { getParkInfo } from './parkAPI.js';
-import { initializeSlides, plusSlides } from './slideshow.js';
+import { initializeSlides, plusSlides} from './slideshow.js';
 import { getAlertsInformation } from './alerts.js';
 import { getWeatherInfo } from './weatherAPI.js';
 import { findCorrectIcon, findCorrectStatus } from './weatherIcon.js';
@@ -8,6 +8,9 @@ import { findCorrectIcon, findCorrectStatus } from './weatherIcon.js';
 
 let latitude = '';
 let longitude = '';
+let currentSlideIndex = 0;
+const prevButton = document.getElementById('prevButton');
+const nextButton = document.getElementById('nextButton');
 
 document.addEventListener('DOMContentLoaded', () => {
   const parkID = sessionStorage.getItem('parkIDSpecific');
@@ -17,16 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
   fetchParkDetails(parkID);
 });
 
-// back button for images
-document.querySelector('.prev').addEventListener('click', () => {
+prevButton.addEventListener('click', (event) => {
+  event.preventDefault();
   plusSlides(-1);
 });
 
-// next button for images
-document.querySelector('.next').addEventListener('click', () => {
+nextButton.addEventListener('click', (event) => {
+  event.preventDefault();
   plusSlides(1);
 });
-
 
 
 async function fetchParkDetails(parkId) {
@@ -56,12 +58,18 @@ async function fetchParkDetails(parkId) {
   //Check for Fee information
   const entranceFees = park[0].entranceFees;
   let feeInformation = '';
+  
+
+
+
   if (entranceFees && entranceFees.length > 0) {
     entranceFees.forEach((fee) => {
       const feeTitle = fee.title;
       const feeCost = fee.cost;
 
       feeInformation += `<p>${feeTitle}: <br> Cost: ${feeCost}</p>`;
+
+    
     });
   } else {
     feeInformation = 'No entrance fee information could be retrieved for this park.';
@@ -86,22 +94,29 @@ const parkUrlHref = document.getElementById('parkUrl').href = park[0].url || '';
 
   
   const conditionCode = weatherData.current.condition.code;
-  
 
+  // const dateStrings = [weatherData.forecast.forecastday[1].date, weatherData.forecast.forecastday[2].date, weatherData.forecast.forecastday[3].date];
 
-  const dateStrings = [weatherData.forecast.forecastday[1].date, weatherData.forecast.forecastday[2].date, weatherData.forecast.forecastday[3].date];
-//Date Format for MM/DD
+  const allForecastDays = weatherData.forecast.forecastday;
+
+  const forecastOne = allForecastDays[1].date;
+  const forecastTwo = allForecastDays[2].date;
+  const forecastThree = allForecastDays[3].date;
+
+  const dateStrings = [forecastOne, forecastTwo, forecastThree];
+
   function formatDate(dateStrings) {
     let parts = dateStrings.split('-');
     let month = parts[1];
-    let day = parts[2];
+    let day = parts [2];
     return month + '/' + day;
   }
+
 
   let formattedDateStrings = [];
 
   dateStrings.forEach(function(dateStrings) {
-    var formattedDate = formatDate(dateStrings);
+    let formattedDate = formatDate(dateStrings);
     formattedDateStrings.push(formattedDate);
 
   });
@@ -164,7 +179,8 @@ let mainWeatherStatus = await findCorrectStatus(conditionCode);
   // Begin .contact
   const contactInformation = document.querySelector('.contact');
 
-  let addressHeader = `<h3>Contact This Park: </h3>`;
+  let addressHeader = `<div class="contactHeader" id="contactHeader">
+  <h3>Contact: </h3> </div>`;
   let addressHTML = `<h5>Address: </h5><p> ${park[0].addresses[0]?.line1} ${park[0].addresses[0]?.line2}, ${park[0].addresses[0]?.city}, ${park[0].addresses[0]?.stateCode}, ${park[0].addresses[0]?.postalCode} </p>`;
   let phoneHTML = `<h5>Phone Number: </h5><p> ${park[0].contacts.phoneNumbers[0]?.phoneNumber} </p>`;
   let emailHTML = `<h5>Email Address: </h5> <p> ${park[0].contacts.emailAddresses[0].emailAddress} </p>`;
@@ -173,7 +189,9 @@ let mainWeatherStatus = await findCorrectStatus(conditionCode);
   //Begin .alerts
   const alertsInformation = await getAlertsInformation(parkName);
   const alertInformation = document.querySelector('.alerts');
-  alertInformation.innerHTML = alertsInformation;
+  const alertsHeader = `<div class="alertsHeader" id="alertsHeader">
+  <h3>Alerts: </h3> </div>`;
+  alertInformation.innerHTML = alertsHeader + alertsInformation;
 
 }
 

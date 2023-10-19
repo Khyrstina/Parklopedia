@@ -1,68 +1,68 @@
-
-
+/* Reset and global styles */
 html {
-    font-family: 'Open Sans', sans-serif, 'AR One Sans', sans-serif;
+    font-family: 'AR One Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     background-color: #E8F4F0;
-    margin:0px;
-    padding:0px;
+    margin: 0;
+    padding: 0;
     max-width: 100%;
 }
 
-.body {
+body {
     display: flex;
     flex-direction: column;
-
-}
-
-
-.header-img {
-    max-width: 100%;
-    border-radius: 5px;
-}
-
-ul li {
-    list-style-type: none;
-}
-
-ul {
     margin: 0;
     padding: 0;
 }
 
-article {
-    color: #050b04;
-}
 
-label {
-    display: block;
-    margin-bottom: 10px;
-}
-
+/* Header styles */
 .header {
+    font-size: 4rem;
     color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+}
 
+.header-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.skip-link {
+    text-decoration: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #f3f2ea;
+    color: #ff5f41;
+    padding: .15rem;
+    border: 5px solid #e7e6d6;
+    text-wrap: nowrap;
+    transition: background-color .4s ease, border-color .4s ease, color .4s ease;
+}
+
+.skip-link:hover {
+    background-color: #ff5f41;
+    color: #f3f2ea;
+    border: 5px solid #ff5f41;
 }
 
 
-.hero .centered {
-    font-size: 2.5rem;
-    text-shadow: 2px 2px 3px #262724;
-}
-
+/* Catchphrase styles */
 .catchPhraseBox {
     background-color: #8ac6d0ff;
-    background-image: url("/images/generatedMtRainier.png");
-    border-radius: 5px;
+    background-image: url("/images/NationalParkFreeUse.png");
+    background-size: cover;
+    background-position-y: 35%;
     width: 100%;
     height: 21rem;
     display: flex;
     flex-direction: column;
-    
+    align-items: center;
+    justify-content: center;
 }
+
+
 
 .catchPhrase {
     color: #fff;
@@ -70,19 +70,15 @@ label {
     text-align: center;
     margin: 0;
     padding-top: 1.5rem;
-
 }
 
 .catchPhraseCont {
     color: #fff;
     font-size: 1rem;
     text-align: center;
-
 }
 
-
-
-/*Search Area*/
+/* Main Search Area styles */
 .mainSearchArea {
     display: flex;
     flex-direction: column;
@@ -90,103 +86,170 @@ label {
     justify-content: center;
     text-align: center;
     background-color: #8ac6d0ff;
-    border-radius: 5px;
-    padding: 1rem;
-    margin-bottom: .25rem;
+
 }
 
 .aboutSearchParagraphBox {
-    width: 100%;
-    margin-bottom: 1rem;
+    background-color: #f3f2ea;
+    border: 5px solid #3d4d55;
 }
 
+.aboutSearchParagraphBox h3 {
+    color:#3d4d55; 
+}
 
-
-input[type=text] {
+.aboutSearchParagraphBox ul{
+    list-style-type: decimal;
+    text-align: left;
+    margin: 1rem;
+    line-height: 1.5rem;
+    border: 5px solid #e7e6d6;
+}
+.search-container{
+margin-top: 1rem;
+} 
+input[type="text"] {
+    background-color: #f3f2ea;
     transition: width 1s ease-in-out;
-    padding: .5rem 1rem;
+    padding: 1rem 1rem;
+    margin: 1rem;
     box-sizing: border-box;
 }
 
-input[type=text]:focus {
-    width:75%
+input[type="text"]:focus {
+    width: 50%;
 }
 
-/* start results and pagination*/
-.ButtonsBox {
-    display: flex;
-    justify-content: center;
+.suggestions-container {
+background: #f3f2ea;
 }
 
-.ButtonsBox button {
-    font-size: 20px;
+
+.suggestion:hover {
+background-color: #f75b33;
+color: #f3f2ea;
+}
+
+.search-bar-button {
+    font-size: 1rem;
     cursor: pointer;
-    background-color: #706993;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0px 3px 10px #262724;
+    font-weight: bold;
+    padding: .6rem 1rem;
+    background-color: #f3f2ea;
+    color: #ff5f41;
+    border: 5px solid #e7e6d6;
+    transition: background-color .4s ease, border-color .4s ease, color .4s ease;
 }
 
-.ButtonsBox button:hover {
-    background-color: #327A81;
-    transition-duration: .25s;
+.search-bar-button:hover {
+    background-color: #ff5f41;
+    color: #f3f2ea;
+    border: 5px solid #ff5f41;
 }
 
+#numberResultsRetrieved {
+    font-size: 1.15rem;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ff5f41;
+    background-color: #f3f2ea;
+    border: 5px solid #e7e6d6;
+    margin: 1rem;
+}
+
+select #numberResultsRetrieved {
+    appearance: none;
+    background-color: #ff5f41;
+    color: #f3f2ea;
+    cursor: pointer;
+}
+
+/* JSON Results styles */
 .jsonResultsBox {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
 }
 
-.nextButtonBottom {
-    font-size: 20px;
+.jsonContainer {
+    width: 100%;
+
+}
+.bottomButtonsBox 
+{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.bottomButtonsBox button {
+    font-size: 1rem;
     cursor: pointer;
-    background-color: #706993;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0px 3px 10px #262724;
+    font-weight: bold;
+    background-color: #f3f2ea;
+    color: #ff5f41;
+    border: 5px solid #e7e6d6;
+    padding: .6rem 1rem;
+    transition: background-color .4s ease, border-color .4s ease, color .4s ease;
+    position: relative;
+    z-index: 3;
+}
+
+.bottomButtonsBox button:hover {
+    background-color: #ff5f41;
+    color: #f3f2ea;
+    border: 5px solid #ff5f41;
+}
+.ButtonsBox {
+    display: flex;
+    justify-content: space-evenly;
+}
+.ButtonsBox button{
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #f3f2ea;
+    color: #ff5f41;
+    border: 5px solid #e7e6d6;
+    padding: .6rem 1rem;
+    transition: background-color .4s ease, border-color .4s ease, color .4s ease;
+    position: relative;
+    z-index: 3;
 }
 
 
+.ButtonsBox button:hover{
+    background-color: #ff5f41;
+    color: #f3f2ea;
+    border: 5px solid #ff5f41;
+}
 
-
-/*Begin styling for background colors */
-
-
+/* Background colors for results */
 .backgroundBoxColorEven {
     background-color: #abc4b4;
-    padding: .75rem 1rem;
-    border-radius: 5px;
+    padding: 0.75rem 1rem;
     width: 100%;
     box-shadow: 0px 25px 20px -20px #262724;
 }
 
 .backgroundBoxColorOdd {
     background-color: #c5ecb1;
-    padding: .75rem 1rem;
-    border-radius: 5px;
+    padding: 0.75rem 1rem;
     width: 100%;
     box-shadow: 0px 25px 20px -20px #262724;
 }
 
 .backgroundBoxColorHeader {
     background-color: #005E7C;
-    padding: .75rem 1rem;
+    padding: 0.75rem 1rem;
     border: none;
-    border-radius: 5px;
     margin-top: 1.5em;
     width: 100%;
     text-align: center;
     box-shadow: 0px 25px 20px -20px #262724;
 }
 
-
-/*Sidepanel menu specific*/
+/* Side Panel Menu styles */
 .sidepanel {
     height: 3rem;
     width: 0;
@@ -198,7 +261,6 @@ input[type=text]:focus {
     overflow-x: hidden;
     padding-right: 3.5rem;
     transition: 0.5s;
-    border-radius: 5px;
     box-shadow: 0rem .2rem 1rem #262724;
     display: flex;
     align-items: center;
@@ -212,24 +274,26 @@ input[type=text]:focus {
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
+    list-style: none; 
+
 }
 
 .sidepanel ul li a {
     padding-left: 1rem;
     padding-right: 1rem;
-    text-decoration: none;
     font-size: 1.5rem;
     color: #fff;
     display: block;
     transition: 0.3s;
+    text-decoration: none;
 }
 
 .sidepanel ul li a:hover {
     text-shadow: 2px 2px 3px #262724;
-    transition-duration: .25s;
+    transition-duration: 0.25s;
 }
 
-.menu {
+menu {
     display: flex;
     align-items: center;
 }
@@ -239,113 +303,154 @@ input[type=text]:focus {
     cursor: pointer;
     background-color: #ffffff00;
     color: #fff;
-    padding: .25rem 1rem;
+    padding: 0.25rem 1rem;
     border: none;
 }
 
 .openbtn:hover {
     text-shadow: 2px 2px 3px #262724;
-    transition-duration: .25s;
+    transition-duration: 0.25s;
+}
+
+/* Styles for park containers */
+.grid-item {
+    float: left;
+    width: 50%; /* Display two columns */
+    border-left: 5px solid #e7e6d6;
+    border-top: 5px solid #e7e6d6;
+    box-sizing: border-box;
+    padding: 10px;
+    height: 400px;
+}
+
+.grid-item a {
+    text-decoration: none;
+    color: inherit;
 }
 
 
-/* StateSearch Results*/
-#jsonContainer ul li .parkImage {
-    max-width: 100%;
-    height: auto;
-    overflow: hidden;
-    border-radius: 5px;
-    position: relative; 
-}
-
-#jsonContainer ul li .parkImage img {
-    max-width: 100%;
-    height: auto;
-    transition: transform .5s ease;
-}
-
-#jsonContainer ul li img:hover {
-    transform: scale(1.03);
-}
-
-.parkInfoBtn {
-    font-size: 20px;
-    cursor: pointer;
-    background-color: #706993;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0px 3px 10px #262724;
-    margin: 1.15rem;
-}
-
-.parkInfoBtn:hover {
-    background-color: #327A81;
-    transition-duration: .25s;
-}
-
-.infoButtonBox {
-    display: flex;
-    justify-content: center;
-}
-
-#jsonContainer ul li {
-    height: auto;
-    width: 90%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-content: center;
-}
-
-#jsonContainer ul li div ul li {
-    display: block;
-    text-align: start;
-    margin-top: 1rem;
-    margin-left: .25rem;
-}
-
-
-.jsonContainer ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.grid-item-image {
     width: 100%;
-    
-}
-
-.jsonContainer ul li h2 {
-    text-align: center;
-}
-
-#jsonContainer > ul > li
-{
-    width: 96%;
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
-}
-
-.visuallyHidden {
-    border: 0;
-    clip: rect(0, 0, 0, 0);
-    height: 1px;
-    margin: -1px;
+    height: 100%;
+    position: relative;
     overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
+    position: relative;
 }
 
-footer {
-    font-size: .75rem;
+
+.grid-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+/* Create a gradient overlay */
+.grid-item-image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%);
+    z-index: 1; 
+}
+
+.grid-item:hover .grid-item-image img {
+    transform: scale(1.1);
+}
+
+/* Park Name and City,State */
+
+.park-details {
+    font-size: 1rem; 
+    margin: 0;
+    color: #ffffff; 
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 2;
+}
+
+.parkButton::before {
+    content: "";
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer; 
+    z-index: 3;
+}
+
+
+/* Additional styles for text over image */
+.hero {
+    position: relative;
+    text-align: center;
+    color: #fff;
     display: flex;
     flex-direction: column;
-    background-color: #e0f3dd;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    text-wrap: nowrap;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+}
+
+.bottom-left {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    z-index: 1;
+}
+
+.top-left {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+}
+
+.top-right {
+    position: fixed;
+    top: 0.75rem;
+    right: 1.25rem;
+    z-index: 2;
+}
+
+.bottom-right {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+}
+
+.bottom-center {
+    position: absolute;
+    bottom: .5rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Footer styles */
+footer {
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #7ba8a2;
 }
 
 footer p {
-    text-align: center
+    text-align: center;
 }
 
 footer ul {
@@ -357,69 +462,52 @@ footer ul {
 
 footer ul li {
     padding: 0rem 2rem;
+    list-style:none; 
+    text-decoration: none;
 }
 
 footer ul li a {
     text-decoration: none;
 }
 
-/*Text over Image specific*/
-.hero {
-    position: relative;
-    text-align: center;
-    color: #fff;
-}
 
-
-.bottom-left {
-    position: fixed;
-    bottom: 1rem;
-    left: 1rem;
-    z-index: 1;
-}
-
-
-.top-left {
+/* Visually hidden style */
+.visuallyHidden {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
     position: absolute;
-    top: 8px;
-    left: 16px;
+    white-space: nowrap;
+    width: 1px;
 }
 
 
-.top-right {
-    position: fixed;
-    top: .75rem;
-    right: 1.25rem;
-    z-index: 2;
-}
+/* Start Screen Size Info*/
 
-
-.bottom-right {
-    position: absolute;
-    bottom: 8px;
-    right: 16px;
-}
-
-
-.centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-/* Start Screen Size Info
-@media screen and (max-height: 450px) {
-    .sidebar {
-        padding-top: 15px;
+@media (max-width: 768px) {
+    body {
+        max-width: 100%;
     }
 
-    .sidebar a {
-        font-size: 18px;
+    .hero {
+        font-size: 1rem;
     }
 
-    .hero .centered {
-        font-size: 2rem;
-    }
+    .grid-item {
+      width: 90%;
+  }
+
+  .sidepanel ul li a {
+    font-size: 1rem;
+  }
+  
+  .grid-container {
+    width: 100%; /* Adjust the grid container width */
+  }
+  
+  .backgroundBoxColorEven, .backgroundBoxColorOdd {
+    width: 100%; /* Adjust the background box width */
+  }
 }
-*/

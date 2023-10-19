@@ -21,14 +21,16 @@
     <header class="header">
 
         <div class="hero">
-
-
-            <img class="header-img" src="images/GeneratedNationalPark.png" alt="" />
+            <img class="header-img" src="images/GeneratedNationalPark.png" alt="National Park Image">
             <div class="bottom-left"></div>
             <div class="top-left"></div>
-
             <div class="bottom-right"></div>
-            <div class="centered">Parklopedia</div>
+            <div class="centered">
+                <h1>Park Information</h1>
+            </div>
+            <div class="bottom-center">
+                <a class="skip-link" href="#parkName">&#8595 Skip to Main Content &#8595</a>
+            </div>
             <div id="mySidepanel" class="sidepanel">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -45,51 +47,73 @@
 
 
     <div id="wrapper">
+        <div class="blurBackground"> </div>
         <main id="main" class="main" tabindex="-1">
 
-            <h1 id="header-title">Welcome to Parklopedia!</h1>
-            <p>
-                <span class="header-title">"Adventure is worthwhile in itself."</span>
-                <br>
-                <span class="header-attribution">-Amelia Earhart</span>
-            </p>
-    </div>
+            <h2>Curious about park fees? <br>Wondering what amenities our park offers? <br>It's all here, right at your fingertips. </h2>
+            <p>Our park information page is your gateway to adventure, offering a glimpse of the awe-inspiring landscapes that await you. Take a journey through stunning imagery, stay informed with real-time park alerts, and find all the necessary contact information for a seamless visit.
+
+                And don't forget to check the current weather, ensuring you're fully prepared to make the most of your visit. </p>
+                <h3>So, start exploring, and set yourself up to experience the great outdoors like never before!</h3>
+
     </main>
-
-
-    <div class="slideshow-container">
-        <div class="mySlides">
-            <img src="" alt="Slideshow Image 1">
-        </div>
-        <div class="mySlides">
-            <img src="" alt="Slideshow Image 2">
-        </div>
-
     </div>
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
+        <section class="imagesContainer">
+            <div class="slideshow-container">
+
+                <div class="mySlides">
+                    <img src="" alt="Slideshow Image 1">
+                </div>
+            </div>
+            <div class="prevNextBox">
+            <button href="#" id="prevButton" class="prev">Previous</button>
+            <button href="#" id="nextButton" class="next">Next</button>
+        </div>
+        </section>
+        <div class="parkNameContainer">
+            <div class="colorBackground"> </div>
+    <h2 class="parkName" id="parkName"> Name Of Park </h2>
+</div>
     <div class="container">
-        <h2 class="parkName" id="parkName"> Name Of Park </h2>
+
         <article id="parkInfoContainer" class="mainParkInformation">
 
-            <div class="info">
 
+                <div class="parkInfo" id="parkInfo">
+                    <div class="parkDescriptionHeader" id="parkDescriptionHeader">
                 <h3>Park Description: </h3>
+                        </div>
                 <p id="parkDescription" class="description"></p>
+            </div>
+            <div id="seasonalInfo" class="seasonalInfo">
+                <div class="seasonalDescriptionHeader" id="seasonalDescriptionHeader">
                 <h3>Seasonal Information: </h3>
+                </div>
                 <p id="weatherInfo"></p>
+            </div>
+            <div id="specialHours" class="specialHours">
+                <div class="specialHoursDescriptionHeader" id="specialHoursDescriptionHeader">
                 <h3>Special Operating Hours in Effect: </h3>
+            </div>
                 <p id="todaysOperatingHours"></p>
+            </div>
+            <div class="feeInfo" id="feeInfo">
+                <div class="feesDescriptionHeader" id="feesDescriptionHeader">
                 <h3>Entrance Fees: </h3>
+                </div>
                 <p id="feeInformation"> </p>
+                </div>
+                <div class="npsButton" id="npsButton">
                 <button class='npsPageButton'><a id="parkUrl" href="">Click here for the NPS entry on this
                         park.</a></button>
-
             </div>
 
         </article>
         <div class="weather">
+            <div class="weatherHeader" id="weatherHeader">
+                <h3>Weather</h3>
+            </div>
             <div class="weatherContainer">
                 <div class="currentTemp" id="currentTemp">
                     <img class="weatherImage" src="" alt="weatherImage">
@@ -119,29 +143,29 @@
 
             </div>
         </div>
-
         <div class="contact"> This is how to contact the park, the hours are never. Contact info is just making bear
             noises into the night.</div>
-        <div class="alerts"> Breaking news! Trees are real! That's right, I know it's hard to believe but they do in
-            fact exist.</div>
-        <footer class="footer">
-            <nav class="navigation" aria-label="site">
-                <ul>
-                    <li><a href="link.org">Home</a></li>
-                    <li><a href="about.html">About Project</a></li>
-                    <li><a href="link.org">About Me</a></li>
-                </ul>
-            </nav>
-            <p>Designed and Maintained By: Khyrstina Smith</p>
-            <p>
-            <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a
-                    href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-            </p>
-            <p><a href="sitemap.html">Sitemap Will Go Here</a></p>
 
-        </footer>
     </div>
 
+    <div class="alerts"> Breaking news! Trees are real! That's right, I know it's hard to believe but they do in
+        fact exist.</div>
+    <footer class="footer">
+        <nav class="navigation" aria-label="site">
+            <ul>
+                <li><a href="link.org">Home</a></li>
+                <li><a href="about.html">About Project</a></li>
+                <li><a href="link.org">About Me</a></li>
+            </ul>
+        </nav>
+        <p>Designed and Maintained By: Khyrstina Smith</p>
+        <p>
+        <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a
+                href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        </p>
+        <p><a href="sitemap.html">Sitemap Will Go Here</a></p>
+
+    </footer>
     </div>
     <script src="js/navigation.js"></script>
     <script type="module" src="js/config.js"></script>

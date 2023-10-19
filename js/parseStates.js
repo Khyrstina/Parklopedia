@@ -58,9 +58,18 @@ export const usStates = [
 export async function validateSearchInput(query) {
     queryInput = query.toUpperCase();
     console.log(query.toUpperCase());
-    const matchingStates = usStates.filter(state => (
-        state.name.toUpperCase().includes(query) || state.code === query));
 
+// to account for Kansas
+    const exactMatch = usStates.find(state => state.name.toUpperCase() === queryInput);
+    
+    if (exactMatch) {
+        console.log(exactMatch.name + ', ' + exactMatch.code);
+        return exactMatch.code;
+    }
+
+
+    const matchingStates = usStates.filter(state => (
+        state.name.toUpperCase().includes(queryInput) || state.code === queryInput));
 
     if (matchingStates.length > 0) {
         const matchingStateNames = matchingStates.map(state => state.name).join(', ');
@@ -69,7 +78,6 @@ export async function validateSearchInput(query) {
         console.log(matchingStateNames + ', ' + matchingStateCodes);
         return matchingStateCodes;
     } else {
-
         console.log('No matching states found');
         return '';
     }

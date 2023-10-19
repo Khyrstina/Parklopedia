@@ -12,6 +12,7 @@ const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchBarButton');
 const selectASuggestionText = document.getElementById('labelSearchInput');
 
+
 let currentPage = 1;
 let totalAvailableSearchResults = 0;
 let beginningParksArray = 0;
@@ -19,6 +20,10 @@ let selectedState = '';
 let requestedNumResults = 10;
 let fetchingData = false;
 let totalPages = 0;
+let selectedSuggestionIndex = -1;
+let suggestionSelected = false;
+let matchingStates = '';
+
 
 resultsSelect.addEventListener('change', (event) => {
     requestedNumResults = event.target.value; 
@@ -28,61 +33,76 @@ resultsSelect.addEventListener('input', (event) => {
     requestedNumResults = event.target.value; 
 });
 
+
+
 searchInput.addEventListener('input', () => {
-    searchButton.style.backgroundColor = "#2a9d8fff";
+    // Reset for new input
+    suggestionSelected = false;
     selectASuggestionText.style.color = "black";
+    suggestionsContainer.style.borderColor = 'none';
+
     const inputValue = searchInput.value.toUpperCase();
-    const matchingStates = usStates.filter(state => (
+    
+    // Check if the input is empty
+    if (inputValue.trim() === '') {
+        // Clear the suggestions box
+        suggestionsContainer.innerHTML = '';
+    } else {
+        matchingStates = usStates.filter(state => (
             state.name.includes(inputValue) || state.code.includes(inputValue)
         ));
-        
 
         suggestionsContainer.innerHTML = '';
-        
 
-        matchingStates.forEach(state => {
-            const suggestion = document.createElement('div');
+        // Update the selected suggestion index when the input changes
+        selectedSuggestionIndex = -1;
+
+        matchingStates.forEach((state) => {
+            const suggestion = document.createElement('p');
+            suggestion.classList.add('suggestion');
             suggestion.textContent = state.name + ' (' + state.code + ')';
             suggestion.addEventListener('click', () => {
-
+                suggestionSelected = true;
                 searchInput.value = state.name;
-
                 suggestionsContainer.innerHTML = '';
             });
+
             suggestionsContainer.appendChild(suggestion);
+            suggestionsContainer.style.borderColor = '#e7e6d6';
         });
-    });
-    
+    }
+});
 
 
 searchButton.addEventListener('click', async (event) => {
     event.preventDefault();
     const query = searchInput.value;
 
-    if (!fetchingData && searchInput.value !== '') {
-        selectedState = await validateSearchInput(query);
+    if (!fetchingData) {
+        if (suggestionSelected && query.trim() !== '') {
+            selectedState = '';
+            selectedState = await validateSearchInput(query);
 
-        if (searchInput && selectedState !== '' ) {
-            fetchingData = true;
-            totalAvailableSearchResults = await getTotalNumberResults(selectedState);
-            currentPage = 1;
-            beginningParksArray = 0;
-            clearSearchResults();
-            await renderParks(selectedState, requestedNumResults, beginningParksArray);
-            fetchingData = false;
+            if (searchInput && selectedState !== '') {
+                fetchingData = true;
+                totalAvailableSearchResults = await getTotalNumberResults(selectedState);
+                currentPage = 1;
+                beginningParksArray = 0;
+                clearSearchResults();
+                await renderParks(selectedState, requestedNumResults, beginningParksArray);
+                fetchingData = false;
 
-            totalPages = Math.ceil(totalAvailableSearchResults / requestedNumResults);
-            updatePaginationButtons();
+                totalPages = Math.ceil(totalAvailableSearchResults / requestedNumResults);
+                updatePaginationButtons();
+            } else {
+                selectASuggestionText.style.color = "red";
+            }
         } else {
             selectASuggestionText.style.color = "red";
-
         }
     }
-    else {
-        searchButton.style.backgroundColor = "red";
-        selectASuggestionText.style.color = "red";
-    }
 });
+
 
 previousButton.addEventListener('click', () => {
     if (!fetchingData && currentPage > 1) {
@@ -99,19 +119,12 @@ nextButtonTop.addEventListener('click', nextPage);
 nextButtonBottom.addEventListener('click', nextPage);
 
 
-document.addEventListener('click', (event) => {
-    if (event.target.classList.contains('parkInfoBtn')) {
-        const parkID = event.target.getAttribute('dataParkID');
-        startParkInfoReq(parkID);
-    }
-});
-
 async function getTotalNumberResults(selectedState) {
-    let apiUrl = `https://developer.nps.gov/api/v1/parks?start=0&limit=100&q=${selectedState}&api_key=${apiKey}`;
+    let apiUrl = `    https://developer.nps.gov/api/v1/parks?stateCode=${selectedState}&limit=100&start=0&api_key=${apiKey}`;
     try {
         let resp = await fetch(apiUrl);
         let data = await resp.json();
-        totalAvailableSearchResults = data.total - 1;
+        totalAvailableSearchResults = data.total;
         console.log(totalAvailableSearchResults);
         return totalAvailableSearchResults;
     }
@@ -138,45 +151,78 @@ async function getAllParks(numberOfResults, selectedState, resultsArrayBeginning
 
 async function renderParks(selectedState, numberOfResults, resultsArrayBeginning) {
     let parks = await getAllParks(numberOfResults, selectedState, resultsArrayBeginning);
-    let html = '';
-    parks.forEach((park, index) => {
+    let gridContainer = document.querySelector('.grid-container');
 
+    // Content in the grid container is emptied
+    gridContainer.innerHTML = '';
+
+    parks.forEach((park, index) => {
         const backgroundSelectionClass = index % 2 === 0 ? 'backgroundBoxColorEven' : 'backgroundBoxColorOdd';
 
+        // parkButton is a link that makes the park container a button
+        const parkButton = document.createElement('a');
+        parkButton.classList.add('grid-item', 'park-container', backgroundSelectionClass, 'parkButton'); 
+        parkButton.dataset.ParkID = park.id;
+        parkButton.tabIndex = 0;
 
-        let htmlSegment = `
-        <ul>
-            <li class="park ${backgroundSelectionClass}">
-                <h2>${park.fullName}</h2> <br>
+        parkButton.setAttribute('role', 'button');
+        parkButton.setAttribute('aria-label', park.fullName);
 
-                <img src="${park.images[0]?.url || ''}" class="parkImage" alt="park image">
+        // event listener for when park is clicked
+        parkButton.addEventListener('click', (event) => {
+            if (event.target.classList.contains('parkButton')) {
+                const parkID = event.target.getAttribute('data--park-i-d');
+                startParkInfoReq(parkID);
+            }
+        });
 
-                <div class="info">
-                <div class="infoButtonBox">
-                <button class="parkInfoBtn" dataParkID="${park.id}"">See all Park Info Here</button>
-                </div>
-                <ul>
-                        <li> ${park.images[0]?.caption || ''}</li>
-                        <li><a href="${park.url || ''}">Click here for the NPS entry on this park.</a> </li>
-                        <li>Park ID: ${park.id} </li>
-                        <li>Address: ${park.addresses[0]?.line1} ${park.addresses[0]?.line2}, ${park.addresses[0]?.city}, 
-                        ${park.addresses[0]?.postalCode || ''}</li>
-                        <li>Phone Number: ${park.contacts.phoneNumbers[0]?.phoneNumber || ''}</li>
-                        <li class="description">${park.description || ''}</li>  
+        // Image Container to hold image
+        const imageContainer = document.createElement('div');
+        imageContainer.classList.add('grid-item-image', 'park-image-container');
 
-                    </ul>
-                </div>     
-            </li>
-            </ul>
+        // Image to go into container
+        const parkImage = document.createElement('img');
+        parkImage.onerror = () => {
+            // if 404 received for image
+            parkImage.src = './images/imgNotFound.png';
+        };
+        parkImage.src = park.images[0]?.url;
 
-        `;
+        // Gradient Overlay
+        const imageOverlay = document.createElement('div');
+        imageOverlay.classList.add('image-overlay');
+        imageOverlay.style.background = 'linear-gradient(0deg, #00000088 30%, #ffffff44 100%)';
 
-        html += htmlSegment;
+        // Content to hold the info for the park
+        const contentContainer = document.createElement('div');
+        contentContainer.classList.add('park-details');
 
+        // h2 for the park name
+        const parkName = document.createElement('h2');
+        parkName.textContent = park.fullName;
+
+        // slightly smaller city,state for park
+        const cityState = document.createElement('h3');
+        cityState.textContent = park.addresses[0]?.city + ', ' + park.addresses[0]?.stateCode;
+
+        // parkName and cityState both go into the contentContainer to be positioned together
+        contentContainer.appendChild(parkName);
+        contentContainer.appendChild(cityState);
+
+        // the image overlay contains the content since it goes on top of the gradient background
+        imageOverlay.appendChild(contentContainer);
+
+        // Everything goes into the image container
+        imageContainer.appendChild(imageOverlay);
+        imageContainer.appendChild(parkImage);
+
+        // image container is added to button
+        parkButton.appendChild(imageContainer);
+
+        // button (and everything added to it) goes into the container area
+        gridContainer.appendChild(parkButton);
     });
-
-    let jsonContainer = document.querySelector('.jsonContainer');
-    jsonContainer.innerHTML = html;
+}
 
     updatePaginationButtons();
 
@@ -188,12 +234,12 @@ async function renderParks(selectedState, numberOfResults, resultsArrayBeginning
 
     if (currentPage === totalPages) {
         let endMessage = '<h2>You have reached the end of the results</h2>';
-        jsonContainer.innerHTML += endMessage;
+        gridContainer.innerHTML += endMessage;
         nextButtonTop.style.display = 'none';
         nextButtonBottom.style.display = 'none';
+    }
 
-    } 
-}
+
 
 function updatePaginationButtons() {
     const totalPages = Math.ceil(totalAvailableSearchResults / requestedNumResults);

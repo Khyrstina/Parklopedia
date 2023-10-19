@@ -18,12 +18,10 @@ export async function getAlertsInformation(parkCode) {
                     const alertsUrl = alert.url;
                     const alertsDate = alert.lastIndexedDate;
 
-                    return `<p>${alertsCategory}: <br>
-                        Description: ${alertsDescription} <br>
-                        <h4>${alertsTitle}</h4> <br>
-                        ${alertsDate} <br>
-                        ${alertsUrl ? `<a href="${alertsUrl}" target="_blank">More Info</a>` : ''}
-                    </p>`;
+                    return `<h4>${alertsCategory}: ${alertsTitle}</h4> 
+                            <p>Description: ${alertsDescription}
+                            ${alertsUrl ? `<a href="${alertsUrl}" target="_blank">More Info Here</a>` : ''}
+                            </p>`;
                 }).join('');
             } else {
                 alertsInformation = 'No alerts information could be retrieved for this park';

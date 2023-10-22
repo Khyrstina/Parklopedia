@@ -17,15 +17,29 @@
     </nav>
     <header class="header">
         <div class="hero">
-            <img class="header-img" src="images/GeneratedNationalPark.png" alt="National Park Image">
-            <div class="bottom-left"></div>
-            <div class="top-left"></div>
-            <div class="bottom-right"></div>
+            <div class="muteButton">
+                <button id="mute">
+                <img src="images/genericIcons/muteIconSmall.png" class="muteIconImg">
+                </button>
+            </div>
+            <div class="videoContainer">
+            <video
+            poster="images/GeneratedNationalPark.png"
+            autoplay muted loop
+            id="backgroundVideo">
+                <source src="images/headerBackgrounds/OlympicNationalPark2023AI.mp4" type="video/mp4"/>
+                Your Browser Does Not Support This Video.
+            </video> 
+
+        </div>
+ 
+            <img class="logo centered" src="images/Logos/logoOrangeCream.PNG">
+
             <div class="centered">
                 <h1>Search Parks</h1>
             </div>
             <div class="bottom-center">
-                <a class="skip-link" href="#main">&#8595 Skip to Main Content &#8595</a>
+                <a class="skip-link" href="#main">&#8595 Main Content &#8595</a>
             </div>
             <div id="mySidepanel" class="sidepanel">
                 <ul>
@@ -38,7 +52,9 @@
     </header>
     <main id="main" class="main">
         <section class="mainSearchArea">
+
             <div class="aboutSearchParagraphBox">
+                <div class="blurBackground"> </div>
                 <h2>Whether you're a seasoned explorer or a first-time visitor, our search page is your portal to discovering where to visit next. </h2>
                 <ul>
                     <li>Start typing in a state, and when you're ready select an option from the dropdown that appears.</li>
@@ -47,12 +63,9 @@
                     <li>You'll be whisked away to a park-specific page, filled with the information you'll need to start planning you're unforgettable adventure!</li>
                 </ul>
             </div>
-            <div class="catchPhraseBox">
-                <h2 class="catchPhrase">Ready to embark on your next outdoor expedition? Our search page simplifies the planning.</h2>
-                <p class="catchPhraseCont">Search below to get your journey started.</p>
-            </div>
 
             <div class="search-container">
+                <div class="searchBackground">
                 <label for="searchInput" class="labelSearchInput" id="labelSearchInput">Please enter a state below and choose from the suggested options:<br></label>
                 <input type="text" id="searchInput" class="search-input" placeholder="Enter a State here..." aria-describedby="suggestionsContainer" aria-label="State Input">
                 <button id="searchBarButton" class="search-bar-button" aria-label="Search Button">Search</button>
@@ -68,6 +81,7 @@
                     </select>
                 </div>
             </div>
+            </div>
         </section>
         <div class="ButtonsBox">
             <button id="previousButton" style="display: none" aria-label="Previous Page Button">Previous</button>
@@ -75,7 +89,10 @@
         </div>
         <section class="jsonResultsBox">
             <article id="jsonContainer" class="jsonContainer grid-container">
-
+                <div class="catchPhraseBox">
+                    <h2 class="catchPhrase">Ready to embark on your next outdoor expedition? Our search page simplifies the planning.</h2>
+                    <p class="catchPhraseCont">Enter your State above to get your journey started.</p>
+                </div>
             </article>
         </section>
         <div class="bottomButtonsBox">
@@ -97,5 +114,6 @@
     <script type="module" src="js/config.js"></script>
     <script type="module" src="js/stateSearch.js"></script>
     <script type="module" src="js/parkAPI.js"></script>
+    <script type="module" src="js/mute.js"></script>
 </body>
 </html>

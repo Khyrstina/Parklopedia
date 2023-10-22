@@ -5,7 +5,8 @@ import { validateSearchInput } from "./parseStates.js";
 
 const suggestionsContainer = document.getElementById('suggestionsContainer');
 const resultsSelect = document.getElementById('numberResultsRetrieved');
-const previousButton = document.getElementById('previousButton');
+const previousButtonTop = document.getElementById('previousButtonTop');
+const previousButtonBottom = document.getElementById('previousButtonBottom');
 const nextButtonTop = document.getElementById('nextButtonTop');
 const nextButtonBottom = document.getElementById('nextButtonBottom');
 const searchInput = document.getElementById('searchInput');
@@ -103,19 +104,11 @@ searchButton.addEventListener('click', async (event) => {
 });
 
 
-previousButton.addEventListener('click', () => {
-    if (!fetchingData && currentPage > 1) {
-        fetchingData = true;
-        currentPage--;
-        beginningParksArray -= requestedNumResults;
-        renderParks(selectedState, requestedNumResults, beginningParksArray);
-        fetchingData = false;
-    }
-    updatePaginationButtons();
-});
 
 nextButtonTop.addEventListener('click', nextPage);
 nextButtonBottom.addEventListener('click', nextPage);
+previousButtonBottom.addEventListener('click', previousPage);
+previousButtonTop.addEventListener('click', previousPage);
 
 
 async function getTotalNumberResults(selectedState) {
@@ -224,24 +217,12 @@ async function renderParks(selectedState, numberOfResults, resultsArrayBeginning
 
     updatePaginationButtons();
 
-    if (currentPage === 1) {
-        previousButton.style.display = 'none';
-    } else {
-        previousButton.style.display = 'block';
-    }
-
-    if (currentPage === totalPages) {
-        let endMessage = '<h2>You have reached the end of the results</h2>';
-        gridContainer.innerHTML += endMessage;
-        nextButtonTop.style.display = 'none';
-        nextButtonBottom.style.display = 'none';
-    }
-
 
 
 function updatePaginationButtons() {
     const totalPages = Math.ceil(totalAvailableSearchResults / requestedNumResults);
-    previousButton.disabled = currentPage === 1;
+    previousButtonTop.disabled = currentPage === 1;
+    previousButtonBottom.disabled = currentPage === 1;
 
     if (currentPage === totalPages || totalAvailableSearchResults - beginningParksArray <= requestedNumResults) {
         nextButtonTop.style.display = 'none';
@@ -249,6 +230,15 @@ function updatePaginationButtons() {
     } else {
         nextButtonTop.style.display = 'block';
         nextButtonBottom.style.display = 'block';
+    }
+
+    if (currentPage > 1) {
+        previousButtonBottom.style.display = 'block';
+        previousButtonTop.style.display = 'block';
+    }
+    else {
+        previousButtonBottom.style.display = 'none';
+        previousButtonTop.style.display = 'none';
     }
 }
 
@@ -264,6 +254,17 @@ async function nextPage() {
         updatePaginationButtons();
     }
 
+}
+
+async function previousPage() {
+    if (!fetchingData && currentPage > 1) {
+        fetchingData = true;
+        currentPage--;
+        beginningParksArray -= requestedNumResults;
+        await renderParks(selectedState, requestedNumResults, beginningParksArray);
+        fetchingData = false;
+    }
+    updatePaginationButtons();
 }
 
 function clearSearchResults() {

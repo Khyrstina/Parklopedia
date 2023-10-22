@@ -152,8 +152,12 @@ video {
     line-height: 1.5rem;
 
 }
+
 .search-container{
 margin-top: 1rem;
+display:flex;
+justify-content: center;
+width: 100%;
 } 
 
 
@@ -179,20 +183,22 @@ input[type="text"]:focus {
     padding: 1rem;
     margin: 1rem .5rem;
     margin-top: 0;
+    width: 100%;
     display: flex;
     flex-direction: column;
     border: solid #abb8c361;
 }
 
 .suggestions-container {
-    background: #c9d9c3;
-    color: #000;
+    background: #455947;
+    color: #fff;
+    width: 100%
     }
     
 
 .suggestion:hover {
-background-color: #455947;
-color: #f3f2ea;
+background-color: #c9d9c3;
+color: #383330;
 }
 
 .search-bar-button {
@@ -261,35 +267,36 @@ select #numberResultsRetrieved {
 }
 
 .bottomButtonsBox button {
-    font-size: 1rem;
+    font-size: 1.5rem;
     cursor: pointer;
     font-weight: bold;
-    background-color: #f3f2ea;
-    color: #ff5f41;
-    border: 5px solid #e7e6d6;
-    padding: .6rem 1rem;
+    background-color: #d4bda1;
+    color: #864622;
+    padding: .15rem;
+    border: 5px solid #864622;
     transition: background-color .4s ease, border-color .4s ease, color .4s ease;
     position: relative;
     z-index: 3;
 }
 
 .bottomButtonsBox button:hover {
-    background-color: #ff5f41;
-    color: #f3f2ea;
-    border: 5px solid #ff5f41;
+    background-color: #c78853;
+    border: 5px solid #864622;
+    color: #383330;
 }
 .ButtonsBox {
     display: flex;
     justify-content: space-evenly;
 }
 .ButtonsBox button{
-    font-size: 1rem;
+    text-decoration: none;
+    font-size: 1.5rem;
     cursor: pointer;
     font-weight: bold;
-    background-color: #f3f2ea;
-    color: #ff5f41;
-    border: 5px solid #e7e6d6;
-    padding: .6rem 1rem;
+    background-color: #d4bda1;
+    color: #864622;
+    padding: .15rem;
+    border: 5px solid #864622;
     transition: background-color .4s ease, border-color .4s ease, color .4s ease;
     position: relative;
     z-index: 3;
@@ -297,9 +304,9 @@ select #numberResultsRetrieved {
 
 
 .ButtonsBox button:hover{
-    background-color: #ff5f41;
-    color: #f3f2ea;
-    border: 5px solid #ff5f41;
+    background-color: #c78853;
+    border: 5px solid #864622;
+    color: #383330;
 }
 
 /* Background colors for results */

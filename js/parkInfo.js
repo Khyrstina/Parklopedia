@@ -1,111 +1,198 @@
-import { apiKey } from './config.js';
+import { getParkInfo } from './parkAPI.js';
+import { initializeSlides, plusSlides} from './slideshow.js';
+import { getAlertsInformation } from './alerts.js';
+import { getWeatherInfo } from './weatherAPI.js';
+import { findCorrectIcon, findCorrectStatus } from './weatherIcon.js';
 
-const parkNameHeader = document.getElementById('parkName');
+
+
+let latitude = '';
+let longitude = '';
+let currentSlideIndex = 0;
+const prevButton = document.getElementById('prevButton');
+const nextButton = document.getElementById('nextButton');
 
 document.addEventListener('DOMContentLoaded', () => {
-    const parkID = sessionStorage.getItem('parkIDSpecific');
-    fetchParkDetails(parkID);
-})
+  const parkID = sessionStorage.getItem('parkIDSpecific');
+  getParkInfo(parkID).then((park) => {
+    initializeSlides(park);
+  });
+  fetchParkDetails(parkID);
+});
 
-async function getParkInfo(parkID) {
-    const apiUrl = `https://developer.nps.gov/api/v1/parks?limit=1&start=0&q=${parkID}&api_key=${apiKey}`;
-    try {
-        let resp = await fetch(apiUrl);
-        let data = await resp.json();
-        console.log(apiUrl);
+prevButton.addEventListener('click', (event) => {
+  event.preventDefault();
+  plusSlides(-1);
+});
 
-        return data.data; 
-    }
-    catch (error) {
-        console.log(error);
-        console.log(apiUrl);
-    }
-}
+nextButton.addEventListener('click', (event) => {
+  event.preventDefault();
+  plusSlides(1);
+});
 
 
 async function fetchParkDetails(parkId) {
-    let park = await getParkInfo(parkId); 
-    const parkNameHeader = document.getElementById('parkName');
-    parkNameHeader.textContent = park[0].fullName;
+  let park = await getParkInfo(parkId);
+  const parkNameHeader = document.getElementById('parkName');
+  parkNameHeader.textContent = park[0].fullName;
 
-    let html = `
+  // Get today's date in yyyy-mm-dd format
+  const parkName = park[0].fullName;
+  const today = new Date().toISOString().split('T')[0];
 
+  let todaysOperatingHours = '';
+  // Find the operating hours for today
+  const operatingHoursToday = park[0].operatingHours.find((hours) => {
+    return hours.exceptions.some((exception) => {
+      return today >= exception.startDate && today <= exception.endDate;
+    });
+  });
 
-            <div class="info">
-
-                    <p> ${park[0].images[0]?.caption || ''}</p>
-                    <p><a href="${park[0].url || ''}">Click here for the NPS entry on this park.</a> </p>
-                    <p>Park ID: ${park[0].id} </p>
-                    <p>Address: ${park[0].addresses[0]?.line1} ${park[0].addresses[0]?.line2}, ${park[0].addresses[0]?.city}, 
-                    ${park[0].addresses[0]?.postalCode || ''}</p>
-                    <p>Phone Number: ${park[0].contacts.phoneNumbers[0]?.phoneNumber || ''}</p>
-                    <p class="description">${park[0].description || ''}</p>  
-
-            </div>     
-
-    ` ;
-
-    let parkContainer = document.querySelector('.mainParkInformation');
-    parkContainer.innerHTML = html;
-
-    let slideshowContainer = document.querySelector('.slideshow-container');
-
-  // Clearing previous images
-  slideshowContainer.innerHTML = '';
-
-  if (park[0].images && park[0].images.length > 0) {
-
-    for (let i = 0; i < park[0].images.length; i++) {
-      let imgElement = document.createElement('img');
-      imgElement.src = park[0].images[i].url;
-      imgElement.alt = park[0].images[i].caption || '';
-      
-// Create a new slide
-      let slide = document.createElement('div');
-      slide.classList.add('mySlides');
-      slide.appendChild(imgElement);
-      
-
-      slideshowContainer.appendChild(slide);
-    }
-
-
-    showSlides(0);
+  if (operatingHoursToday) {
+    const { description } = operatingHoursToday;
+    todaysOperatingHours = description;
+  } else {
+    todaysOperatingHours = 'Special operating hours for today not found.';
   }
+
+  //Check for Fee information
+  const entranceFees = park[0].entranceFees;
+  let feeInformation = '';
+  
+
+
+
+  if (entranceFees && entranceFees.length > 0) {
+    entranceFees.forEach((fee) => {
+      const feeTitle = fee.title;
+      const feeCost = fee.cost;
+
+      feeInformation += `<p>${feeTitle}: <br> Cost: ${feeCost}</p>`;
+
+    
+    });
+  } else {
+    feeInformation = 'No entrance fee information could be retrieved for this park.';
+
+  }
+
+// Main Park Information Area
+
+const parkDescriptionText = document.getElementById('parkDescription').innerText = park[0].description || '';
+const weatherInfoText = document.getElementById('weatherInfo').innerText = park[0].weatherInfo;
+const todaysOperatingHoursText = document.getElementById('todaysOperatingHours').innerText = todaysOperatingHours;
+const feeInformationText = document.getElementById('feeInformation').innerHTML = feeInformation;
+const parkUrlHref = document.getElementById('parkUrl').href = park[0].url || '';
+
+
+
+  // Begin .weather 
+  latitude = park[0].latitude;
+  longitude = park[0].longitude;
+
+  const weatherData = await getWeatherInfo(latitude, longitude);
+
+  
+  const conditionCode = weatherData.current.condition.code;
+
+  // const dateStrings = [weatherData.forecast.forecastday[1].date, weatherData.forecast.forecastday[2].date, weatherData.forecast.forecastday[3].date];
+
+  const allForecastDays = weatherData.forecast.forecastday;
+
+  const forecastOne = allForecastDays[1].date;
+  const forecastTwo = allForecastDays[2].date;
+  const forecastThree = allForecastDays[3].date;
+
+  const dateStrings = [forecastOne, forecastTwo, forecastThree];
+
+  function formatDate(dateStrings) {
+    let parts = dateStrings.split('-');
+    let month = parts[1];
+    let day = parts [2];
+    return month + '/' + day;
+  }
+
+
+  let formattedDateStrings = [];
+
+  dateStrings.forEach(function(dateStrings) {
+    let formattedDate = formatDate(dateStrings);
+    formattedDateStrings.push(formattedDate);
+
+  });
+
+  const currentTempText = document.getElementById('temperature');
+  const maxTempText = document.getElementById('maxTemp');
+  const minTempText = document.getElementById('minTemp');
+  
+  const dateOneText = document.querySelector('.dateOne');
+  const dateTwoText = document.querySelector('.dateTwo');
+  const dateThreeText = document.querySelector('.dateThree');
+  
+  const weatherImgOneSrc = document.getElementById('weatherImg1');
+  const weatherImgTwoSrc = document.getElementById('weatherImg2');
+  const weatherImgThreeSrc = document.getElementById('weatherImg3');
+  
+  const highLowOneText = document.querySelector('.highLowOne');
+  const highLowTwoText = document.querySelector('.highLowTwo');
+  const highLowThreeText = document.querySelector('.highLowThree');
+  
+  if (conditionCode) {
+let mainWeatherImg = await findCorrectIcon(conditionCode);
+let mainWeatherStatus = await findCorrectStatus(conditionCode);
+
+
+    // Set the background image for current Temperature
+    let setWeatherImage = document.querySelector('.weatherImage');
+
+
+    setWeatherImage.src = mainWeatherImg;
+
+    // Set the text for current, min, and max temp for the day
+    currentTempText.innerHTML = `${weatherData.current.temp_f}&deg;F and ${mainWeatherStatus} <br>`;
+    maxTempText.innerHTML = `High: <br> ${weatherData.forecast.forecastday[0].day.maxtemp_f}&deg;F`;
+    minTempText.innerHTML = `Low: <br> ${weatherData.forecast.forecastday[0].day.mintemp_f}&deg;F`;
+  
+    // Set text for date elements
+    dateOneText.innerHTML = formattedDateStrings[0];
+    dateTwoText.innerHTML = formattedDateStrings[1];
+    dateThreeText.innerHTML = formattedDateStrings[2];
+
+    // Set src for weather images in 3 day forecast
+    let weatherImgOneSrcImg = await findCorrectIcon(weatherData.forecast.forecastday[1].day.condition.code);
+    weatherImgOneSrc.src = weatherImgOneSrcImg;
+    let weatherImgTwoSrcImg = await findCorrectIcon(weatherData.forecast.forecastday[2].day.condition.code);
+    weatherImgTwoSrc.src = weatherImgTwoSrcImg;
+    let weatherImgThreeSrcImg = await findCorrectIcon(weatherData.forecast.forecastday[3].day.condition.code);
+    weatherImgThreeSrc.src = weatherImgThreeSrcImg;
+  
+    // Set text for high/low temperature in 3 day forecast
+    highLowOneText.innerHTML = `High: <br> ${weatherData.forecast.forecastday[1].day.maxtemp_f}&deg;F <br> Low: <br> ${weatherData.forecast.forecastday[1].day.mintemp_f}&deg;F`;
+    highLowTwoText.innerHTML = `High: <br> ${weatherData.forecast.forecastday[2].day.maxtemp_f}&deg;F <br> Low: <br> ${weatherData.forecast.forecastday[2].day.mintemp_f}&deg;F`;
+    highLowThreeText.innerHTML = `High: <br> ${weatherData.forecast.forecastday[3].day.maxtemp_f}&deg;F <br> Low: <br> ${weatherData.forecast.forecastday[3].day.mintemp_f}&deg;F`;
+  } else {
+    console.error("Weather Image Not Found.");
+    console.log("Condition Code:", conditionCode);
+  }
+  
+
+  // Begin .contact
+  const contactInformation = document.querySelector('.contact');
+
+  let addressHeader = `<div class="contactHeader" id="contactHeader">
+  <h3>Contact: </h3> </div>`;
+  let addressHTML = `<h5>Address: </h5><p> ${park[0].addresses[0]?.line1} ${park[0].addresses[0]?.line2}, ${park[0].addresses[0]?.city}, ${park[0].addresses[0]?.stateCode}, ${park[0].addresses[0]?.postalCode} </p>`;
+  let phoneHTML = `<h5>Phone Number: </h5><p> ${park[0].contacts.phoneNumbers[0]?.phoneNumber} </p>`;
+  let emailHTML = `<h5>Email Address: </h5> <p> ${park[0].contacts.emailAddresses[0].emailAddress} </p>`;
+  contactInformation.innerHTML = addressHeader + addressHTML + phoneHTML + emailHTML;
+
+  //Begin .alerts
+  const alertsInformation = await getAlertsInformation(parkName);
+  const alertInformation = document.querySelector('.alerts');
+  const alertsHeader = `<div class="alertsHeader" id="alertsHeader">
+  <h3>Alerts: </h3> </div>`;
+  alertInformation.innerHTML = alertsHeader + alertsInformation;
+
 }
 
-let slideIndex = 0;
 
-function plusSlides(offset) {
-    slideIndex += offset;
-    showSlides(slideIndex);
-  }
-  
-  // back button for images
-  document.querySelector('.prev').addEventListener('click', () => {
-    plusSlides(-1);
-  });
-  //next button for images
-  document.querySelector('.next').addEventListener('click', () => {
-    plusSlides(1);
-  });
-  
-  function showSlides(index) {
-    let slides = document.querySelectorAll('.mySlides');
-  
-
-    if (index < 0) {
-      slideIndex = slides.length - 1;
-    } else if (index >= slides.length) {
-      slideIndex = 0;
-    }
-  
-
-    slides.forEach((slide) => {
-      slide.style.display = 'none';
-    });
-  
-
-    slides[slideIndex].style.display = 'block';
-  }
-  

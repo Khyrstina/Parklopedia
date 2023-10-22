@@ -12,7 +12,6 @@ const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchBarButton');
 const selectASuggestionText = document.getElementById('labelSearchInput');
 
-
 let currentPage = 1;
 let totalAvailableSearchResults = 0;
 let beginningParksArray = 0;
@@ -157,11 +156,10 @@ async function renderParks(selectedState, numberOfResults, resultsArrayBeginning
     gridContainer.innerHTML = '';
 
     parks.forEach((park, index) => {
-        const backgroundSelectionClass = index % 2 === 0 ? 'backgroundBoxColorEven' : 'backgroundBoxColorOdd';
 
         // parkButton is a link that makes the park container a button
         const parkButton = document.createElement('a');
-        parkButton.classList.add('grid-item', 'park-container', backgroundSelectionClass, 'parkButton'); 
+        parkButton.classList.add('grid-item', 'park-container', 'parkButton'); 
         parkButton.dataset.ParkID = park.id;
         parkButton.tabIndex = 0;
 

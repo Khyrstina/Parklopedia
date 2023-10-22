@@ -8,7 +8,7 @@ export function initializeSlides(park) {
     // Clearing previous images
     slideshowContainer.innerHTML = '';
 
-    if (park[0].images && park[0].images.length > 0) {
+    if (park[0].images && park[0].images.length > 0 ) {
 
 
     
@@ -16,6 +16,10 @@ export function initializeSlides(park) {
             let imgElement = document.createElement('img');
             imgElement.src = park[0].images[i].url;
             imgElement.alt = park[0].images[i].caption || '';
+            imgElement.onerror = () => {
+                // if 404 received for image
+                imgElement.src = './images/imgNotFound.png';
+            };
 
             // Create a new slide
             let slide = document.createElement('div');

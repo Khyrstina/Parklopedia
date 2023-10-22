@@ -3,6 +3,7 @@ import {usStates} from "./parseStates.js"
 import { validateSearchInput } from "./parseStates.js";
 
 
+
 const suggestionsContainer = document.getElementById('suggestionsContainer');
 const resultsSelect = document.getElementById('numberResultsRetrieved');
 const previousButtonTop = document.getElementById('previousButtonTop');
@@ -14,11 +15,11 @@ const searchButton = document.getElementById('searchBarButton');
 const selectASuggestionText = document.getElementById('labelSearchInput');
 
 let currentPage = 1;
+let fetchingData = false;
 let totalAvailableSearchResults = 0;
 let beginningParksArray = 0;
 let selectedState = '';
 let requestedNumResults = 10;
-let fetchingData = false;
 let totalPages = 0;
 let selectedSuggestionIndex = -1;
 let suggestionSelected = false;
@@ -266,6 +267,7 @@ async function previousPage() {
     }
     updatePaginationButtons();
 }
+
 
 function clearSearchResults() {
     let jsonContainer = document.querySelector('.jsonContainer');

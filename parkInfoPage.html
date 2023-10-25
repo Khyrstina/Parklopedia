@@ -16,20 +16,33 @@
 
 <body>
     <nav class="menu top-right">
-        <button class="openbtn" id="hamburgerMenu">&#9776;</button>
+        <button class="openbtn" id="hamburgerMenu" aria-label="Open Navigation Menu">&#9776;</button>
     </nav>
     <header class="header">
-
         <div class="hero">
-            <img class="header-img" src="images/GeneratedNationalPark.png" alt="National Park Image">
-            <div class="bottom-left"></div>
-            <div class="top-left"></div>
-            <div class="bottom-right"></div>
+            <div class="muteButton">
+                <button id="mute">
+                <img src="images/genericIcons/muteIconSmall.png" class="muteIconImg">
+                </button>
+            </div>
+            <div class="videoContainer">
+            <video
+            poster="images/GeneratedNationalPark.png"
+            autoplay muted loop
+            id="backgroundVideo">
+                <source src="images/headerBackgrounds/OlympicNationalPark2023AI.mp4" type="video/mp4"/>
+                Your Browser Does Not Support This Video.
+            </video> 
+
+        </div>
+ 
+            <img class="logo centered" src="images/Logos/logoOrangeCream.PNG">
+
             <div class="centered">
                 <h1>Park Information</h1>
             </div>
             <div class="bottom-center">
-                <a class="skip-link" href="#parkName">&#8595 Main Content &#8595</a>
+                <a class="skip-link" href="#main">&#8595 Main Content &#8595</a>
             </div>
             <div id="mySidepanel" class="sidepanel">
                 <ul>
@@ -39,16 +52,9 @@
                 </ul>
             </div>
         </div>
-
-
-
     </header>
 
-
-
-    <div id="wrapper">
-
-        <main id="main" class="main" tabindex="-1">
+         <main id="main" class="main flex-column-center" tabindex="-1">
 
             <div class="blurBackground"> </div>
             <h2>Curious about park fees? <br>Wondering what amenities our park offers? <br>It's all here, right at your fingertips. </h2>
@@ -58,7 +64,7 @@
                 <h3>So, start exploring, and set yourself up to experience the great outdoors like never before!</h3>
 
     </main>
-    </div>
+
 
     <div class="customParkContent">
         <section class="imagesContainer">
@@ -68,7 +74,7 @@
                     <img src="" alt="Slideshow Image 1">
                 </div>
             </div>
-            <div class="prevNextBox">
+            <div class="prevNextBox flex-row">
             <button href="#" id="prevButton" class="prev">Previous</button>
             <button href="#" id="nextButton" class="next">Next</button>
         </div>
@@ -150,11 +156,78 @@
 
     </div>
 
-    <div class="alerts"> Breaking news! Trees are real! That's right, I know it's hard to believe but they do in
+    <div class="alerts flex-column"> Breaking news! Trees are real! That's right, I know it's hard to believe but they do in
         fact exist.</div>
     </div>
 
-    <footer class="footer">
+
+    <div class="amenities">
+
+        <div class="amenitiesHeader" id="amenitiesHeader">
+            <h3>Amenities</h3>
+        </div>
+
+        <label class="amenitiesCheckbox" id="accessibility">
+            <input type="checkbox" id="accessibility" name="amenities" value="Accessibility">
+            <span class="custom-checkbox"></span>
+            Accessibility
+        </label>
+    
+        <label class="amenitiesCheckbox" id="campsites">
+            <input type="checkbox" id="campsites" name="amenities" value="Campsites">
+            <span class="custom-checkbox"></span>
+            Campsites
+        </label>
+    
+        <label class="amenitiesCheckbox"  id="convenience">
+            <input type="checkbox" id="convenience" name="amenities" value="Convenience">
+            <span class="custom-checkbox"></span>
+            Convenience
+        </label>
+    
+        <label class="amenitiesCheckbox" id="exhibits">
+            <input type="checkbox" id="exhibits" name="amenities" value="Exhibits">
+            <span class="custom-checkbox"></span>
+            Exhibits
+        </label>
+    
+        <label class="amenitiesCheckbox"  id="food-drink">
+            <input type="checkbox" id="food-drink" name="amenities" value="Food & Drink">
+            <span class="custom-checkbox"></span>
+            Food & Drink
+        </label>
+    
+        <label class="amenitiesCheckbox" id="information">
+            <input type="checkbox" id="information" name="amenities" value="Information">
+            <span class="custom-checkbox"></span>
+            Information
+        </label>
+    
+        <label class="amenitiesCheckbox"  id="pet-friendly">
+            <input type="checkbox" id="pet-friendly" name="amenities" value="Pet-friendly">
+            <span class="custom-checkbox"></span>
+            Pet-friendly
+        </label>
+    
+        <label class="amenitiesCheckbox" id="recreation">
+            <input type="checkbox" id="recreation" name="amenities" value="Recreation">
+            <span class="custom-checkbox"></span>
+            Recreation
+        </label>
+    
+        <label class="amenitiesCheckbox"  id="safety">
+            <input type="checkbox" id="safety" name="amenities" value="Safety">
+            <span class="custom-checkbox"></span>
+            Safety
+        </label>
+
+    </div>
+    </div>
+    
+    
+    
+
+    <footer class="footer flex-column-center">
         <nav class="navigation" aria-label="site">
             <ul>
                 <li><a href="link.org">Home</a></li>
@@ -175,6 +248,7 @@
     <script type="module" src="js/config.js"></script>
     <script type="module" src="js/alerts.js"></script>
     <script type="module" src="js/parkInfo.js"></script>
+    <script type="module" src="js/mute.js"></script>
 
 </body>
 

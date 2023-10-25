@@ -2,8 +2,6 @@ import { apiKey } from "./config.js";
 import {usStates} from "./parseStates.js"
 import { validateSearchInput } from "./parseStates.js";
 
-
-
 const suggestionsContainer = document.getElementById('suggestionsContainer');
 const resultsSelect = document.getElementById('numberResultsRetrieved');
 const previousButtonTop = document.getElementById('previousButtonTop');

@@ -51,7 +51,7 @@
         </div>
     </header>
     <main id="main" class="main">
-        <section class="mainSearchArea">
+        <section class="mainSearchArea flex-column-center">
 
             <div class="aboutSearchParagraphBox">
                 <div class="blurBackground"> </div>
@@ -64,8 +64,8 @@
                 </ul>
             </div>
 
-            <div class="search-container">
-                <div class="searchBackground">
+            <div class="search-container flex-row">
+                <div class="searchBackground flex-column">
                 <label for="searchInput" class="labelSearchInput" id="labelSearchInput">Please enter a state below and choose from the suggested options:<br></label>
                 <input type="text" id="searchInput" class="search-input" placeholder="Enter a State here..." aria-describedby="suggestionsContainer" aria-label="State Input">
                 <button id="searchBarButton" class="search-bar-button" aria-label="Search Button">Search</button>
@@ -80,7 +80,7 @@
                         <option value="20">20</option>
                     </select>
                 </div>
-                <div class="ButtonsBox">
+                <div class="buttonsBox flex-row-center">
                     <button id="previousButtonTop" class="previousButton" style="display: none" aria-label="Previous Page Button">Previous Button</button>
                     <button id="nextButtonTop" class="nextButton" style="display: none" aria-label="Next Page Button">Next Page</button>
                 </div>
@@ -91,18 +91,18 @@
 
         <section class="jsonResultsBox">
             <article id="jsonContainer" class="jsonContainer grid-container">
-                <div class="catchPhraseBox">
+                <div class="catchPhraseBox flex-column-center">
                     <h2 class="catchPhrase">Ready to embark on your next outdoor expedition? Our search page simplifies the planning.</h2>
                     <p class="catchPhraseCont">Enter your State above to get your journey started.</p>
                 </div>
             </article>
         </section>
-        <div class="bottomButtonsBox">
+        <div class="bottomButtonsBox flex-row-center">
             <button id="nextButtonBottom" class="nextButton" style="display: none" aria-label="Next Page Button">Next Page</button>
             <button id="previousButtonBottom" class="previousButton" style="display: none" aria-label="Previous Page Button">Previous Page</button>
         </div>
     </main>
-    <footer class="footer">
+    <footer class="footer flex-column">
         <nav class="navigation" aria-label="site">
             <ul>
                 <li><a href="index.html">Home</a></li>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Find information on Activities in National Parks">
+
+    <link href="styles/main.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+    <title>Park Activities</title>
+</head>
+<body>
+    <nav class="menu top-right">
+        <button class="openbtn" id="hamburgerMenu" aria-label="Open Navigation Menu">&#9776;</button>
+    </nav>
+    <header class="header">
+        <div class="hero">
+            <div class="muteButton">
+                <button id="mute">
+                <img src="images/genericIcons/muteIconSmall.png" class="muteIconImg">
+                </button>
+            </div>
+            <div class="videoContainer">
+            <video
+            poster="images/GeneratedNationalPark.png"
+            autoplay muted loop
+            id="backgroundVideo">
+                <source src="images/headerBackgrounds/OlympicNationalPark2023AI.mp4" type="video/mp4"/>
+                Your Browser Does Not Support This Video.
+            </video> 
+
+        </div>
+ 
+            <img class="logo centered" src="images/Logos/logoOrangeCream.PNG">
+
+            <div class="centered">
+                <h1>Search Parks</h1>
+            </div>
+            <div class="bottom-center">
+                <a class="skip-link" href="#main">&#8595 Main Content &#8595</a>
+            </div>
+            <div id="mySidepanel" class="sidepanel">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="searchpage.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <main id="main" class="main">
+        <section class="mainSearchArea flex-column-center">
+
+            <div class="aboutSearchParagraphBox">
+                <div class="blurBackground"> </div>
+                <h2>Things to do search here! </h2>
+            </div>
+
+            <div class="search-container flex-row">
+                <div class="searchBackground flex-column">
+                <label for="searchInput" class="labelSearchInput" id="labelSearchInput">Please enter a state below and choose from the suggested options:<br></label>
+                <input type="text" id="searchInput" class="search-input" placeholder="Enter a State here..." aria-describedby="suggestionsContainer" aria-label="State Input">
+                <button id="searchBarButton" class="search-bar-button" aria-label="Search Button">Search</button>
+                <div id="suggestionsContainer" class="suggestions-container" tabindex="0" role="region" aria-label="State Search Suggestions"></div>
+                <div class="numResultsBox">
+                    <label for="numberResultsRetrieved">Number of results per page:</label>
+                </div>
+
+                <div class="buttonsBox flex-row-center">
+                    <button id="previousButtonTop" class="previousButton" style="display: none" aria-label="Previous Page Button">Previous Button</button>
+                    <button id="nextButtonTop" class="nextButton" style="display: none" aria-label="Next Page Button">Next Page</button>
+                </div>
+            </div>
+            </div>
+
+        </section>
+
+        <section class="jsonResultsBox">
+            <article id="jsonContainer" class="jsonContainer grid-container">
+                <div class="catchPhraseBox flex-column-center">
+                    <h2 class="catchPhrase">Ready to embark on your next outdoor expedition? Our search page simplifies the planning.</h2>
+                    <p class="catchPhraseCont">Enter your State above to get your journey started.</p>
+                </div>
+            </article>
+        </section>
+        <div class="bottomButtonsBox flex-row-center">
+            <button id="nextButtonBottom" class="nextButton" style="display: none" aria-label="Next Page Button">Next Page</button>
+            <button id="previousButtonBottom" class="previousButton" style="display: none" aria-label="Previous Page Button">Previous Page</button>
+        </div>
+    </main>
+    <footer class="footer flex-column">
+        <nav class="navigation" aria-label="site">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="searchpage.html">Search</a></li>
+            </ul>
+        </nav>
+        <p>Designed and Maintained By: Khyrstina Smith</p>
+        <p><a href="sitemap.html">Site</a></p>
+    </footer>
+    <script src="js/navigation.js"></script>
+    <script type="module" src="js/thingsToDoAPI.js"></script>
+</body>
+</html>

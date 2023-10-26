@@ -37,7 +37,7 @@ async function fetchParkDetails(parkId) {
   parkNameHeader.textContent = park[0].fullName;
 
   // Get today's date in yyyy-mm-dd format
-  const parkName = park[0].fullName;
+
   const today = new Date().toISOString().split('T')[0];
 
   let todaysOperatingHours = '';
@@ -197,7 +197,7 @@ let mainWeatherStatus = await findCorrectStatus(conditionCode);
 
 
   //Begin .alerts
-  const alertsInformation = await getAlertsInformation(parkName);
+  const alertsInformation = await getAlertsInformation(fourCharacterParkCode);
   const alertInformation = document.querySelector('.alerts');
   const alertsHeader = `<div class="alertsHeader" id="alertsHeader">
   <h3>Alerts: </h3> </div>`;

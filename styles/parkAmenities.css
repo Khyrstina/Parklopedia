@@ -1,0 +1,118 @@
+
+/* begin amenities */
+
+.amenities {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    align-content: space-between;
+    align-items: center;
+    justify-items: center;
+    grid-template-areas:
+    "amenitiesHeader amenitiesHeader amenitiesHeader"
+    "accessibility campsites convenience"
+    "exhibits food-drink information"
+    "pet-friendly recreation safety";
+    background-color: #455947;
+    border: solid #abb8c361;
+    border-radius: 5px;
+    color: #fff;
+    padding: 20px;
+    margin-bottom: .5rem;
+    margin-top: .5rem;
+    margin-left: .25rem;
+    margin-right: .25rem;
+    cursor: pointer;
+  }
+  
+  /*This assigns grid columns to classes */
+  .amenitiesHeader {
+    grid-column: 1 / 4;
+    grid-row: 1 / 1;
+    width: 100%;
+    background-image: url('/images/headerBackgrounds/header1.png');
+    background-clip: border-box;
+    overflow: hidden;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    border: solid #abb8c361;
+    border-radius: 5px;
+    opacity: 0.95;
+    margin-bottom: 0.5rem;
+  }
+  
+  label #accessibility {
+    grid-area: accessibility;
+
+  }
+  
+  label #campsites {
+    grid-area: campsites;
+  }
+  
+  label #convenience  {
+    grid-area: convenience;
+  }
+  
+  label #exhibits {
+    grid-area: exhibits;
+  }
+  
+  label #food-drink {
+  grid-area: food-drink;
+  }
+  
+  label #information {
+    grid-area: information;
+  }
+  
+  label #pet-friendly  {
+    grid-area: pet-friendly;
+  }
+  
+  label #recreation {
+    grid-area: recreation;
+  }
+  
+  label #safety  {
+    grid-area: safety;
+  }
+
+
+/* Grid label styles */
+.amenities .amenitiesCheckbox {
+    display: flex;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #fff; 
+  }
+  
+  /* Hide default checkbox */
+  .amenities .amenitiesCheckbox input[type="checkbox"] {
+    display: none;
+  }
+  
+  /* Custom checkbox styles */
+  .amenities .amenitiesCheckbox .custom-checkbox {
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  /* Hover effect for custom checkboxes */
+  .amenities .amenitiesCheckbox:hover .custom-checkbox {
+    background-color: #d4bda1;
+  }
+  
+  /* Checked custom checkbox styles */
+  .amenities .amenitiesCheckbox input[type="checkbox"]:checked + .custom-checkbox {
+    background-color: #c78853;
+    border: 3px solid #864622;
+  }
+  

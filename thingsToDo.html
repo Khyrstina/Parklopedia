@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Find information on National Parks">
+    <meta name="description" content="Find information on Activities in National Parks">
 
     <link href="styles/main.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
-    <title>Search Parks</title>
+    <title>Park Activities</title>
 </head>
 <body>
     <nav class="menu top-right">
@@ -55,13 +55,7 @@
 
             <div class="aboutSearchParagraphBox">
                 <div class="blurBackground"> </div>
-                <h2>Whether you're a seasoned explorer or a first-time visitor, our search page is your portal to discovering where to visit next. </h2>
-                <ul>
-                    <li>Start typing in a state, and when you're ready select an option from the dropdown that appears.</li>
-                    <li>Hit that search button!</li>
-                    <li>Find a park in the results that you are interested in, and click on the image for it.</li>
-                    <li>You'll be whisked away to a park-specific page, filled with the information you'll need to start planning you're unforgettable adventure!</li>
-                </ul>
+                <h2>Things to do search here! </h2>
             </div>
 
             <div class="search-container flex-row">
@@ -73,13 +67,7 @@
                 <div class="numResultsBox">
                     <label for="numberResultsRetrieved">Number of results per page:</label>
                 </div>
-                <div class="numResultsDropdownBox">
-                    <select name="resultsRetrieved" id="numberResultsRetrieved" aria-label="Results Per Page Select">
-                        <option value="10" selected>10</option>
-                        <option value="15">15</option>
-                        <option value="20">20</option>
-                    </select>
-                </div>
+
                 <div class="buttonsBox flex-row-center">
                     <button id="previousButtonTop" class="previousButton" style="display: none" aria-label="Previous Page Button">Previous Button</button>
                     <button id="nextButtonTop" class="nextButton" style="display: none" aria-label="Next Page Button">Next Page</button>
@@ -114,9 +102,6 @@
         <p><a href="sitemap.html">Site</a></p>
     </footer>
     <script src="js/navigation.js"></script>
-    <script type="module" src="js/config.js"></script>
-    <script type="module" src="js/stateSearch.js"></script>
-    <script type="module" src="js/parkAPI.js"></script>
-    <script type="module" src="js/mute.js"></script>
+    <script type="module" src="js/thingsToDoAPI.js"></script>
 </body>
 </html>

@@ -1,4 +1,8 @@
-
+@import "commonlyUsed.css";
+@import "nav.css";
+@import "headerVideo.css";
+@import "parkAmenities.css";
+@import "weatherLayout.css";
 
 html {
   margin: 0;
@@ -31,57 +35,9 @@ article {
   color: #050b04;
 }
 
-.header {
-  font-size: 4rem;
-  color: #fff;
-}
-
-.header-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.logo .top-left {
-  src: url(../images/Logos/logoOrangeCream.PNG);
-}
-
-.skip-link {
-  text-decoration: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  font-weight: bold;
-  background-color: #d4bda1;
-  color: #864622;
-  padding: .15rem;
-  border: 5px solid #864622;
-  transition: background-color .4s ease, border-color .4s ease, color .4s ease;
-  display: flex;
-}
-
-.skip-link:hover {
-  background-color: #c78853;
-  border: 5px solid #864622;
-  color: #383330;
-}
-
-
-
-.header-attribution {
-  color: #050b04;
-  font-size: .75rem;
-  padding: 0rem 1rem 1rem 1rem;
-  text-align: center;
-  font-weight: 900;
-  text-shadow: none;
-  width: 100%;
-}
 
  .main {
   height: auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   background-color: #02161A;
   color: #f2f7f6;
 
@@ -185,20 +141,21 @@ article {
 }
 
 .alerts {
-  grid-area: alerts;
+  /* grid-area: alerts; */
   background-color: #455947;
   border: solid #abb8c361;
   border-radius: 5px;
   color: #fff;
   padding: 20px;
-  display: flex;
-  flex-direction: column;
   margin-bottom: .5rem;
   margin-top: 0;
   margin-left: .25rem;
   margin-right: .25rem;
 }
 
+
+
+/* Begin Alerts */
 .alertsHeader {
   background-image: url('/images/headerBackgrounds/header7.png');
   background-clip: border-box;
@@ -352,10 +309,6 @@ justify-content: center;
 .footer {
   grid-area: footer;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   color: #fff;
   background-color: #455947;
   padding: 20px;
@@ -376,168 +329,6 @@ justify-content: center;
   color: #fff;
   text-decoration: solid;
 }
-
-/* Weather Section */
-.weatherContainer {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 3fr 1fr;
-  gap: 0px 0px;
-  padding: 1rem;
-  grid-template-areas:
-    "currentTemp"
-    "highAndLowTemp";
-}
-
-
-.currentTemp {
-  grid-area: currentTemp;
-  display: flex;
-  justify-items: center;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  font-size: 1.5rem;
-  padding: 2.5em;
-  color: #ffff;
-}
-
-.weatherImage {
-  position: absolute;
-  max-height: 90%;
-  opacity: 0.75;
-  filter: blur(4px);
-}
-
-.temperature {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-wrap: wrap;
-  text-align: center;
-  text-shadow: 2px 2px 2px #050b04;
-}
-
-
-
-.highAndLowTemp {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  gap: 0px 0px;
-  grid-template-areas:
-    "maxTemp minTemp";
-  grid-area: highAndLowTemp;
-  justify-items: center;
-  border-top: 1em;
-  align-items: center;
-}
-
-.maxTemp {
-  grid-area: maxTemp;
-  background-color: #2627241f;
-  padding: 1.5rem;
-}
-
-.minTemp {
-  grid-area: minTemp;
-  background-color: #2627241f;
-  padding: 1.5rem;
-}
-
-
-
-
-
-.threeDayForecastBox {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: .15fr .5fr .75fr;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  justify-items: center;
-}
-
-.datesBox {
-  grid-area: 1 / 1 / 2 / 4;
-
-}
-
-.dateOne {
-  grid-area: 1 / 1 / 2 / 2;
-  text-align: center;
-  font-size: 1.25rem;
-}
-
-.dateTwo {
-  grid-area: 1 / 2 / 2 / 3;
-  text-align: center;
-  font-size: 1.25rem;
-}
-
-.dateThree {
-  grid-area: 1 / 3 / 2 / 4;
-  text-align: center;
-  font-size: 1.25rem;
-}
-
-.dateOne .dateTwo .dateThree {
-  vertical-align: center;
-}
-
-.weatherImgBox {
-  grid-area: 2 / 1 / 3 / 4;
-
-}
-
-.weatherImgOne {
-  grid-area: 2 / 1 / 3 / 2;
-}
-
-.weatherImgTwo {
-  grid-area: 2 / 2 / 3 / 3;
-}
-
-.weatherImgThree {
-  grid-area: 2 / 3 / 3 / 4;
-}
-
-.weatherImgOne img,
-.weatherImgThree img,
-.weatherImgTwo img {
-  max-width: 90%;
-  font-size: 2rem;
-}
-
-.highLowBox {
-  grid-area: 3 / 1 / 4 / 4;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  justify-items: center;
-  text-align: center;
-
-}
-
-.highLowOne {
-  grid-area: 3 / 1 / 4 / 2;
-  background-color: #2627241f;
-  padding: .75rem;
-}
-
-.highLowTwo {
-  grid-area: 3 / 2 / 4 / 3;
-  background-color: #2627241f;
-  padding: .75rem;
-}
-
-.highLowThree {
-  grid-area: 3 / 3 / 4 / 4;
-  background-color: #2627241f;
-  background-size: cover;
-  padding: .75rem;
-}
-
 
 
 
@@ -562,8 +353,6 @@ justify-content: center;
 
 
 .prevNextBox {
-  display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   border: 7px solid #864622;
@@ -579,7 +368,6 @@ justify-content: center;
   background-color: #d4bda1;
   color: #864622;
   padding: 0.6rem 1rem;
-
   text-wrap: nowrap;
   transition: background-color .4s ease, border-color .4s ease, color .4s ease;
   position: relative;
@@ -594,66 +382,7 @@ justify-content: center;
 
 }
 
-/* Sidepanel menu specific */
-.sidepanel {
-  height: 3rem;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 1rem;
-  right: 1rem;
-  background-color: #596633;
-  overflow-x: hidden;
-  padding-right: 3.5rem;
-  transition: 0.5s;
-  box-shadow: 0rem .2rem 1rem #262724;
-  display: flex;
-  align-items: center;
-  display: none;
-}
 
-.sidepanel ul {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-}
-
-.sidepanel ul li a {
-  padding-left: 1rem;
-  padding-right: 1rem;
-  text-decoration: none;
-  font-size: 1.5rem;
-  color: #fff;
-  display: block;
-  transition: 0.3s;
-}
-
-.sidepanel ul li a:hover {
-  text-shadow: 2px 2px 3px #262724;
-  transition-duration: .25s;
-}
-
-.menu {
-  display: flex;
-  align-items: center;
-}
-
-.openbtn {
-  font-size: 2rem;
-  cursor: pointer;
-  background-color: #ffffff00;
-  color: #fff;
-  padding: .25rem 1rem;
-  border: none;
-}
-
-.openbtn:hover {
-  text-shadow: 2px 2px 3px #262724;
-  transition-duration: .25s;
-}
 
 article ul li {
   height: auto;
@@ -661,66 +390,11 @@ article ul li {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   justify-content: center;
   align-content: center;
 }
 
-.visuallyHidden {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-}
-
-.hero {
-  position: relative;
-  text-align: center;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  text-wrap: nowrap;
-}
-
-.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-shadow: 4px 4px 0px rgba(0,0,0,0.2);
-}
-
-.bottom-left {
-  position: fixed;
-  bottom: 1rem;
-  left: 1rem;
-  z-index: 3;
-}
-
-
-
-.top-right {
-  position: fixed;
-  top: 0.75rem;
-  right: 1.25rem;
-  z-index: 2;
-}
-
-.bottom-right {
-  position: absolute;
-  bottom: 8px;
-  right: 16px;
-}
-
-.bottom-center {
-  position: absolute;
-  bottom: .5rem;
-  left: 50%;
-  transform: translateX(-50%);
-}
 
 /*Media queries*/
 @media screen and (max-width: 600px) {
@@ -743,15 +417,80 @@ article ul li {
     "mainParkInformation"
     "contact"
 }
-.centered {
+.centered h1{
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-shadow: 4px 4px 0px rgba(0,0,0,0.2);
   font-size: 1rem;
-
-
 }
+
+.amenities {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(6, 1fr); 
+  align-content: space-between;
+  align-items: center;
+  grid-template-areas:
+    "amenitiesHeader amenitiesHeader"
+    "accessibility campsites"
+    "convenience exhibits"
+    "food-drink information"
+    "pet-friendly recreation"
+    "safety safety";
+}
+
+.amenitiesHeader {
+  grid-column: 1 / 3;
+  grid-row: 1 / 1;
+  background-image: url('/images/headerBackgrounds/header1.png');
+  background-clip: border-box;
+  overflow: hidden;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  border: solid #abb8c361;
+  border-radius: 5px;
+  opacity: 0.95;
+  margin-bottom: 0.5rem;
+}
+
+  label#accessibility {
+    grid-area: accessibility;
+
+  }
+  
+  label#campsites {
+    grid-area: campsites;
+  }
+  
+  label#convenience  {
+    grid-area: convenience;
+  }
+  
+  label#exhibits {
+    grid-area: exhibits;
+  }
+  
+  label#food-drink {
+  grid-area: food-drink;
+  }
+  
+  label#information {
+    grid-area: information;
+  }
+  
+  label#pet-friendly  {
+    grid-area: pet-friendly;
+  }
+  
+  label#recreation {
+    grid-area: recreation;
+  }
+  
+  label#safety  {
+    grid-area: safety;
+  }
 }
 

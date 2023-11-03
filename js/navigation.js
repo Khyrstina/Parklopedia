@@ -11,10 +11,3 @@ hamburgerMenuButton.addEventListener('click', () => {
   }
 });
 
-/* function openNav() {
-  document.getElementById("mySidepanel").style.width = "15rem";
-}
-
-function closeNav() {
-  document.getElementById("mySidepanel").style.width = "0";
-} */

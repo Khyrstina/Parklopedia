@@ -3,14 +3,19 @@ import { initializeSlides, plusSlides} from './slideshow.js';
 import { getAlertsInformation } from './alerts.js';
 import { getWeatherInfo } from './weatherAPI.js';
 import { findCorrectIcon, findCorrectStatus } from './weatherIcon.js';
-
+import { getThingsToDoInformation } from './findAmenityLocations.js';
 
 
 let latitude = '';
 let longitude = '';
-let currentSlideIndex = 0;
+export let fourCharacterParkCode = '';
+
 const prevButton = document.getElementById('prevButton');
 const nextButton = document.getElementById('nextButton');
+const generateURLButton = document.getElementById('generateURL');
+const amenitiesHTML = document.getElementById('availableAmenitiesId');
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const parkID = sessionStorage.getItem('parkIDSpecific');
@@ -30,14 +35,29 @@ nextButton.addEventListener('click', (event) => {
   plusSlides(1);
 });
 
+generateURLButton.addEventListener('click', async function() {
+  amenitiesHTML.innerHTML = '';
+  const selectedAmenities = Array.from(document.querySelectorAll('input[type="checkbox"]'))
+    .filter(checkbox => checkbox.checked)
+    .map(checkbox => ({
+      header: checkbox.id, // Use checkbox.id as the header
+      amenityCodes: checkbox.value.split(','), // Split checkbox.value into an array of amenity codes
+    }));
+
+  for (const { header, amenityCodes } of selectedAmenities) {
+    await getThingsToDoInformation(fourCharacterParkCode, header, amenityCodes);
+  }
+});
 
 async function fetchParkDetails(parkId) {
   let park = await getParkInfo(parkId);
   const parkNameHeader = document.getElementById('parkName');
   parkNameHeader.textContent = park[0].fullName;
+  fourCharacterParkCode = park[0].parkCode.toUpperCase();
+
 
   // Get today's date in yyyy-mm-dd format
-  const parkName = park[0].fullName;
+
   const today = new Date().toISOString().split('T')[0];
 
   let todaysOperatingHours = '';
@@ -78,11 +98,18 @@ async function fetchParkDetails(parkId) {
 
 // Main Park Information Area
 
-const parkDescriptionText = document.getElementById('parkDescription').innerText = park[0].description || '';
-const weatherInfoText = document.getElementById('weatherInfo').innerText = park[0].weatherInfo;
-const todaysOperatingHoursText = document.getElementById('todaysOperatingHours').innerText = todaysOperatingHours;
-const feeInformationText = document.getElementById('feeInformation').innerHTML = feeInformation;
-const parkUrlHref = document.getElementById('parkUrl').href = park[0].url || '';
+const parkDescriptionText = document.getElementById('parkDescription');
+const weatherInfoText = document.getElementById('weatherInfo');
+const todaysOperatingHoursText = document.getElementById('todaysOperatingHours');
+const feeInformationText = document.getElementById('feeInformation');
+const parkUrlHref = document.getElementById('parkUrl');
+
+
+parkDescriptionText.innerText = park[0].description || '';
+weatherInfoText.innerText = park[0].weatherInfo;
+todaysOperatingHoursText.innerText = todaysOperatingHours;
+feeInformationText.innerHTML = feeInformation;
+parkUrlHref.href = park[0].url || '';
 
 
 
@@ -178,21 +205,25 @@ let mainWeatherStatus = await findCorrectStatus(conditionCode);
 
   // Begin .contact
   const contactInformation = document.querySelector('.contact');
+  fourCharacterParkCode = park[0].parkCode.toUpperCase();
 
   let addressHeader = `<div class="contactHeader" id="contactHeader">
   <h3>Contact: </h3> </div>`;
+  let parkCodeHTML = `<h5>Park Code: </h5><p> ${fourCharacterParkCode} </p>`
   let addressHTML = `<h5>Address: </h5><p> ${park[0].addresses[0]?.line1} ${park[0].addresses[0]?.line2}, ${park[0].addresses[0]?.city}, ${park[0].addresses[0]?.stateCode}, ${park[0].addresses[0]?.postalCode} </p>`;
   let phoneHTML = `<h5>Phone Number: </h5><p> ${park[0].contacts.phoneNumbers[0]?.phoneNumber} </p>`;
   let emailHTML = `<h5>Email Address: </h5> <p> ${park[0].contacts.emailAddresses[0].emailAddress} </p>`;
-  contactInformation.innerHTML = addressHeader + addressHTML + phoneHTML + emailHTML;
+  contactInformation.innerHTML =  addressHeader + parkCodeHTML + addressHTML + phoneHTML + emailHTML;
+
 
   //Begin .alerts
-  const alertsInformation = await getAlertsInformation(parkName);
+  const alertsInformation = await getAlertsInformation(fourCharacterParkCode);
   const alertInformation = document.querySelector('.alerts');
   const alertsHeader = `<div class="alertsHeader" id="alertsHeader">
   <h3>Alerts: </h3> </div>`;
   alertInformation.innerHTML = alertsHeader + alertsInformation;
 
-}
 
+
+}
 

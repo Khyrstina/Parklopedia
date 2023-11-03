@@ -72,9 +72,10 @@ searchInput.addEventListener("input", () => {
 
 searchButton.addEventListener("click", async (event) => {
   event.preventDefault();
-  const query = searchInput.value;
 
-  if (!fetchingData) {
+
+  if (searchInput && !fetchingData) {
+    const query = searchInput.value;
     if (suggestionSelected && query.trim() !== "") {
       selectedState = "";
       selectedState = await validateSearchInput(query);

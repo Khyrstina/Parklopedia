@@ -1,16 +1,22 @@
+import { apiKey } from './config.js';
 import { getParkInfo } from './parkAPI.js';
 import { initializeSlides, plusSlides} from './slideshow.js';
 import { getAlertsInformation } from './alerts.js';
 import { getWeatherInfo } from './weatherAPI.js';
 import { findCorrectIcon, findCorrectStatus } from './weatherIcon.js';
-
+import { getThingsToDoInformation } from './findAmenityLocations.js';
 
 
 let latitude = '';
 let longitude = '';
-let fourCharacterParkCode = '';
+export let fourCharacterParkCode = '';
+
 const prevButton = document.getElementById('prevButton');
 const nextButton = document.getElementById('nextButton');
+const generateURLButton = document.getElementById('generateURL');
+const amenitiesHTML = document.getElementById('availableAmenitiesId');
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const parkID = sessionStorage.getItem('parkIDSpecific');
@@ -30,11 +36,26 @@ nextButton.addEventListener('click', (event) => {
   plusSlides(1);
 });
 
+generateURLButton.addEventListener('click', async function() {
+  amenitiesHTML.innerHTML = '';
+  const selectedAmenities = Array.from(document.querySelectorAll('input[type="checkbox"]'))
+    .filter(checkbox => checkbox.checked)
+    .map(checkbox => ({
+      header: checkbox.id, // Use checkbox.id as the header
+      amenityCodes: checkbox.value.split(','), // Split checkbox.value into an array of amenity codes
+    }));
+
+  for (const { header, amenityCodes } of selectedAmenities) {
+    await getThingsToDoInformation(fourCharacterParkCode, header, amenityCodes);
+  }
+});
 
 async function fetchParkDetails(parkId) {
   let park = await getParkInfo(parkId);
   const parkNameHeader = document.getElementById('parkName');
   parkNameHeader.textContent = park[0].fullName;
+  fourCharacterParkCode = park[0].parkCode.toUpperCase();
+
 
   // Get today's date in yyyy-mm-dd format
 
@@ -203,6 +224,7 @@ let mainWeatherStatus = await findCorrectStatus(conditionCode);
   <h3>Alerts: </h3> </div>`;
   alertInformation.innerHTML = alertsHeader + alertsInformation;
 
-}
 
+
+}
 

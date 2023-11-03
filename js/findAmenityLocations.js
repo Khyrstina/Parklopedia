@@ -1,6 +1,5 @@
 import { apiKey } from "./config.js";
 
-let thingsToDo;
 
 export async function getThingsToDoInformation(fourCharacterParkCode, header, amenityCodes) {
   const amenitiesUrl = `https://developer.nps.gov/api/v1/amenities/parksplaces?parkCode=${fourCharacterParkCode}&limit=100&sort=&api_key=${apiKey}`;
@@ -19,9 +18,8 @@ export async function getThingsToDoInformation(fourCharacterParkCode, header, am
       const amenityIdsToSearchFor = amenityCodes;
 
       // These are the outermost values in the array, not the individual amenities. So num of results, limit I set etc.
-      const total = data.total;
-      const limit = data.limit;
-      const start = data.start;
+      // const total = data.total;
+      // const limit = data.limit;
       const amenities = data.data;
 
       // This is where I store matching amenities
@@ -31,7 +29,6 @@ export async function getThingsToDoInformation(fourCharacterParkCode, header, am
       amenities.forEach(amenityGroup => {
         amenityGroup.forEach(amenity => {
           const amenityId = amenity.id;
-          const amenityName = amenity.name;
 
 
           //if the amenityId matches the amenityId in the array of amenityIdsToSearchFor

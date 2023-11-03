@@ -80,7 +80,7 @@ searchButton.addEventListener("click", async (event) => {
       selectedState = "";
       selectedState = await validateSearchInput(query);
 
-      if (searchInput && selectedState !== "") {
+      if (selectedState !== "") {
         fetchingData = true;
         totalAvailableSearchResults = await getTotalNumberResults(
           selectedState

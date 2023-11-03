@@ -1,4 +1,3 @@
-import { apiKey } from './config.js';
 import { getParkInfo } from './parkAPI.js';
 import { initializeSlides, plusSlides} from './slideshow.js';
 import { getAlertsInformation } from './alerts.js';

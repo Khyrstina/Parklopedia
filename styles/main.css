@@ -2,6 +2,7 @@
 @import "nav.css";
 @import "headerVideo.css";
 @import "searchJsonResults.css";
+@import "landing.css";
 
 /* Reset and global styles */
 html {
@@ -50,6 +51,7 @@ body {
 /* Main Search Area styles */
 .mainSearchArea {
     text-align: center;
+    background-color: var(--light-green);
 }
 
 .aboutSearchParagraphBox {
@@ -227,9 +229,6 @@ footer ul li a {
         border: 5px solid #e7e6d6;
     }
 
-    .sidepanel ul li a {
-        font-size: 1rem;
-    }
 
     .grid-container {
         width: 100%;

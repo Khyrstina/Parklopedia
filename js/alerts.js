@@ -56,7 +56,7 @@ export async function getAlertsInformation(parkCode) {
                                 : white;
                             }
 
-                            const color = alertsColor(alertsCategoryLowercase);
+                            const color = alertsColor();
                             console.log(color);
 
                             // Set up to create a better date format

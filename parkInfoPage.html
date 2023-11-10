@@ -19,31 +19,23 @@
         <button class="openbtn" id="hamburgerMenu" aria-label="Open Navigation Menu">&#9776;</button>
     </nav>
     <header class="header">
+        <div class="centered">
+            <img src="images/Logos/logoOrangeCream.PNG" alt="Parklopedia Logo">
+        </div>
+        <div class="bottom-center">
+        </div>
         <div class="hero">
-            <div class="muteButton">
-                <button id="mute">
-                <img src="images/genericIcons/muteIconSmall.png" class="muteIconImg">
-                </button>
-            </div>
+ 
             <div class="videoContainer">
             <video
             poster="images/GeneratedNationalPark.png"
-            autoplay muted loop
+            autoplay muted
             id="backgroundVideo">
-                <source src="images/headerBackgrounds/OlympicNationalPark2023AI.mp4" type="video/mp4"/>
+                <source src="images/headerBackgrounds/auroraHeader.mp4" type="video/mp4"/>
                 Your Browser Does Not Support This Video.
             </video> 
 
         </div>
- 
-            <img class="logo centered" src="images/Logos/logoOrangeCream.PNG">
-
-            <div class="centered">
-                <h1>Park Information</h1>
-            </div>
-            <div class="bottom-center">
-                <a class="skip-link" href="#main">&#8595 Main Content &#8595</a>
-            </div>
             <div id="mySidepanel" class="sidepanel">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -110,7 +102,17 @@
                 <div class="feesDescriptionHeader" id="feesDescriptionHeader">
                 <h3>Entrance Fees: </h3>
                 </div>
-                <p id="feeInformation"> </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type of Fee</th>
+                            <th>Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody id="feeInformation">
+
+                    </tbody>
+                </table>
                 </div>
                 <div class="npsButton" id="npsButton">
                 <button class='npsPageButton'><a id="parkUrl" href="">Click here for the NPS entry on this
@@ -156,9 +158,46 @@
 
     </div>
 
-    <div class="alerts flex-column"> Breaking news! Trees are real! That's right, I know it's hard to believe but they do in
-        fact exist.</div>
-    </div>
+    <section class="alerts flex-column"> 
+        <div class="alertsHeader" id="alertsHeader">
+            <h3>Alerts: </h3> </div>
+        <div class="alertsColorKey">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Alert Type</th>
+                        <th>Color</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Danger</td>
+                        <td style="background-color: #864622; color: #fff;">Dark Orange</td>
+                    </tr>
+                    <tr>
+                        <td>Caution</td>
+                        <td style="background-color: #FFD580; color: #000;">Light Orange</td>
+                    </tr>
+                    <tr>
+                        <td>Information</td>
+                        <td style="background-color: #90EE90; color: #000;">Green</td>
+                    </tr>
+                    <tr>
+                        <td>Park Closure</td>
+                        <td style="background-color: #ADD8E6; color: #000;">Blue</td>
+                    </tr>
+                    <tr>
+                        <td>Other</td>
+                        <td style="background-color: #fff; color: #000;">White</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="alertsInformationBox">
+            
+        </div>
+        </div>
+    </section>
 
 
     <div class="amenities">
@@ -253,7 +292,6 @@
     <script type="module" src="js/config.js"></script>
     <script type="module" src="js/alerts.js"></script>
     <script type="module" src="js/parkInfo.js"></script>
-    <script type="module" src="js/mute.js"></script>
 
 </body>
 

@@ -1,0 +1,135 @@
+@import "commonlyUsed.css";
+main {
+  color: var(--coffee-black);
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+article {
+  background-color: var(--light-green);
+  color: whitesmoke;
+}
+
+article > h1 {
+  display: flex;
+  margin: 0rem;
+  padding: 0rem;
+}
+
+article > h2 {
+  background-color: var(--dark-green-transparent);
+  margin: 0rem;
+  width: 98%;
+}
+
+article > #secondH2 {
+  padding: 1rem 0rem;
+  width: 98%;
+}
+
+.aboutHeader {
+  background-color: var(--dark-green-opaque);
+  border-radius: 5px;
+  color: white;
+  width: 99%;
+  font-size: 2rem;
+}
+
+.parklopediaAbilitiesList {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  row-gap: 0.25rem;
+  grid-template-areas:
+    "abilitiesListOne"
+    "abilitiesListTwo"
+    "abilitiesListThree"
+    "abilitiesListFour"
+    "abilitiesListFive";
+  background-color: var(--dark-green-transparent);
+  width: 98%;
+}
+
+.abilitiesListOne {
+  grid-area: abilitiesListOne;
+  grid-template-areas: "abilitiesListOneIcon abilitiesListOneText";
+  margin-top: 0.25rem;
+}
+.abilitiesListTwo {
+  grid-area: abilitiesListTwo;
+  grid-template-areas: "abilitiesListTwoIcon abilitiesListTwoText";
+}
+
+.abilitiesListThree {
+  grid-area: abilitiesListThree;
+  grid-template-areas: "abilitiesListThreeIcon abilitiesListThreeText";
+}
+
+.abilitiesListFour {
+  grid-area: abilitiesListFour;
+  grid-template-areas: "abilitiesListFourIcon abilitiesListFourText";
+}
+
+.abilitiesListFive {
+  grid-area: abilitiesListFive;
+  grid-template-areas: "abilitiesListFiveIcon abilitiesListFiveText";
+  margin-bottom: 0.25rem;
+}
+
+.abilitiesListOneText,
+.abilitiesListTwoText,
+.abilitiesListThreeText,
+.abilitiesListFourText,
+.abilitiesListFiveText {
+  text-align: justify;
+  padding-left: 1rem;
+}
+
+.grid-features-list:nth-of-type(2n + 1) {
+  background-color: var(--coffee-black);
+  color: white;
+}
+
+.grid-features-list:nth-of-type(2n + 2) {
+  background-color: var(--dark-green);
+  color: white;
+}
+
+.aboutVideo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.aboutVideo > h3 {
+    background-color: var(--dark-green-opaque);
+    border-radius: 5px;
+    color: white;
+    width: 99%;
+    font-size: 1.5rem;
+    padding: 1rem 0rem;
+    margin: 0rem;
+}
+
+.aboutVideo > h4 {
+    background-color: var(--dark-green-transparent);
+    margin: 0rem;
+    width: 98%;
+  }
+  
+  .aboutVideo > #secondH2 {
+    padding: 1rem 0rem;
+    width: 98%;
+  }
+
+.videoContainer {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.videoContainer > video {
+  border-radius: 5px;
+}

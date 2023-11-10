@@ -16,31 +16,20 @@
         <button class="openbtn" id="hamburgerMenu" aria-label="Open Navigation Menu">&#9776;</button>
     </nav>
     <header class="header">
-        <div class="hero">
-            <div class="muteButton">
-                <button id="mute">
-                <img src="images/genericIcons/muteIconSmall.png" class="muteIconImg">
-                </button>
-            </div>
+        <div class="centered">
+            <img src="images/Logos/logoOrangeCream.PNG" alt="Parklopedia Logo">
+        </div>
+
+        <div class="headerVideo">
             <div class="videoContainer">
             <video
             poster="images/GeneratedNationalPark.png"
-            autoplay muted loop
+            autoplay muted
             id="backgroundVideo">
-                <source src="images/headerBackgrounds/OlympicNationalPark2023AI.mp4" type="video/mp4"/>
+                <source src="images/headerBackgrounds/auroraHeader.mp4" type="video/mp4"/>
                 Your Browser Does Not Support This Video.
             </video> 
-
         </div>
- 
-            <img class="logo centered" src="images/Logos/logoOrangeCream.PNG">
-
-            <div class="centered">
-                <h1>Search Parks</h1>
-            </div>
-            <div class="bottom-center">
-                <a class="skip-link" href="#main">&#8595 Main Content &#8595</a>
-            </div>
             <div id="mySidepanel" class="sidepanel">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -117,6 +106,5 @@
     <script type="module" src="js/config.js"></script>
     <script type="module" src="js/stateSearch.js"></script>
     <script type="module" src="js/parkAPI.js"></script>
-    <script type="module" src="js/mute.js"></script>
 </body>
 </html>

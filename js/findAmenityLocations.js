@@ -47,8 +47,8 @@ export async function getThingsToDoInformation(fourCharacterParkCode, header, am
       // Create a new section for each amenity type
       const amenityList = document.createElement('div');
       // Create a new ul for each matching amenity of that type
-      const amenityHeaderItem = document.createElement('ul');
-      amenityHeaderItem.textContent = header; // Use the id of the checkbox.id as the header
+      const amenityHeaderItem = document.createElement('h4');
+      amenityHeaderItem.textContent = header.toUpperCase(); // Use the id of the checkbox.id as the header
       amenityList.appendChild(amenityHeaderItem);
   
 
@@ -58,7 +58,7 @@ export async function getThingsToDoInformation(fourCharacterParkCode, header, am
         const parks = amenity.parks; //Due to API issue, this currently retrieves an empty array
   
         // Create a new li for each matching amenity
-        const amenityListItem = document.createElement('li');
+        const amenityListItem = document.createElement('h6');
         amenityListItem.textContent = amenityName;
         amenityList.appendChild(amenityListItem);
   

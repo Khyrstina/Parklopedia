@@ -37,6 +37,28 @@ export async function getAlertsInformation(parkCode) {
                             const alertsTitle = alert.title;
                             const alertsUrl = alert.url;
 
+                            //regular expression/regex to remove spaces and make lowercase
+                            // /s is a special character that matches blank spaces, g is a flag that means "global"
+                            // global means every matching character is replaces instead of just the first one
+                            const alertsCategoryLowercase = alertsCategory.toLowerCase().replace(/\s/g, ''); 
+                            console.log(alertsCategoryLowercase);
+                            const red = '#864622';
+                            const orange = '#FFD580';
+                            const green = '#90EE90';
+                            const blue = '#ADD8E6';
+                            const white = '#fff';
+
+                            function alertsColor () {
+                                return alertsCategoryLowercase.includes('danger') ? red
+                                : alertsCategoryLowercase.includes('caution') ? orange
+                                : alertsCategoryLowercase.includes('information') ? green
+                                : alertsCategoryLowercase.includes('parkclosure') ? blue
+                                : white;
+                            }
+
+                            const color = alertsColor();
+                            console.log(color);
+
                             // Set up to create a better date format
                             let newAlertDateFormat = new Date(alert.lastIndexedDate);
                             let alertDay = newAlertDateFormat.getDate();
@@ -47,8 +69,9 @@ export async function getAlertsInformation(parkCode) {
 
                             const preferredDateFormat = `${alertMonth}/${alertDay}/${alertYear}`;
 
-                            return `<h4>${alertsCategory}: ${alertsTitle}</h4> 
-                                <p>Description: ${alertsDescription}
+
+                            return `<h4 class="alertsCategory" style="color:${color};">${alertsTitle}</h4> 
+                                <p>${alertsDescription}
                                 Date: ${preferredDateFormat} - ${differenceInDays} day${plural} Ago <br>
                                 ${alertsUrl ? `<a href="${alertsUrl}" target="_blank">More Info Here</a>` : ''}
                                 </p>`;

@@ -7,47 +7,41 @@ video {
     object-position: center top;
     z-index: 1;
     object-fit: cover;
-    filter: contrast(78%);
+    border-radius: 5px;
 }
 
-.muteButton {
+.header-video {
     position: absolute;
-    top: 5rem;
-    right: 2.25rem;
+    width: 100%;
+    height: 100%;
+    object-position: center top;
     z-index: 3;
+    object-fit:contain;
+    border-radius: 5px;
 }
-
-.muteButton img {
-    width: 1.25rem;
-    background-color: #f3f2ea;
-    border-color: #e7e6d6;
-}
-
 
 .header {
     font-size: 4rem;
     color: #fff;
+    background-color: var(--light-green);
 }
 
-.centered h1 {
+.centered img {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
-    z-index: 2;
+    max-width: 100%;
+    z-index: 3;
+    overflow: hidden;
 }
 
-.logo {
-    position: absolute;
+.center-bottom {
+
+    color: #fff;
+    font-size: 1.5rem;
     z-index: 2;
-    width: 40%;
-    opacity: 150%;
-    filter: drop-shadow(5px 5px 5px #222);
-    -webkit-filter: drop-shadow(5px 5px 5px #222);
 }
 
 .skip-link {
+    justify-content: center;
     text-decoration: none;
     font-size: 1.5rem;
     cursor: pointer;
@@ -58,6 +52,11 @@ video {
     border: 5px solid var(--dark-orange);
     transition: background-color .4s ease, border-color .4s ease, color .4s ease;
     display: flex;
+    z-index: 4;
+    position: absolute;
+    bottom: 4%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .skip-link:hover {
@@ -65,14 +64,6 @@ video {
     border: 5px solid var(--dark-orange);
     color: #383330;
 }
-
-.bottom-center {
-    position: absolute;
-    bottom: 4%;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
 
 .hero {
     position: relative;

@@ -51,6 +51,7 @@
 .grid-item a {
     text-decoration: none;
     color: inherit;
+    position: relative;
 }
 
 .grid-item-image {
@@ -69,16 +70,15 @@
 }
 
 /* Create a gradient overlay */
-.grid-item-image::before {
+ .grid-item-image:before{
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
     background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%);
     z-index: 1;
-}
+} 
 
 .grid-item:hover .grid-item-image img {
     transform: scale(1.1);
@@ -97,13 +97,17 @@
     text-align: center;
     z-index: 2;
 }
-
-.parkButton::before {
+.parkButton {
+    position: relative;
+}
+.parkButton:before {
     content: "";
     opacity: 0;
     position: absolute;
     width: 100%;
     height: 100%;
+    left: 0;
+    top: 0;
     cursor: pointer;
     z-index: 3;
 }

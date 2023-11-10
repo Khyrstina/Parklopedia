@@ -87,12 +87,19 @@ async function fetchParkDetails(parkId) {
       const feeTitle = fee.title;
       const feeCost = fee.cost;
 
-      feeInformation += `<p>${feeTitle}: <br> Cost: ${feeCost}</p>`;
+      feeInformation +=                  
+      `<tr>
+      <td>${feeTitle}</td>
+      <td>$${feeCost}</td>
+      </tr>`;
 
     
     });
   } else {
-    feeInformation = 'No entrance fee information could be retrieved for this park.';
+    feeInformation += `<tr>
+    <td>No Fee Information Could Be Found</td>
+    <td>?</td>
+    </tr>`;
 
   }
 
@@ -218,12 +225,10 @@ let mainWeatherStatus = await findCorrectStatus(conditionCode);
 
   //Begin .alerts
   const alertsInformation = await getAlertsInformation(fourCharacterParkCode);
-  const alertInformation = document.querySelector('.alerts');
-  const alertsHeader = `<div class="alertsHeader" id="alertsHeader">
-  <h3>Alerts: </h3> </div>`;
-  alertInformation.innerHTML = alertsHeader + alertsInformation;
+  const alertInformation = document.querySelector('.alertsInformationBox');
+
+  alertInformation.innerHTML =  alertsInformation;
 
 
 
 }
-

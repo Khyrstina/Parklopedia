@@ -19,8 +19,7 @@ const amenitiesHTML = document.getElementById('availableAmenitiesId');
 
 document.addEventListener('DOMContentLoaded', () => {
   const parkID = sessionStorage.getItem('parkIDSpecific');
-  const parkName = sessionStorage.getItem('parkName');
-  getParkInfo(parkID, parkName).then((park) => {
+  getParkInfo(parkID).then((park) => {
     initializeSlides(park);
   });
   fetchParkDetails(parkID);

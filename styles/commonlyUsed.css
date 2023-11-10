@@ -1,6 +1,8 @@
 :root {
     --light-green: #c9d9c3;
     --dark-green: #455947;
+    --dark-green-opaque: #455947c5;
+    --dark-green-transparent: #45594758;
     --vanilla: #d4bda1;
     --dark-orange: #864622;
     --light-orange: #c78853;
@@ -30,4 +32,18 @@
         align-items: center;
         justify-content: center;
     }
+
+    .grid-features-list {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 1fr;
+    justify-content: start;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin: 0rem 1rem;
+    border-radius: 5px;
+    }
+
+
 }

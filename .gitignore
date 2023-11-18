@@ -2,3 +2,6 @@ js/config.js
 .vscode/settings.json
 
 .vscode/launch.json
+node_modules/
+bin/
+vscode/

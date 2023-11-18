@@ -1,0 +1,513 @@
+@import "commonlyUsed.css";
+@import "nav.css";
+@import "headerVideo.css";
+@import "parkAmenities.css";
+@import "weatherLayout.css";
+
+html {
+  margin: 0;
+  font-family: "AR One Sans", sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  background-color: var(--light-green);
+}
+
+body {
+  margin: 0;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+article {
+  max-width: 940px;
+  display: grid;
+  color: #050b04;
+}
+
+.main {
+  height: auto;
+  background-color: #02161a;
+  color: #f2f7f6;
+}
+
+.blurBackground {
+  position: absolute;
+  background-image: url(../images/leavesBackground/backgroundLeaves1.png);
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  filter: blur(8px);
+  background-attachment: fixed;
+  z-index: 0;
+  background-clip: border-box;
+  overflow: hidden;
+}
+
+.main h2,
+h3 {
+  text-align: center;
+}
+
+.main p {
+  padding: 1.5rem;
+  text-align: justify;
+}
+
+.main h2,
+h3,
+p {
+  position: relative;
+  z-index: 3;
+}
+
+.customParkContent {
+  background-color: var(--light-green);
+  position: relative;
+  z-index: 2;
+}
+
+/* Grid Layout */
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 0.1fr;
+  gap: 0.5rem 0.5rem;
+  grid-auto-flow: row;
+
+  grid-template-areas:
+    "weather mainParkInformation mainParkInformation"
+    "contact mainParkInformation mainParkInformation";
+  justify-content: space-around;
+  align-content: center;
+  background-color: var(--light-green);
+  margin: 0.25rem;
+}
+
+.weather {
+  grid-area: weather;
+  background-color: var(--dark-green-opaque);
+  padding: 20px;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.weatherHeader {
+  background-image: url("/images/headerBackgrounds/header1.png");
+  background-clip: border-box;
+  background-repeat: round;
+  overflow: hidden;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  border: solid #abb8c361;
+  border-radius: 5px;
+  opacity: 0.95;
+}
+
+.contact {
+  grid-area: contact;
+  background-color: var(--dark-green-opaque);
+  color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.contactHeader {
+  background-image: url("/images/headerBackgrounds/header6.png");
+  background-clip: border-box;
+  background-repeat: round;
+  overflow: hidden;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  border: solid #abb8c361;
+  border-radius: 5px;
+  opacity: 0.95;
+}
+
+.alerts {
+  /* grid-area: alerts; */
+  background-color: var(--dark-green-opaque);
+  border-radius: 5px;
+  color: #fff;
+  padding: 20px;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+
+
+/* Begin Alerts */
+.alertsHeader {
+  background-image: url("/images/headerBackgrounds/header7.png");
+  background-clip: border-box;
+  overflow: hidden;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  border: solid #abb8c361;
+  border-radius: 5px;
+  opacity: 0.95;
+  margin-bottom: 0.5rem;
+}
+
+.alertsColorKey {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mainParkInformation {
+  grid-area: mainParkInformation;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr;
+  grid-auto-flow: row;
+  align-content: space-between;
+  align-items: center;
+  grid-template-areas:
+    "parkInfo"
+    "seasonalInfo"
+    "specialHours"
+    "feeInfo"
+    "npsButton";
+  background-color: var(--dark-green-opaque);
+  color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+.parkInfo {
+  grid-area: parkInfo;
+}
+
+.parkDescriptionHeader {
+  background-image: url("/images/headerBackgrounds/header2.png");
+  background-clip: border-box;
+  background-repeat: round;
+  overflow: hidden;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  border: solid #abb8c361;
+  border-radius: 5px;
+  opacity: 0.95;
+}
+
+.seasonalInfo {
+  grid-area: seasonalInfo;
+}
+
+.seasonalDescriptionHeader {
+  background-image: url("/images/headerBackgrounds/header3.png");
+  background-clip: border-box;
+  background-repeat: round;
+  overflow: hidden;
+  background-size: contain;
+  display: flex;
+  border: solid #abb8c361;
+  justify-content: center;
+  border-radius: 5px;
+  opacity: 0.95;
+}
+
+.specialHours {
+  grid-area: specialHours;
+}
+
+.specialHoursDescriptionHeader {
+  background-image: url("/images/headerBackgrounds/header4.png");
+  background-clip: border-box;
+  background-repeat: round;
+  overflow: hidden;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  border: solid #abb8c361;
+  border-radius: 5px;
+  opacity: 0.95;
+}
+
+.feeInfo {
+  grid-area: feeInfo;
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+}
+
+.feeInfo > table, tbody, tr, td {
+  border: 1px solid #864622;
+  border-collapse: collapse;
+  padding: 0.5rem;
+  text-align: center;
+  background-color: var(--light-green);
+  color: #864622;
+}
+
+.feesDescriptionHeader {
+  background-image: url("/images/headerBackgrounds/header5.png");
+  background-clip: border-box;
+  background-repeat: round;
+  overflow: hidden;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  border: solid #abb8c361;
+  border-radius: 5px;
+  opacity: 0.95;
+}
+
+.npsButton {
+  grid-area: npsButton;
+  display: flex;
+  justify-content: center;
+}
+
+.mainParkInformation button {
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: var(--vanilla);
+  padding: 0.6rem 1rem;
+  transition: background-color 0.4s ease, border-color 0.4s ease,
+    color 0.4s ease;
+  position: relative;
+  border: 5px solid #864622;
+}
+
+.mainParkInformation button a {
+  color: #864622;
+  text-decoration: none;
+}
+
+.mainParkInformation button:hover {
+  background-color: #c78853;
+  border: 5px solid #864622;
+}
+
+.mainParkInformation button:hover a {
+  color: #383330;
+}
+
+.parkName {
+  grid-area: parkName;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  font-weight: 1000;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--dark-green-opaque);
+  padding: 20px;
+  margin: 0.5rem 0.25rem;
+  border-radius: 5px;
+  position: relative;
+  z-index: 1;
+}
+
+.footer {
+  grid-area: footer;
+  text-align: center;
+  color: #fff;
+  background-color: var(--dark-green-opaque);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.footer ul {
+  display: flex;
+  flex-direction: row;
+}
+
+.footer ul li {
+  padding: 0.5em;
+}
+
+.footer ul li a {
+  color: #fff;
+  text-decoration: solid;
+}
+
+/* Specific to slideshow */
+.slideshow-container {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+  background-color: #864622;
+  z-index: 2;
+}
+
+.mySlides img {
+  width: 100%;
+  height: auto;
+}
+
+.mySlides {
+  display: none;
+}
+
+.prevNextBox {
+  justify-content: space-between;
+  align-items: center;
+  border: 7px solid #864622;
+  border-top: transparent;
+  background-color: var(--light-green);
+  z-index: 2;
+}
+
+#generateURL {
+  align-items: center;
+  border: 7px solid #864622;
+  background-color: var(--light-green);
+  z-index: 2;
+}
+
+.prevNextBox button, #generateURL {
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: var(--light-green);
+  color: #864622;
+  padding: 0.6rem 1rem;
+  text-wrap: nowrap;
+  transition: background-color 0.4s ease, border-color 0.4s ease,
+    color 0.4s ease;
+  position: relative;
+  font-weight: bold;
+  z-index: 3;
+  min-width: 50%;
+}
+
+.prevNextBox button:hover, #generateURL:hover {
+  background-color: #c78853;
+  color: #383330;
+}
+
+article ul li {
+  height: auto;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+
+
+/*Media queries*/
+@media screen and (max-width: 600px) {
+  body {
+    max-width: 100%;
+  }
+
+  .top-right {
+    position: fixed;
+    top: 0.75rem;
+    right: 2rem;
+    z-index: 2;
+  }
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5fr 1fr 0.25fr;
+    grid-template-areas:
+      "weather"
+      "mainParkInformation"
+      "contact";
+  }
+  .centered h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
+    font-size: 1rem;
+  }
+/* 
+  .amenities {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(7, 1fr);
+    align-content: space-between;
+    align-items: center;
+    grid-template-areas:
+      "amenitiesHeader amenitiesHeader"
+      "accessibility campsites"
+      "convenience exhibits"
+      "food-drink information"
+      "pet-friendly recreation"
+      "safety safety"
+      "generateURL generateURL";
+  }
+
+  .amenitiesHeader {
+    grid-column: 1 / 3;
+    grid-row: 1 / 1;
+    background-image: url("/images/headerBackgrounds/header1.png");
+    background-clip: border-box;
+    overflow: hidden;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    border: solid #abb8c361;
+    border-radius: 5px;
+    opacity: 0.95;
+    margin-bottom: 0.5rem;
+  }
+
+  label#accessibility {
+    grid-area: accessibility;
+  }
+
+  label#campsites {
+    grid-area: campsites;
+  }
+
+  label#convenience {
+    grid-area: convenience;
+  }
+
+  label#exhibits {
+    grid-area: exhibits;
+  }
+
+  label#food-drink {
+    grid-area: food-drink;
+  }
+
+  label#information {
+    grid-area: information;
+  }
+
+  label#pet-friendly {
+    grid-area: pet-friendly;
+  }
+
+  label#recreation {
+    grid-area: recreation;
+  }
+
+  label#safety {
+    grid-area: safety;
+  }
+
+  #generateURL {
+    grid-area: generateURL;
+  }
+}
+ */

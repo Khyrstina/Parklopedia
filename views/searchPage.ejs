@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Find information on National Parks">
-
+    <link rel="shortcut icon" href="images/Logos/favicon.ico">
+    <link rel="icon" type="image/gif" href="images/Logos/favicon.ico">
     <link href="/stylesheets/main.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
-    <title>Search Parks</title>
+    <title>Search</title>
 </head>
 <body>
-    <nav class="menu top-right">
-        <button class="openbtn" id="hamburgerMenu" aria-label="Open Navigation Menu">&#9776;</button>
-    </nav>
+    <% include nav.ejs %>
     <header class="header">
         <div class="centered">
             <img src="images/Logos/logoOrangeCream.PNG" alt="Parklopedia Logo">
@@ -30,7 +29,6 @@
                 Your Browser Does Not Support This Video.
             </video> 
         </div>
-        <% include nav.ejs %> 
         </div>
     </header>
     <main id="main" class="main">
@@ -49,7 +47,7 @@
 
             <div class="search-container flex-row">
                 <div class="searchBackground flex-column">
-                <label for="searchInput" class="labelSearchInput" id="labelSearchInput">Please enter a state below and choose from the suggested options:<br></label>
+                <label for="searchInput" class="labelSearchInput" id="labelSearchInput"><h3>Please enter a state below and choose from the suggested options:</h3></label>
                 <input type="text" id="searchInput" class="search-input" placeholder="Enter a State here..." aria-describedby="suggestionsContainer" aria-label="State Input">
                 <button id="searchBarButton" class="search-bar-button" aria-label="Search Button">Search</button>
                 <div id="suggestionsContainer" class="suggestions-container" tabindex="0" role="region" aria-label="State Search Suggestions"></div>

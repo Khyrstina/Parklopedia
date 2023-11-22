@@ -1,119 +1,209 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
     <meta name="description" content="Find out information on National Parks" />
-
+    <link rel="shortcut icon" href="images/Logos/favicon.ico" />
+    <link rel="icon" type="image/gif" href="images/Logos/favicon.ico" />
     <link href="/stylesheets/main.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=AR+One+Sans&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=AR+One+Sans&family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Welcome!</title>
-</head>
+  </head>
 
-
-<body>
-    <nav class="menu top-right">
-        <button class="openbtn" id="hamburgerMenu">&#9776;</button>
-    </nav>
+  <body>
+    <% include nav.ejs %>
     <header class="header">
-        <div class="centered">
-            <img src="images/Logos/logoOrangeCream.PNG" alt="Parklopedia Logo">
-        </div>
+      <div class="centered">
+        <img src="images/Logos/logoOrangeCream.PNG" alt="Parklopedia Logo" />
+      </div>
 
-        <div class="headerVideo">
-            <div class="videoContainer">
-            <video
+      <div class="headerVideo">
+        <div class="videoContainer">
+          <video
             poster="images/GeneratedNationalPark.png"
-            autoplay muted
-            id="backgroundVideo">
-                <source src="images/headerBackgrounds/autumnLeavesHeader.mp4" type="video/mp4"/>
-                Your Browser Does Not Support This Video.
-            </video> 
+            autoplay
+            muted
+            id="backgroundVideo"
+          >
+            <source
+              src="images/headerBackgrounds/forestHeader.mp4"
+              type="video/mp4"
+            />
+            Your Browser Does Not Support This Video.
+          </video>
         </div>
-        <% include nav.ejs %> 
-        </div>
+      </div>
     </header>
 
-
     <main id="main" class="main" tabindex="-1">
-
-<article class="flex-column-center text-align">
-    <div class="aboutHeader">
-    <h1>What is Parklopedia?</h1>
-</div>
-    <h2 id="firstH2">Parklopedia allows you to search and access information about National Parks directly from the publically available National Park Service API!</h2>
-    <h2 id="secondH2">This means you can...</h2>
-    <section class="parklopediaAbilitiesList">
-        <div class="abilitiesListOne grid-features-list">
-            <div class="abilitiesListOneIcon">
-            <img src="/images/genericIcons/search.png" alt="search">
-            </div>
-            <div class="abilitiesListOneText ">
-            <p>Search by State name to find available National Parks. </p>
-            </div>
+      <article class="flex-column-center text-align">
+        <section class="aboutVideo">
+          <h2>More Than Information, It's a Journey:</h2>
+          <h4 id="firstH4">
+            Watch our narrated video featuring the serene landscapes of Olympic
+            National Park.
+          </h4>
+        </section>
+        <div class="iframeContainer">
+          <iframe
+            class="responsive-iframe"
+            src="https://www.youtube.com/embed/IUYwhfyzODA?si=bAWKBySz0u8az_oy&rel=0"
+            title="Parklopedia Narrated Video"
+            allowfullscreen
+            no-referrer
+            showinfo
+            >Your browser does not support embedded frames.</iframe>
         </div>
-        <div class="abilitiesListTwo grid-features-list">
-            <div class="abilitiesListTwoIcon">
-            <img src="/images/genericIcons/click.png" alt="">
+
+        <section class="parklopediaAbilitiesList">
+          <div class="abilitiesListOne grid-features-list">
+            <div class="abilitiesListOneText">
+              <h2>What can Parklopedia do for you?</h2>
             </div>
+          </div>
+          <div class="abilitiesListTwo grid-features-list">
             <div class="abilitiesListTwoText">
-            <p>Select a Park to navigate to a page dedicated to your selected Park with more information.</p>
+              <p>Search by State to find relevant parks near you.</p>
             </div>
-        </div>
-        <div class="abilitiesListThree grid-features-list">
-            <div class="abilitiesListThreeIcon">
-            <img src="/images/genericIcons/weather.png" alt="">
-            </div>
+          </div>
+          <div class="abilitiesListThree grid-features-list">
             <div class="abilitiesListThreeText">
-            <p>Use the current and three day forecast to see what the weather status is for the park.</p>
+              <p>
+                Retrieve the current and three-day forecast for a park you
+                select.
+              </p>
             </div>
-        </div>
-        <div class="abilitiesListFour grid-features-list">
-            <div class="abilitiesListFourIcon">
-            <img src="/images/genericIcons/alert.png" alt="">
-            </div>
+          </div>
+          <div class="abilitiesListFour grid-features-list">
             <div class="abilitiesListFourText">
-            <p>Use the Alerts section to see if there are any alerts or closures for the selected park.</p>
+              <p>
+                Display any alerts made by the NPS about that park within the
+                last three months.
+              </p>
             </div>
+          </div>
+          <div class="abilitiesListFive grid-features-list">
+            <div class="abilitiesListFiveText">
+              <p>
+                Search for amenity types you're interested in, and find out if
+                it's available at the park you selected.
+              </p>
             </div>
-            <div class="abilitiesListFive grid-features-list">
-                <div class="abilitiesListFiveIcon">
-                <img src="/images/genericIcons/check.png" alt="">
-                </div> 
-                <div class="abilitiesListFiveText">
-                <p>See if specific amenities are listed as available at your selected park.</p>
-                </div>
-            </div>        
-    </section>
-    
-    <section class="aboutVideo">
-        <h3>Discover the Transformative Power of National Parks</h3>
-        <h4 id="firstH4">Visiting National Parks offers a profound connection with the natural world, providing a refreshing escape from the demands of modern life and leaving you with lasting memories that remind you of the simple joys of nature.<br></h4>
-        <h4 id="secondH4"><br>Find out more by watching below!</h4>
-    </section>
-    <div class="videoContainer">
-<!--         <video
-        poster="images/Logos/TitleScreenForVideo.png"
-         controls="true" volume="0.5"
-        id="backgroundVideo">
-            <source src="images/headerBackgrounds/OlyNatParkEditedByKhyrstina.mp4" type="video/mp4"/>
-            Your Browser Does Not Support This Video.
-        </video> 
- -->
+          </div>
+        </section>
 
- <iframe width="560" height="315" src="https://www.youtube.com/embed/IUYwhfyzODA?si=bAWKBySz0u8az_oy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
-</article>
+        <section class="howItWorks">
+          <h2>Need more in depth instructions? Here's a step by step guide to Parklopedia.</h2>
+
+          <div class="howItWorks">
+            <p>
+              <img src="images/instructions/stepOne.png" alt="Search Box" />
+              Step One: Start typing in the name of the State you want to find a
+              park in.
+            </p>
+          </div>
+          <div class="howItWorks">
+            <p>
+              <img src="images/instructions/stepTwo.png" alt="Search Box" />
+              Step Two: A list of suggestions will display below the Search
+              button, select the State you're interested in searching. Note: You
+              must select a State from the suggestions list, or you will be
+              unable to Search.
+            </p>
+          </div>
+          <div class="howItWorks">
+            <p>
+              <img src="images/instructions/stepThree.png" alt="Search Box" />
+              Step Three: Click Search to retrieve the parks available in your
+              selected State.
+            </p>
+          </div>
+
+          <div class="howItWorks">
+            <p>
+              <img src="images/instructions/stepFour.png" alt="Search Box" />
+              Step Four: Look through the available parks that are returned, and
+              select one you're interested in learning more about. selected.
+            </p>
+          </div>
+          <div class="howItWorks">
+            <p>
+              <img src="images/instructions/stepFive.png" alt="Search Box" />
+              Step Five: You will be taken to a page specific to the park you
+              selected. At the top you'll see images from that park, you can
+              navigate through the set of images by clicking the Previous or
+              Next buttons below the image.
+            </p>
+          </div>
+          <div class="howItWorks">
+            <p>
+              <img src="images/instructions/stepSix.png" alt="Search Box" />
+              Step Six: If you scroll down the page, on the left you'll see the
+              current weather and the three day forecast for the park you
+              selected. On the right you'll see an overview of park information
+              including a general description, seasonal information, and if the
+              NPS has posted any fees or special operating hours for the park.
+            </p>
+          </div>
+          <div class="howItWorks">
+            <p>
+              <img src="images/instructions/stepSeven.png" alt="Search Box" />
+              Step Seven: Scrolling down a bit further you'll see a list of any
+              alerts the NPS has posted for the park you selected. These alerts
+              are updated regularly, and only those that were posted in the last
+              3 months will display. The titles are color coded to indicate the
+              type of alert, and you can use the included table to determine
+              what type of alert each color represents. There is a link under
+              each one that will take you to the NPS website for that alert,
+              where you can find more information.
+            </p>
+          </div>
+
+          <div class="howItWorks">
+            <p>
+              <img src="images/instructions/stepEight.png" alt="Search Box" />
+              Step Eight: A bit further down the page you'll reach the amenities
+              section. You can use the checkboxes to filter the list of
+              amenities to only categories that you are interested in for your
+              selected park. Currently due to an error on the NPS side, you can
+              see if that amenity is available at the park, but you cannot see
+              the locations that they are available. After selecting the
+              amenities you're interested in, click the Search button to
+              retrieve the list.
+            </p>
+          </div>
+          <div class="howItWorks">
+            <p>
+              <img src="images/instructions/stepNine.png" alt="Search Box" />
+              Step Nine: A list of confirmed amenities will display below the
+              Search Button. They are organized under the amenity type they
+              belong to.
+            </p>
+          </div>
+          <h3>
+            Ready to start your own search? Click the magnifying glass in the
+            navigation bar at the top of the page, or click the button below!
+          </h3>
+          <button
+            class="goToSearchPage"
+            onclick="window.location.href='/search'"
+          >
+            Search
+          </button>
+        </section>
+      </article>
     </main>
 
-<% include footer.ejs %>
-    <script src="javascripts/navigation.js"></script>
-</body>
-
+    <% include footer.ejs %>
+  </body>
 </html>

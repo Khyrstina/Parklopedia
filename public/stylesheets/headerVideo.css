@@ -7,7 +7,6 @@ video {
     object-position: center top;
     z-index: 1;
     object-fit: cover;
-    border-radius: 5px;
 }
 
 .header-video {
@@ -17,13 +16,11 @@ video {
     object-position: center top;
     z-index: 3;
     object-fit:contain;
-    border-radius: 5px;
 }
 
 .header {
     font-size: 4rem;
     color: #fff;
-    background-color: var(--light-green);
 }
 
 .centered img {

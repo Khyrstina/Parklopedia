@@ -1,77 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
     <meta name="description" content="Find out information on National Parks" />
+    <link rel="shortcut icon" href="images/Logos/favicon.ico">
+    <link rel="icon" type="image/gif" href="images/Logos/favicon.ico">
+    <link href="/stylesheets/about.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=AR+One+Sans&family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
 
-    <link href="styles/main.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=AR+One+Sans&family=Open+Sans&display=swap" rel="stylesheet">
-    <title>About Parklopedia</title>
-</head>
+    <title>About</title>
+  </head>
 
-<body>
-    <nav class="menu top-right">
-        <button class="openbtn" id="hamburgerMenu">&#9776;</button>
-    </nav>
+  <body>
+    <% include nav.ejs %>
     <header class="header">
+      <div class="centered">
+        <img src="images/Logos/logoOrangeCream.PNG" alt="Parklopedia Logo" />
+      </div>
 
-        <div class="hero">
+      <div class="headerVideo">
+        <div class="videoContainer">
+          <video
+            poster="images/GeneratedNationalPark.png"
+            autoplay
+            muted
+            id="backgroundVideo"
+          >
+            <source
+              src="images/headerBackgrounds/autumnLeavesHeader.mp4"
+              type="video/mp4"
+            />
+            Your Browser Does Not Support This Video.
+          </video>
+        </div>
+      </div>
+    </header>
 
+    <main id="main" class="main" tabindex="-1">
+      <article>
+        <h2>Why this Project?</h2>
+        <h4>Have you ever been somewhere that just completely changes your perspective?</h4>
+        <p>I lived in Washington State for a few years, and in order to become an honorary Washintonian I was taken by some friends to picnic on "The Mountain".
+            Now whent they say "The Mountain" what they really mean is Mt. Rainier, and by "on" the mountain, they meant close enough to appreciate it but not close enough to require a hike.
+            When I stepped out of the car, Mt. Rainier was so close I felt like I could reach out and touch it. It took up almost the entirety of my field of view.
+            I did what anyone would do in my situation...
+        </p>
+        <h4>I had an existential crisis.</h4>
+        <p>Now, I wouldn't say I'm "pro existential crisis", however that moment changed the trajectory of my whole life.
+            I wanted to see more, I wanted to learn, and the only thing stopping me from more experiences like this was my health.
+            So I got stronger, I got healthier, and I started to explore. 
+        </p>
+        <p>I now know from looking through all the data the National Park Service provides that they do so much more than just maintaining these parks.
+            I began this project to learn more about HTML, CSS, and JavaScript, but I continued it because it was fun.
+            I hope you enjoy it too.
+        </p>
 
-            <img class="header-img" src="images/GeneratedNationalPark.png" alt="" />
-            <div class="bottom-left"></div>
-            <div class="top-left"></div>
+        <h2>The Parklopedia Team:</h2>
 
-            <div class="bottom-right"></div>
-            <div class="centered">Parklopedia</div>
-            <div id="mySidepanel" class="sidepanel">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="searchpage.html">Search</a></li>
-                </ul>
+        <div class="flex-column-center profile">
+          <section class="container">
+
+              <div class="column-33Left">
+                <img
+                  src="/images/Khyrstina.jpg"
+                  alt="Khyrstina"
+                  style="width: 100%"
+                />
+              </div>
+              <div class="column-66Left">
+                <div class="container">
+                  <h2>Khyrstina Smith</h2>
+                  <p class="title">
+                    Meet Khyrstina, an Information Technology student with a
+                    passion for web development.
+                  </p>
+                  <p>
+                    Outside her studies, Khyrstina enjoys Arduino tinkering,
+                    keeping up with 🪐NASA news, and watching Formula1. In her early
+                    years, she aspired to be a paleontologist, favoring the
+                    Utahraptor 🦖. Open to collaboration and discussions,
+                    Khyrstina invites you to connect via LinkedIn or check out
+                    her GitHub!
+                  </p>
+                  <div class="socialButtons flex-row-center">
+                    <p><button class="button">LinkedIn</button></p>
+                    <p><button class="button">GitHub</button></p>
+                  </div>
+                </div>
+              </div>
             </div>
+          </section>
         </div>
 
 
+        <div class="flex-column-center profile">
+            <section class="container">
 
-    </header>
+                <div class="column-33Right">
+                  <img
+                    src="/images/Hollie.jpg"
+                    alt="Khyrstina"
+                    style="width: 100%"
+                  />
+                </div>
+                <div class="column-66Right">
+                  <div class="container">
+                    <h2>Hollie Smith</h2>
+                    <p class="title">
+                        Meet Hollie, the adorable and tech-savvy pug who takes her role as a coding companion very seriously.</p>
+                    <p>
+                        Hollie specializes in providing a unique blend of support for her human's coding endeavors. 🐶💻
+                        Whether it's delivering random objects with an endearing tilt of her head, snuggling up for impromptu naps while her human works, 
+                        or pressing her "outside please" button to let Khyrstina know it's time to take a break and get some fresh air, 
+                        thanks to Hollie morale is at an all time high! She hopes to get her "Bark Ranger" badge this summer. 🌲
+                    </p>
+                    <div class="socialButtons flex-row-center">
+                      <p><button  class="button"><a href="https://www.nps.gov/subjects/pets/bark-rangers.htm">Bark Rangers Program</a></button></p>
+                      <p><button class="button"><a href="https://www.petfinder.com/">Find a Companion Like Hollie</a></button></p>
+                    </div>
+                  </div>
+                </div>
 
+            </section>
+          </div>
 
+          <h2>Resources:</h2>
+          <section>
+            <p>These are the resources that made this project possible.</p>
+            <div class="resourceGrid">
+                <div class="resourceOne parkResource">
+                    <p class="resourceText">National Park Service API</p>
+                    <button><a href="https://www.nps.gov/subjects/developer/api-documentation.htm">More Info Here</a></button>
+                </div>
+                <div class="resourceTwo weatherResource">
+                    <p class="resourceText">Weather API</p>
+                    <button><a href="https://www.weatherapi.com/">More Info Here</a></button>
+                    </div>
+                <div class="resourceThree iconResource">
+                    <p class="resourceText">Google Material Icons</p>
+                    <button><a href="https://fonts.google.com/icons">More Info Here</a></button>
+                    </div>
+                <div class="resourceFour codeResource">
+                    <p class="resourceText">CODE: Kentucky</p>
+                    <button><a href="https://codekentucky.org/">More Info Here</a></button>
+                    </div>
+            </div>
+          </section>
 
-    <div id="wrapper">
-        <main id="main" class="main" tabindex="-1">
-            <h1>Welcome to Parklopedia!</h1>
-            <p>
-                Find your escape to the untamed.
-            </p>
+      </article>
 
-            <h2>Here is where there will be information about the project including:</h2>
-            <ol>
-                <li>Where the API information can be found</li>
-                <li>Links to National Park official information</li>
-                <li>Where to find me on social media</li>
-                <li>How to get in touch with me</li>
-            </ol>
-        </main>
-    </div>
+    </main>
 
-    <footer class="footer">
-        <nav class="navigation" aria-label="site">
-            <ul>
-                <li><a href="link.org">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="link.org">search</a></li>
-            </ul>
-        </nav>
-        <p>Designed and Maintained By: Khyrstina Smith</p>
-        <p><a href="sitemap.html">Site</a></p>
-    </footer>
-    <script src="js/navigation.js"></script>
-</body>
-
+    <% include footer.ejs %>
+    <script src="javascripts/navigation.js"></script>
+  </body>
 </html>

@@ -1,0 +1,235 @@
+@import "commonlyUsed.css";
+@import "nav.css";
+@import "headerVideo.css";
+@import "searchJsonResults.css";
+@import "landing.css";
+
+/* Reset and global styles */
+html {
+    font-family: 'AR One Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Catchphrase styles */
+.catchPhraseBox {
+
+    background-image: url("/images/NationalParkFreeUse.png");
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-position-y: 35%;
+    width: 100%;
+    height: 21rem;
+}
+
+.catchPhrase {
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 1rem;
+    padding-top: 1.5rem;
+    filter: none;
+}
+
+.catchPhraseCont {
+    color: #fff;
+    font-size: 1rem;
+    text-align: center;
+    filter: none;
+}
+
+/* Main Search Area styles */
+.mainSearchArea {
+    text-align: center;
+
+}
+
+.aboutSearchParagraphBox {
+    color: #fff;
+    position: relative;
+    z-index: 3;
+}
+
+.blurBackground {
+    position: absolute;
+    background-image: url(../images/leavesBackground/backgroundLeaves2.png);
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: top;
+    filter: blur(1px);
+    background-attachment: fixed;
+    z-index: -2;
+}
+
+.aboutSearchParagraphBox h2 {
+    color: #fff;
+    position: relative;
+    margin: 1.5rem;
+    z-index: 2;
+}
+
+.aboutSearchParagraphBox ul {
+    list-style-type: decimal;
+    text-align: start;
+    margin: 2rem;
+    line-height: 1.5rem;
+}
+
+.search-container {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.labelSearchInput h3 {
+    color: whitesmoke;
+}
+input[type="text"] {
+    background-color: whitesmoke;
+    transition: width 1s ease-in-out;
+    padding: 1rem 1rem;
+    box-sizing: border-box;
+    font-weight: bold;
+    border: 5px solid var(--dark-orange);
+    margin-bottom: .5rem;
+}
+
+input[type="text"]:focus {
+    background-color: var(--light-green);
+}
+
+.searchBackground {
+    color: #fff;
+    padding: 1rem;
+    margin: 1rem .5rem;
+    margin-top: 0;
+    width: 100%;
+}
+
+.suggestions-container {
+    background: var(--dark-green);
+    color: #fff;
+    width: 100%;
+}
+
+.suggestion:hover {
+    background-color: var(--light-green);
+    color: #383330;
+}
+
+.search-bar-button, #nextButtonTop, #nextButtonBottom, #previousButtonBottom, #previousButtonTop {
+    text-decoration: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: whitesmoke;
+    color: var(--coffee-black);
+    padding: .15rem;
+    border: 5px solid var(--dark-orange);
+    margin-bottom: 1rem;
+    transition: background-color .4s ease, border-color .4s ease, color .4s ease;
+}
+
+
+button #nextButtonTop, #nextButtonBottom, #previousButtonBottom, #previousButtonTop {
+    position: relative;
+    z-index: 5;
+}
+
+.search-bar-button:hover,  #nextButtonTop:hover, #nextButtonBottom:hover, #previousButtonBottom:hover, .previousButtonTop:hover {
+    background-color: var(--light-orange);
+    border: 5px solid var(--dark-orange);
+    color: #383330;
+}
+
+#numberResultsRetrieved {
+    font-size: 1.15rem;
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--dark-orange);
+    background-color: var(--vanilla);
+    border: 5px solid var(--dark-orange);
+    margin-bottom: 1rem;
+    text-align: center;
+    padding: .15rem;
+}
+
+select#numberResultsRetrieved {
+    appearance: none;
+    background-color: whitesmoke;
+    color: var(--dark-orange);
+    cursor: pointer;
+    text-align: center;
+}
+
+
+/* Footer styles */
+footer {
+    font-size: 1rem;
+    color: whitesmoke;
+}
+
+footer p {
+    text-align: center;
+}
+
+footer ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+footer ul li {
+    padding: 0rem 2rem;
+    list-style: none;
+    text-decoration: none;
+}
+
+footer ul li a {
+    text-decoration: none;
+}
+
+
+/* Start Screen Size Info */
+@media (max-width: 768px) {
+    body {
+        max-width: 100%;
+    }
+
+    .hero {
+        font-size: 1rem;
+    }
+
+    article {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+     .jsonResultsBox .grid-item:nth-of-type(2n+1) {
+        background-color: var(--dark-green);
+        width: 100%;
+        border: 5px solid #e7e6d6;
+    }
+
+    .jsonResultsBox .grid-item:nth-of-type(2n+2) {
+        background-color: var(--light-green);
+        width: 100%;
+        border: 5px solid #e7e6d6;
+    }
+
+
+    .grid-container {
+        width: 100%;
+    }
+}

@@ -1,0 +1,207 @@
+@import "commonlyUsed.css";
+
+main {
+  color: whitesmoke;
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  background: var(--gradient-background);
+  background: var(--gradient-background-radial);
+}
+
+article {
+  color: whitesmoke;
+}
+
+article > h1 {
+  display: flex;
+  margin: 0rem;
+  padding: 0rem;
+}
+
+article > h2 {
+  margin: 0rem;
+  width: 98%;
+}
+
+article > #secondH2 {
+  padding: 1rem 0rem;
+  width: 98%;
+}
+
+.aboutHeader {
+  border-radius: 5px;
+  color: white;
+  width: 99%;
+  font-size: 2rem;
+}
+
+.parklopediaAbilitiesList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  row-gap: 0.25rem;
+  column-gap: 0.25rem;
+  grid-template-areas:
+    "abilitiesListOne abilitiesListOne"
+    "abilitiesListTwo abilitiesListThree"
+    "abilitiesListFour abilitiesListFive";
+  font-weight: bolder;
+}
+
+.abilitiesListOne {
+  grid-area: abilitiesListOne;
+  text-align: center;
+  color: whitesmoke;
+}
+
+.abilitiesListTwo {
+  grid-area: abilitiesListTwo;
+  background-image: url("/images/leavesBackground/backgroundLeaves2.png");
+  background-position: left top;
+}
+
+.abilitiesListThree {
+  grid-area: abilitiesListThree;
+  background-image: url("/images/leavesBackground/backgroundLeaves2.png");
+  background-position: right top;
+}
+
+.abilitiesListFour {
+  grid-area: abilitiesListFour;
+  background-image: url("/images/leavesBackground/backgroundLeaves2.png");
+  background-position: left center;
+}
+
+.abilitiesListFive {
+  grid-area: abilitiesListFive;
+  background-image: url("/images/leavesBackground/backgroundLeaves2.png");
+  background-position: right center;
+}
+
+.abilitiesListTwo:hover,
+.abilitiesListThree:hover,
+.abilitiesListFour:hover,
+.abilitiesListFive:hover {
+  transform: scale(1.08);
+  transition: transform 0.5s ease-in-out;
+}
+
+.abilitiesListOneText,
+.abilitiesListTwoText,
+.abilitiesListThreeText,
+.abilitiesListFourText,
+.abilitiesListFiveText {
+  text-align: left;
+}
+
+.aboutVideo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.aboutVideo > h3 {
+  border-radius: 5px;
+  color: white;
+  width: 99%;
+  font-size: 1.5rem;
+  padding: 1rem 0rem;
+  margin: 0rem;
+}
+
+.aboutVideo > h4 {
+  margin: 0rem;
+  width: 98%;
+}
+
+.aboutVideo > #secondH2 {
+  padding: 1rem 0rem;
+  width: 98%;
+}
+
+.iframeContainer {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio*/
+  margin-top: 2rem;
+}
+
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 5px;
+}
+
+
+.howItWorks {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: justify;
+}
+
+.howItWorks:nth-child(odd) > * {
+  flex-basis: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.howItWorks:nth-child(even) > * {
+  flex-basis: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+}
+
+.howItWorks img {
+  max-width: 50%;
+  height: auto;
+  border-radius: 5px;
+  margin: 0rem 1rem;
+}
+
+/* Start Screen Size Info */
+@media (max-width: 768px) {
+  body {
+    max-width: 100%;
+  }
+
+  .hero {
+    font-size: 1rem;
+  }
+
+  iframe {
+    height: auto;
+  }
+
+  .howItWorks:nth-child(odd) > *,
+  .howItWorks:nth-child(even) > * {
+    flex-wrap: wrap;
+    padding: 10px;
+  }
+  .howItWorks img {
+    max-width: 100%;
+    height: auto;
+    margin: 0rem 0rem 1rem 0rem;
+  }
+}

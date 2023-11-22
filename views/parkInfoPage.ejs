@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="description" content="Find out information on National Parks" />
-
+    <link rel="shortcut icon" href="images/Logos/favicon.ico">
+    <link rel="icon" type="image/gif" href="images/Logos/favicon.ico">
     <link href="/stylesheets/parkStyle.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,9 +16,9 @@
 
 
 <body>
-    <nav class="menu top-right">
-        <button class="openbtn" id="hamburgerMenu" aria-label="Open Navigation Menu">&#9776;</button>
-    </nav>
+    <div class="navigationContainer">
+    <% include nav.ejs %>
+    </div>
     <header class="header">
         <div class="centered">
             <img src="images/Logos/logoOrangeCream.PNG" alt="Parklopedia Logo">
@@ -36,7 +37,6 @@
             </video> 
 
         </div>
-    <% include nav.ejs %>
         </div>
     </header>
 

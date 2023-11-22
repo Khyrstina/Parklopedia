@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Find information on National Parks">
+    <link rel="shortcut icon" href="images/Logos/favicon.ico">
+    <link rel="icon" type="image/gif" href="images/Logos/favicon.ico">
+    <link href="/stylesheets/main.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+    <title>Search</title>
+</head>
+<body>
+    <% include nav.ejs %>
+    <header class="header">
+        <div class="centered">
+            <img src="images/Logos/logoOrangeCream.PNG" alt="Parklopedia Logo">
+        </div>
+
+        <div class="headerVideo">
+            <div class="videoContainer">
+            <video
+            poster="images/GeneratedNationalPark.png"
+            autoplay muted
+            id="backgroundVideo">
+                <source src="images/headerBackgrounds/auroraHeader.mp4" type="video/mp4"/>
+                Your Browser Does Not Support This Video.
+            </video> 
+        </div>
+        </div>
+    </header>
+    <main id="main" class="main">
+        <section class="mainSearchArea flex-column-center">
+
+            <div class="aboutSearchParagraphBox">
+                <div class="blurBackground"> </div>
+                <h2>Whether you're a seasoned explorer or a first-time visitor, our search page is your portal to discovering where to visit next. </h2>
+                <ul>
+                    <li>Start typing in a state, and when you're ready select an option from the dropdown that appears.</li>
+                    <li>Hit that search button!</li>
+                    <li>Find a park in the results that you are interested in, and click on the image for it.</li>
+                    <li>You'll be whisked away to a park-specific page, filled with the information you'll need to start planning you're unforgettable adventure!</li>
+                </ul>
+            </div>
+
+            <div class="search-container flex-row">
+                <div class="searchBackground flex-column">
+                <label for="searchInput" class="labelSearchInput" id="labelSearchInput"><h3>Please enter a state below and choose from the suggested options:</h3></label>
+                <input type="text" id="searchInput" class="search-input" placeholder="Enter a State here..." aria-describedby="suggestionsContainer" aria-label="State Input">
+                <button id="searchBarButton" class="search-bar-button" aria-label="Search Button">Search</button>
+                <div id="suggestionsContainer" class="suggestions-container" tabindex="0" role="region" aria-label="State Search Suggestions"></div>
+                <div class="numResultsBox">
+                    <label for="numberResultsRetrieved">Number of results per page:</label>
+                </div>
+                <div class="numResultsDropdownBox">
+                    <select name="resultsRetrieved" id="numberResultsRetrieved" aria-label="Results Per Page Select">
+                        <option value="10" selected>10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                    </select>
+                </div>
+                <div class="buttonsBox flex-row-center">
+                    <button id="previousButtonTop" class="previousButton" style="display: none" aria-label="Previous Page Button">Previous Button</button>
+                    <button id="nextButtonTop" class="nextButton" style="display: none" aria-label="Next Page Button">Next Page</button>
+                </div>
+            </div>
+            </div>
+
+        </section>
+
+        <section class="jsonResultsBox">
+            <article id="jsonContainer" class="jsonContainer grid-container">
+                <div class="catchPhraseBox flex-column-center">
+                    <h2 class="catchPhrase">Ready to embark on your next outdoor expedition? Our search page simplifies the planning.</h2>
+                    <p class="catchPhraseCont">Enter your State above to get your journey started.</p>
+                </div>
+            </article>
+        </section>
+        <div class="bottomButtonsBox flex-row-center">
+            <button id="nextButtonBottom" class="nextButton" style="display: none" aria-label="Next Page Button">Next Page</button>
+            <button id="previousButtonBottom" class="previousButton" style="display: none" aria-label="Previous Page Button">Previous Page</button>
+        </div>
+    </main>
+    <% include footer.ejs %>
+    <script src="/javascripts/navigation.js"></script>
+    <script type="module" src="/javascripts/config.js"></script>
+    <script type="module" src="/javascripts/stateSearch.js"></script>
+    <script type="module" src="/javascripts/parkAPI.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+@import "main.css";
+@import "commonlyUsed.css";
+@import "nav.css";
+@import "headerVideo.css";
+
+* {
+    box-sizing: border-box;
+  }
+  
+  .container {
+    padding: 64px;
+  }
+
+  .profile:nth-of-type(even){
+    background-color: var(--dark-green-transparent);
+  }
+
+  .profile:nth-of-type(odd){
+    color: #000
+  }
+  
+
+  
+  /* 2/3 column */
+  .column-66Left {
+    float: left;
+    width: 66.66666%;
+    padding: 20px;
+  }
+
+  
+  /* 1/3 column */
+  .column-33Left {
+    float: left;
+    width: 33.33333%;
+    padding: 20px;
+  }
+
+    /* 2/3 column */
+    .column-66Right {
+        float: right;
+        width: 66.66666%;
+        padding: 20px;
+      }
+    
+      
+      /* 1/3 column */
+      .column-33Right {
+        float: right;
+        width: 33.33333%;
+        padding: 20px;
+      }
+
+
+  .column-33Left img, .column-33Right img, .column-66Left img, .column-66Right img {
+    border-radius: 50%;
+    align-self: center;
+  }
+
+.profile:nth-of-type(n+2) {
+    background-color: var(--dark-green-transparent);
+    border-radius: 5px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .resourceGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+    margin: 1rem;
+    grid-template-areas: "parkResource weatherResource iconResource codeResource";
+  }
+
+  .parkResource {
+    background-image: url("/images/resources/park.jpg");
+    border-radius: 5px;
+    padding: 1rem;
+    background-position: bottom;
+
+  }
+
+  .weatherResource {
+    background-image: url("/images/resources/weather.jpg");
+    border-radius: 5px;
+    padding: 1rem;
+  }
+
+    .iconResource {
+        background-image: url("/images/resources/google.jpg");
+        border-radius: 5px;
+        padding: 1rem;
+        background-position: center;
+    }
+
+    .codeResource {
+        background-image: url("/images/resources/code.jpg");
+        border-radius: 5px;
+        padding: 1rem;
+        background-position: center;
+    }
+  
+  @media screen and (max-width: 1000px) {
+    .column-66Left, .column-66Right, .column-33Left, .column-33Right {
+        width: 100%;
+      }
+      
+    .resourceGrid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: 
+        "parkResource weatherResource" 
+        "iconResource codeResource";
+      }
+    }
+  

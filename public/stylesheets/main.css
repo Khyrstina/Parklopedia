@@ -57,6 +57,7 @@ body {
     color: #fff;
     position: relative;
     z-index: 3;
+    width: 100%;
 }
 
 .blurBackground {

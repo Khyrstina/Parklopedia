@@ -7,7 +7,6 @@
 /* Reset and global styles */
 html {
     font-family: 'AR One Sans', sans-serif;
-    background-color: var(--vanilla);
     margin: 0;
     padding: 0;
     max-width: 100%;
@@ -23,7 +22,7 @@ body {
 
 /* Catchphrase styles */
 .catchPhraseBox {
-    background-color: #8ac6d0ff;
+
     background-image: url("/images/NationalParkFreeUse.png");
     background-blend-mode: multiply;
     background-size: cover;
@@ -51,7 +50,7 @@ body {
 /* Main Search Area styles */
 .mainSearchArea {
     text-align: center;
-    background-color: var(--light-green);
+
 }
 
 .aboutSearchParagraphBox {
@@ -91,8 +90,11 @@ body {
     width: 100%;
 }
 
+.labelSearchInput h3 {
+    color: whitesmoke;
+}
 input[type="text"] {
-    background-color: var(--vanilla);
+    background-color: whitesmoke;
     transition: width 1s ease-in-out;
     padding: 1rem 1rem;
     box-sizing: border-box;
@@ -106,14 +108,11 @@ input[type="text"]:focus {
 }
 
 .searchBackground {
-    background-color: var(--dark-green);
     color: #fff;
-    border-radius: 5px;
     padding: 1rem;
     margin: 1rem .5rem;
     margin-top: 0;
     width: 100%;
-    border: solid #abb8c361;
 }
 
 .suggestions-container {
@@ -132,8 +131,8 @@ input[type="text"]:focus {
     font-size: 1.5rem;
     cursor: pointer;
     font-weight: bold;
-    background-color: var(--vanilla);
-    color: var(--dark-orange);
+    background-color: whitesmoke;
+    color: var(--coffee-black);
     padding: .15rem;
     border: 5px solid var(--dark-orange);
     margin-bottom: 1rem;
@@ -161,11 +160,12 @@ button #nextButtonTop, #nextButtonBottom, #previousButtonBottom, #previousButton
     border: 5px solid var(--dark-orange);
     margin-bottom: 1rem;
     text-align: center;
+    padding: .15rem;
 }
 
 select#numberResultsRetrieved {
     appearance: none;
-    background-color: var(--light-green);
+    background-color: whitesmoke;
     color: var(--dark-orange);
     cursor: pointer;
     text-align: center;
@@ -175,7 +175,7 @@ select#numberResultsRetrieved {
 /* Footer styles */
 footer {
     font-size: 1rem;
-    background-color: #7ba8a2;
+    color: whitesmoke;
 }
 
 footer p {
@@ -185,7 +185,6 @@ footer p {
 footer ul {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
 }
 

@@ -15,7 +15,7 @@ video {
     height: 100%;
     object-position: center top;
     z-index: 3;
-    object-fit:contain;
+    object-fit: contain;
 }
 
 .header {

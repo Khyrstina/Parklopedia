@@ -14,8 +14,8 @@
   "exhibits food-drink information"
   "pet-friendly recreation safety"
   "submit submit submit";
-  background-color: var(--dark-green-opaque);
   border-radius: 5px;
+  border: solid #abb8c361;
   color: #fff;
   padding: 20px;
   margin-bottom: .5rem;
@@ -120,3 +120,73 @@ label #safety  {
   border: 3px solid var(--dark-orange);
 }
 
+.availableAmenities {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  color: whitesmoke;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+.amenityList{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  color: whitesmoke;
+  overflow: hidden;
+  border: solid #abb8c361;
+  border-radius: 5px;
+  width: 95%;
+  flex-wrap: wrap;
+  margin: 0.5rem;
+}
+
+.amenityList > * {
+  text-align: center;
+  align-self: center;
+}
+
+.amenityList > h4 {
+  width: 90%;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--coffee-black);
+  background-color: var(--white-transparent);
+  background-size: cover;
+  border-radius: 5px;
+}
+
+.amenityList > h6 {
+  width: fit-content;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .amenitiesHeader {
+    grid-column: 1 / 3;
+    grid-row: 1 / 1;
+  }
+  .amenities {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(7, 1fr);
+    grid-template-areas:
+    "amenitiesHeader amenitiesHeader"
+    "accessibility campsites"
+    "convenience exhibits"
+    "food-drink information"
+    "pet-friendly recreation"
+    "safety safety"
+    "submit submit";
+  }
+  
+}

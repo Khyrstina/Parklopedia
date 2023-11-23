@@ -3,6 +3,7 @@
 @import "headerVideo.css";
 @import "searchJsonResults.css";
 @import "landing.css";
+@import "buttons.css";
 
 /* Reset and global styles */
 html {
@@ -127,29 +128,11 @@ input[type="text"]:focus {
     color: #383330;
 }
 
-.search-bar-button, #nextButtonTop, #nextButtonBottom, #previousButtonBottom, #previousButtonTop {
-    text-decoration: none;
-    font-size: 1.5rem;
-    cursor: pointer;
+
+label[for="numberResultsRetrieved"] {
+    color: whitesmoke;
     font-weight: bold;
-    background-color: whitesmoke;
-    color: var(--coffee-black);
-    padding: .15rem;
-    border: 5px solid var(--dark-orange);
-    margin-bottom: 1rem;
-    transition: background-color .4s ease, border-color .4s ease, color .4s ease;
-}
-
-
-button #nextButtonTop, #nextButtonBottom, #previousButtonBottom, #previousButtonTop {
-    position: relative;
-    z-index: 5;
-}
-
-.search-bar-button:hover,  #nextButtonTop:hover, #nextButtonBottom:hover, #previousButtonBottom:hover, .previousButtonTop:hover {
-    background-color: var(--light-orange);
-    border: 5px solid var(--dark-orange);
-    color: #383330;
+    font-size: 1.15rem;
 }
 
 #numberResultsRetrieved {
@@ -159,9 +142,13 @@ button #nextButtonTop, #nextButtonBottom, #previousButtonBottom, #previousButton
     color: var(--dark-orange);
     background-color: var(--vanilla);
     border: 5px solid var(--dark-orange);
-    margin-bottom: 1rem;
+    margin: .5rem 0rem;
     text-align: center;
     padding: .15rem;
+}
+
+.numResultsBox {
+    margin-top: 1rem;
 }
 
 select#numberResultsRetrieved {

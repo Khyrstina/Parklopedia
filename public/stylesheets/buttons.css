@@ -1,0 +1,39 @@
+   
+   
+  .button-shadow {
+    position: relative;
+    margin-top: 10%;
+    background: whitesmoke;
+    padding: 15px;
+    font-size: 0.9em;
+    font-weight: 700;
+    letter-spacing: 5px;
+    transition: all 0.3s ease-in-out 0s;
+    left: 0px;
+    top: 0px;
+    width: 180px;
+    max-width: 50%;
+  } 
+
+  .button-shadow a {
+    text-decoration: none;
+    color: var(--coffee-black);
+  }
+   
+  .button-shadow:hover {
+    left: 4px;
+    top: 4px;
+    background: var(--light-orange);
+    box-shadow: var(--dark-orange) 0px 0px 0px 0px;
+  } 
+   
+  .button-shadow-border {
+    border: 1px solid var(--dark-orange);
+    color: var(--coffee-black);
+    box-shadow: var(--dark-orange) 4px 4px 0px 0px;
+  } 
+
+  .search-bar-button {
+    display: block;
+    margin: 0 auto;
+}

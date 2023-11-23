@@ -6,6 +6,35 @@ The Parklopedia project assists the public with accessing National Parks informa
 
 Parklopedia currently utilizes the National Park Service API to provide information and media, as well as a weather API to access current and future weather forecasts for a particular park using the Latitude and Longitude provided by the NPS. 
 
+## API Information
+
+To use Parklopedia, you'll need two separate API keys:
+
+- National Park Service API:  [Get your API key here](https://www.nps.gov/subjects/developer/api-documentation.htm#/)
+
+- Weather API: [Get your API key here](https://www.weatherapi.com/)
+## Creating config.js
+
+To create a config.js file to store your API keys. Follow these steps:
+
+1. Open a new file in /public/javascripts and name it config.js.
+
+2. Copy and paste the following code into config.js: 
+
+```
+//National Parks APIKEY
+export const apiKey = 'national_parks_api_key';
+
+//Weather API APIKEY
+export const weatherApiKey = 'weather_api_key';
+```
+3. Replace 'national_parks_api_key' and 'weather_api_key' with your actual API keys.
+- Note: For the team grading projects you will find the information you need to put into config.js attached to the project submission form.
+
+4. Save the config.js file (Ctrl + S) to ensure the changes are recognized by your code editor.
+
+
+
 
 ## Run Locally
 
@@ -18,42 +47,28 @@ Parklopedia currently utilizes the National Park Service API to provide informat
 2. Navigate to the project directory:
 
 ```bash
-  cd my-project
+  cd Parklopedia
 ```
 
-3. If you're using Visual Studio Code, open the project by running:
+3. If you would like to examine the files using Visual Studio Code, open the project by running:
 ```bash
 code .
 ```
 - Note: If you are not using VScode please follow the instructions specific to your code editor for opening existing projects.
 
 
-## API Information
-
-To use Parklopedia, you'll need two separate API keys:
-
-- National Park Service API:  [Get your API key here](https://www.nps.gov/subjects/developer/api-documentation.htm#/)
-
-- Weather API: [Get your API key here](https://www.weatherapi.com/)
-## Creating config.js
-
-Create a config.js file to store your API keys. Follow these steps:
-
-1. Open a new file and name it config.js.
-
-2. Copy and paste the following code into config.js: 
-
+4. Be sure to install the packages that are necessary to run Parklopedia. This can be done using:
+```bash
+npm install
 ```
-//National Parks APIKEY
-export const apiKey = 'national_parks_api_key';
 
-//Weather API APIKEY
-export const weatherApiKey = 'weather_api_key';
+5. Once those install you can get it up and running using:
+```bash
+npm start
 ```
-3. Replace 'national_parks_api_key' and 'weather_api_key' with your actual API keys.
+- Note: You will likely get a pop-up asking for permissions and allowing access, you will need to allow access to run the project.
 
-4. Save the config.js file (Ctrl + S) to ensure the changes are recognized by your code editor.
-
+5. Open your browser and navigate to 'localhost:3000, the landing page for Parklopedia will load.
 
     
 ## Features
@@ -79,7 +94,10 @@ Parklopedia exceeds the recommended requirements for a capstone project. Below y
  - The text input on the search page is analyzed to see if it matches any of the approved search options (U.S. States). If no State is selected, the search box will provide the user with a reminder of the instructions and not allow the search to submit.
 
 #### Calculate and display data based on an external factor (ex: get the current date, and display how many days remaining until some event).
- - The alerts section of the parkinformation page only displays alerts that have been released in the last 3 months. It does this by taking the current date, as well as the date that the alert was created by the NPS, and calculating how many days it has been. 
+ - The alerts section of the parkinformation page only displays alerts that have been released in the last 3 months. It does this by taking the current date, as well as the date that the alert was created by the NPS, and calculating how many days it has been.
+
+#### Create a node.js web server using a modern framework such as Express.js or Fastify. Serve at least one route that your app uses (must serve more than just the index.html file)
+- All pages and routes are served with Express.js, at the time of writing this there are four different routes.
 
 
 

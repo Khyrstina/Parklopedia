@@ -46,8 +46,11 @@ export async function getThingsToDoInformation(fourCharacterParkCode, header, am
      if (matchingAmenities.length > 0) {
       // Create a new section for each amenity type
       const amenityList = document.createElement('div');
-      // Create a new ul for each matching amenity of that type
+      amenityList.classList.add('amenityList');
+      // Create a new header for each type
       const amenityHeaderItem = document.createElement('h4');
+      amenityHeaderItem.classList.add('expandReq');
+      amenityHeaderItem.id = header.replace(/\s/g, ''); // Remove spaces from the header
       amenityHeaderItem.textContent = header.toUpperCase(); // Use the id of the checkbox.id as the header
       amenityList.appendChild(amenityHeaderItem);
   
@@ -60,6 +63,8 @@ export async function getThingsToDoInformation(fourCharacterParkCode, header, am
         // Create a new li for each matching amenity
         const amenityListItem = document.createElement('h6');
         amenityListItem.textContent = amenityName;
+        amenityListItem.classList.add('reqDiv');
+        amenityListItem.id = amenityName.replace(/\s/g, ''); // Remove spaces from the amenity name
         amenityList.appendChild(amenityListItem);
   
         // Going through each of the parks and adding the name/parkCode and creating a li for them
@@ -67,7 +72,7 @@ export async function getThingsToDoInformation(fourCharacterParkCode, header, am
         parks.forEach(park => {
           const parkName = park.name;
           const parkCode = park.parkCode;
-          const parkListItem = document.createElement('li');
+          const parkListItem = document.createElement('p');
           parkListItem.textContent = `${parkName} (${parkCode})`;
           amenityList.appendChild(parkListItem);
         });
@@ -78,8 +83,11 @@ export async function getThingsToDoInformation(fourCharacterParkCode, header, am
     }
 
     else {
+      header = header.toUpperCase();
       // If there are no matching amenities, notify the user that we couldn't find any for that type
-      amenitiesHTML.innerHTML += `<h5>No matching amenities found for ${header}</h5>`;
+      amenitiesHTML.innerHTML += `<div class="amenityList"><h4 class="expandReq">${header}</h4>
+      <h6 class="reqDiv">No amenities found for this category.</h6>
+      </div>`;
     }
   }
 }

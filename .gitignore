@@ -3,6 +3,5 @@ js/config.js
 
 .vscode/launch.json
 node_modules/
-bin/
 vscode/
 public/javascripts/config.js

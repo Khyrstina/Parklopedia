@@ -6,6 +6,7 @@ import { findCorrectIcon, findCorrectStatus } from './weatherIcon.js';
 import { getThingsToDoInformation } from './findAmenityLocations.js';
 
 
+
 let latitude = '';
 let longitude = '';
 export let fourCharacterParkCode = '';
@@ -14,6 +15,7 @@ const prevButton = document.getElementById('prevButton');
 const nextButton = document.getElementById('nextButton');
 const generateURLButton = document.getElementById('generateURL');
 const amenitiesHTML = document.getElementById('availableAmenitiesId');
+
 
 
 
@@ -48,6 +50,8 @@ generateURLButton.addEventListener('click', async function() {
     await getThingsToDoInformation(fourCharacterParkCode, header, amenityCodes);
   }
 });
+
+
 
 async function fetchParkDetails(parkId) {
   let park = await getParkInfo(parkId);

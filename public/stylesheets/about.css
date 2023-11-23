@@ -2,21 +2,19 @@
 @import "commonlyUsed.css";
 @import "nav.css";
 @import "headerVideo.css";
+@import "buttons.css";
 
 * {
     box-sizing: border-box;
   }
   
   .container {
-    padding: 64px;
+    padding: 2px 16px;
   }
 
-  .profile:nth-of-type(even){
-    background-color: var(--dark-green-transparent);
-  }
-
-  .profile:nth-of-type(odd){
-    color: #000
+  .requirements {
+    text-align: left;
+    margin: 1rem;
   }
   
 
@@ -57,11 +55,39 @@
     align-self: center;
   }
 
-.profile:nth-of-type(n+2) {
-    background-color: var(--dark-green-transparent);
+
+.profile:nth-of-type(2) {
     border-radius: 5px;
     margin-top: 1rem;
     margin-bottom: 1rem;
+    text-align: left;
+  }
+
+  .profile:nth-of-type(1) {
+    border-radius: 5px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: right;
+  }
+
+  .projectRequirements > * {
+    user-select: none;
+  }
+  .expandReq {
+    background-color: var(--dark-green-transparent);
+    border-radius: 5px;
+    padding: 1rem;
+  }
+
+  .expandReq:hover {
+    background-color: var(--dark-green-opaque);
+    cursor: pointer;
+  }
+
+.reqDiv {
+    display: none;
+    margin: 2rem;
+    text-align: left;
   }
 
   .resourceGrid {
@@ -100,9 +126,17 @@
         background-position: center;
     }
   
-  @media screen and (max-width: 1000px) {
+    @media (max-width: 768px) {
+    .container {
+      align-items: center;
+      justify-content: center;
+    }
     .column-66Left, .column-66Right, .column-33Left, .column-33Right {
         width: 100%;
+      }
+
+      .column-33Left img, .column-33Right img, .column-66Left img, .column-66Right img {
+        width: 35%;
       }
       
     .resourceGrid {
@@ -110,6 +144,10 @@
         grid-template-areas: 
         "parkResource weatherResource" 
         "iconResource codeResource";
+      }
+      .profile:nth-of-type(1),
+      .profile:nth-of-type(2) {
+        text-align: left;
       }
     }
   

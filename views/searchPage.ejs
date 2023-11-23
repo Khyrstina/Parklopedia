@@ -49,7 +49,7 @@
                 <div class="searchBackground flex-column">
                 <label for="searchInput" class="labelSearchInput" id="labelSearchInput"><h3>Please enter a state below and choose from the suggested options:</h3></label>
                 <input type="text" id="searchInput" class="search-input" placeholder="Enter a State here..." aria-describedby="suggestionsContainer" aria-label="State Input">
-                <button id="searchBarButton" class="search-bar-button" aria-label="Search Button">Search</button>
+                <button id="searchBarButton" class="search-bar-button button button-shadow button-shadow-border" aria-label="Search Button">Search</button>
                 <div id="suggestionsContainer" class="suggestions-container" tabindex="0" role="region" aria-label="State Search Suggestions"></div>
                 <div class="numResultsBox">
                     <label for="numberResultsRetrieved">Number of results per page:</label>
@@ -62,8 +62,8 @@
                     </select>
                 </div>
                 <div class="buttonsBox flex-row-center">
-                    <button id="previousButtonTop" class="previousButton" style="display: none" aria-label="Previous Page Button">Previous Button</button>
-                    <button id="nextButtonTop" class="nextButton" style="display: none" aria-label="Next Page Button">Next Page</button>
+                    <button id="previousButtonTop" class="button button-shadow button-shadow-border" style="display: none" aria-label="Previous Page Button">Previous Button</button>
+                    <button id="nextButtonTop" class="button button-shadow button-shadow-border" style="display: none" aria-label="Next Page Button">Next Page</button>
                 </div>
             </div>
             </div>
@@ -79,8 +79,8 @@
             </article>
         </section>
         <div class="bottomButtonsBox flex-row-center">
-            <button id="nextButtonBottom" class="nextButton" style="display: none" aria-label="Next Page Button">Next Page</button>
-            <button id="previousButtonBottom" class="previousButton" style="display: none" aria-label="Previous Page Button">Previous Page</button>
+            <button id="nextButtonBottom" class="button button-shadow button-shadow-border" style="display: none" aria-label="Next Page Button">Next Page</button>
+            <button id="previousButtonBottom" class="button button-shadow button-shadow-border" style="display: none" aria-label="Previous Page Button">Previous Page</button>
         </div>
     </main>
     <% include footer.ejs %>

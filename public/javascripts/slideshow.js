@@ -3,7 +3,6 @@ let slideshowContainer = document.querySelector(".imagesContainer");
 let slideshowArray = [];
 
 export function initializeSlides(park) {
-
   if (park[0].images && park[0].images.length > 0) {
     for (let i = 0; i < park[0].images.length; i++) {
       let imageURL = park[0].images[i].url;
@@ -28,24 +27,4 @@ export function showSlides(index) {
   }
   let currentImage = slideshowArray[slideIndex].imageURL;
   slideshowContainer.style.backgroundImage = `url(${currentImage})`;
-
-  // slideshowContainer.alt = slideshowArray[slideIndex].imageCaption;
 }
-
-
-// slides[slideIndex].style.display = "block";
-// export function showSlides(index) {
-//   let slides = document.querySelectorAll(".mySlides");
-
-//   if (index < 0) {
-//     slideIndex = slides.length - 1;
-//   } else if (index >= slides.length) {
-//     slideIndex = 0;
-//   }
-
-//   slides.forEach((slide) => {
-//     slide.style.display = "none";
-//   });
-
-//   slides[slideIndex].style.display = "block";
- 

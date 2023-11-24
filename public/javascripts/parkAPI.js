@@ -5,7 +5,6 @@ export async function getParkInfo(parkID) {
   try {
     let resp = await fetch(apiUrl);
     let data = await resp.json();
-    console.log(apiUrl, "apiUrl");
     return data.data;
   } catch (error) {
     console.log(error);

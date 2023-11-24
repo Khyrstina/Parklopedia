@@ -43,7 +43,6 @@ export async function getAlertsInformation(parkCode) {
               const alertsCategoryLowercase = alertsCategory
                 .toLowerCase()
                 .replace(/\s/g, "");
-              console.log(alertsCategoryLowercase);
               const red = "#864622";
               const orange = "#FFD580";
               const green = "#90EE90";
@@ -63,7 +62,6 @@ export async function getAlertsInformation(parkCode) {
               }
 
               const color = alertsColor();
-              console.log(color);
 
               // Set up to create a better date format
               let newAlertDateFormat = new Date(alert.lastIndexedDate);

@@ -52,29 +52,20 @@ const icons = [
 ]
 
 export async function findCorrectIcon(conditionCode) {
-console.log("Condition Code Received:", conditionCode); // Check the condition code received
 const correctIcon = icons.find((icon) => icon.code === conditionCode);
-console.log("Matching Icon:", correctIcon); // Check if the correctIcon was found
 if (correctIcon) {
-  console.log("Icon Img:", correctIcon.iconImg); // Check the iconImg property
-  console.log("The weatherIcon.js file was used!");
+
   return correctIcon.iconImg;
 } else {
-  console.log("Icon not found for condition code:", conditionCode);
   return null;
 }
 }
 
 export async function findCorrectStatus(conditionCode) {
-console.log("Condition Code Received:", conditionCode); // Check the condition code received
 const correctStatus = icons.find((icon) => icon.code === conditionCode);
-console.log("Matching Icon to find status:", correctStatus); // Check if the correctStatus was found
 if (correctStatus) {
-  console.log("Status:", correctStatus.status); 
-  console.log("The weatherIcon.js file was used!");
   return correctStatus.status;
 } else {
-  console.log("Status not found for condition code:", conditionCode);
   return null;
 }
 }

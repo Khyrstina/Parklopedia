@@ -118,7 +118,6 @@ async function getTotalNumberResults(selectedState) {
     let resp = await fetch(apiUrl);
     let data = await resp.json();
     totalAvailableSearchResults = data.total;
-    console.log(totalAvailableSearchResults);
     return totalAvailableSearchResults;
   } catch (error) {
     console.log(error);
@@ -135,7 +134,6 @@ async function getAllParks(
   try {
     let resp = await fetch(apiUrl);
     let data = await resp.json();
-    console.log("getAllParks url:" + apiUrl);
     return data.data;
   } catch (error) {
     console.log(error);

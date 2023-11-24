@@ -197,7 +197,6 @@ async function fetchParkDetails(parkId) {
     highLowThreeText.innerHTML = `High: <br> ${weatherData.forecast.forecastday[3].day.maxtemp_f}&deg;F <br> Low: <br> ${weatherData.forecast.forecastday[3].day.mintemp_f}&deg;F`;
   } else {
     console.error("Weather Image Not Found.");
-    console.log("Condition Code:", conditionCode);
   }
 
   // Begin .contact

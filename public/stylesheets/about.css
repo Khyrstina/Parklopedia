@@ -92,10 +92,11 @@
 
   .resourceGrid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-gap: 1rem;
     margin: 1rem;
-    grid-template-areas: "parkResource weatherResource iconResource codeResource";
+    grid-template-areas: "parkResource weatherResource" "iconResource codeResource";
   }
 
   .parkResource {
@@ -103,13 +104,14 @@
     border-radius: 5px;
     padding: 1rem;
     background-position: bottom;
-
+    grid-area: parkResource;
   }
 
   .weatherResource {
     background-image: url("/images/resources/weather.jpg");
     border-radius: 5px;
     padding: 1rem;
+    grid-area: weatherResource;
   }
 
     .iconResource {
@@ -117,6 +119,7 @@
         border-radius: 5px;
         padding: 1rem;
         background-position: center;
+        grid-area: iconResource;
     }
 
     .codeResource {
@@ -124,6 +127,7 @@
         border-radius: 5px;
         padding: 1rem;
         background-position: center;
+        grid-area: codeResource;
     }
   
     @media (max-width: 768px) {
@@ -144,10 +148,24 @@
         grid-template-areas: 
         "parkResource weatherResource" 
         "iconResource codeResource";
+        max-width: 100%;
       }
       .profile:nth-of-type(1),
       .profile:nth-of-type(2) {
         text-align: left;
+      }
+
+      .resourceGrid {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        grid-gap: 1rem;
+        margin: 1rem;
+        grid-template-areas: 
+        "parkResource" 
+        "weatherResource" 
+        "iconResource" 
+        "codeResource";
       }
     }
   

@@ -139,13 +139,13 @@ label #safety {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  color: whitesmoke;
   overflow: hidden;
-  border: solid #abb8c361;
   border-radius: 5px;
   width: 95%;
   flex-wrap: wrap;
   margin: 0.5rem;
+  background-color: rgba(255,255,255,.08);
+  color: white;
 }
 
 .amenityList > * {
@@ -154,21 +154,37 @@ label #safety {
 }
 
 .amenityList > h4 {
-  width: 90%;
+  width: 100%;
   font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  margin-bottom: 0.5rem;
-  color: var(--coffee-black);
-  background-color: var(--white-transparent);
-  background-size: cover;
+  margin-top: 0;
   border-radius: 5px;
 }
 
+.amenityList:nth-of-type(4n+1) h4 {
+  background-color: var(--light-orange);
+  color: var(--coffee-black);
+}
+
+.amenityList:nth-of-type(4n+2) h4 {
+  background-color: var(--dark-orange);
+}
+
+.amenityList:nth-of-type(4n+3) h4 {
+  background-color: var(--dark-orange);
+}
+
+.amenityList:nth-of-type(4n+4) h4 {
+  background-color: var(--light-orange);
+  color: var(--coffee-black);
+}
+
 .amenityList > h6 {
-  width: fit-content;
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  margin: 1rem;
   margin-top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 @media only screen and (max-width: 600px) {
@@ -187,5 +203,8 @@ label #safety {
       "pet-friendly recreation"
       "safety safety"
       "submit submit";
+  }
+  .amenityList > h4 {
+    font-size: 1.25rem;
   }
 }

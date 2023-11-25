@@ -1,4 +1,3 @@
-
 /* begin amenities */
 
 .amenities {
@@ -9,19 +8,19 @@
   align-items: center;
   justify-items: center;
   grid-template-areas:
-  "amenitiesHeader amenitiesHeader amenitiesHeader"
-  "accessibility campsites convenience"
-  "exhibits food-drink information"
-  "pet-friendly recreation safety"
-  "submit submit submit";
+    "amenitiesHeader amenitiesHeader amenitiesHeader"
+    "accessibility campsites convenience"
+    "exhibits food-drink information"
+    "pet-friendly recreation safety"
+    "submit submit submit";
   border-radius: 5px;
   border: solid #abb8c361;
   color: #fff;
   padding: 20px;
-  margin-bottom: .5rem;
-  margin-top: .5rem;
-  margin-left: .25rem;
-  margin-right: .25rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
   cursor: pointer;
 }
 
@@ -30,7 +29,7 @@
   grid-column: 1 / 4;
   grid-row: 1 / 1;
   width: 100%;
-  background-image: url('/images/headerBackgrounds/header1.png');
+  background-image: url("/images/headerBackgrounds/header1.png");
   background-clip: border-box;
   overflow: hidden;
   background-size: contain;
@@ -44,14 +43,13 @@
 
 label #accessibility {
   grid-area: accessibility;
-
 }
 
 label #campsites {
   grid-area: campsites;
 }
 
-label #convenience  {
+label #convenience {
   grid-area: convenience;
 }
 
@@ -60,14 +58,14 @@ label #exhibits {
 }
 
 label #food-drink {
-grid-area: food-drink;
+  grid-area: food-drink;
 }
 
 label #information {
   grid-area: information;
 }
 
-label #pet-friendly  {
+label #pet-friendly {
   grid-area: pet-friendly;
 }
 
@@ -75,7 +73,7 @@ label #recreation {
   grid-area: recreation;
 }
 
-label #safety  {
+label #safety {
   grid-area: safety;
 }
 
@@ -83,14 +81,13 @@ label #safety  {
   grid-area: submit;
 }
 
-
 /* Grid label styles */
 .amenities .amenitiesCheckbox {
   display: flex;
   cursor: pointer;
   font-size: 1rem;
   margin-bottom: 10px;
-  color: #fff; 
+  color: #fff;
 }
 
 /* Hide default checkbox */
@@ -111,11 +108,14 @@ label #safety  {
 
 /* Hover effect for custom checkboxes */
 .amenities .amenitiesCheckbox:hover .custom-checkbox {
-  background-color: var(--vanilla);
+  background-color: var(--light-orange);
 }
 
 /* Checked custom checkbox styles */
-.amenities .amenitiesCheckbox input[type="checkbox"]:checked + .custom-checkbox {
+.amenities
+  .amenitiesCheckbox
+  input[type="checkbox"]:checked
+  + .custom-checkbox {
   background-color: var(--light-orange);
   border: 3px solid var(--dark-orange);
 }
@@ -134,18 +134,18 @@ label #safety  {
   margin-right: 0.25rem;
 }
 
-.amenityList{
+.amenityList {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  color: whitesmoke;
   overflow: hidden;
-  border: solid #abb8c361;
   border-radius: 5px;
   width: 95%;
   flex-wrap: wrap;
   margin: 0.5rem;
+  background-color: rgba(255,255,255,.08);
+  color: white;
 }
 
 .amenityList > * {
@@ -154,21 +154,37 @@ label #safety  {
 }
 
 .amenityList > h4 {
-  width: 90%;
+  width: 100%;
   font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  margin-bottom: 0.5rem;
-  color: var(--coffee-black);
-  background-color: var(--white-transparent);
-  background-size: cover;
+  margin-top: 0;
   border-radius: 5px;
 }
 
+.amenityList:nth-of-type(4n+1) h4 {
+  background-color: var(--light-orange);
+  color: var(--coffee-black);
+}
+
+.amenityList:nth-of-type(4n+2) h4 {
+  background-color: var(--dark-orange);
+}
+
+.amenityList:nth-of-type(4n+3) h4 {
+  background-color: var(--dark-orange);
+}
+
+.amenityList:nth-of-type(4n+4) h4 {
+  background-color: var(--light-orange);
+  color: var(--coffee-black);
+}
+
 .amenityList > h6 {
-  width: fit-content;
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  margin: 1rem;
   margin-top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 @media only screen and (max-width: 600px) {
@@ -180,13 +196,15 @@ label #safety  {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(7, 1fr);
     grid-template-areas:
-    "amenitiesHeader amenitiesHeader"
-    "accessibility campsites"
-    "convenience exhibits"
-    "food-drink information"
-    "pet-friendly recreation"
-    "safety safety"
-    "submit submit";
+      "amenitiesHeader amenitiesHeader"
+      "accessibility campsites"
+      "convenience exhibits"
+      "food-drink information"
+      "pet-friendly recreation"
+      "safety safety"
+      "submit submit";
   }
-  
+  .amenityList > h4 {
+    font-size: 1.25rem;
+  }
 }

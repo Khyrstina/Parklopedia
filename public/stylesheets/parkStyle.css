@@ -13,7 +13,6 @@ html {
   line-height: 1.5;
   background: var(--gradient-background);
   background: var(--gradient-background-radial);
-
 }
 
 body {
@@ -55,6 +54,7 @@ article {
   background-attachment: fixed;
   z-index: 0;
   background-clip: border-box;
+  background-repeat: round;
   overflow: hidden;
 }
 
@@ -150,8 +150,6 @@ p {
   margin-right: 0.25rem;
 }
 
-
-
 /* Begin Alerts */
 .alertsHeader {
   background-image: url("/images/headerBackgrounds/header7.png");
@@ -185,7 +183,7 @@ p {
     "specialHours"
     "feeInfo"
     "npsButton";
-    border: solid #abb8c361;
+  border: solid #abb8c361;
   color: #fff;
   padding: 20px;
   border-radius: 5px;
@@ -243,12 +241,15 @@ p {
 
 .feeInfo {
   grid-area: feeInfo;
-  display: flex; 
+  display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.feeInfo > table, tbody, tr, td {
+.feeInfo > table,
+tbody,
+tr,
+td {
   border: 1px solid #864622;
   border-collapse: collapse;
   padding: 0.5rem;
@@ -280,7 +281,6 @@ p {
   color: var(--coffee-black);
   text-decoration: none;
 }
-
 
 .parkName {
   grid-area: parkName;
@@ -323,23 +323,37 @@ p {
 }
 
 /* Specific to slideshow */
+
 .slideshow-container {
-  max-width: 100%;
+  background: var(--gradient-green-background);
   position: relative;
-  margin: auto;
+  z-index: 1;
+}
+.imagesContainer {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 3.5rem;
+  margin-bottom: 1rem;
   z-index: 2;
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding-top: 66%; /* 1080/1920 = 0.5625 */
+  background-position: center;
 }
 
-.mySlides img {
+/* .mySlides img {
   width: 100%;
   height: auto;
 
   
-}
+} */
 
-.mySlides {
+/* .mySlides {
   display: none;
-}
+} */
 
 article ul li {
   height: auto;
@@ -351,10 +365,6 @@ article ul li {
   justify-content: center;
   align-content: center;
 }
-
-
-
-
 
 /*Media queries*/
 @media screen and (max-width: 600px) {
@@ -384,5 +394,4 @@ article ul li {
     text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
     font-size: 1rem;
   }
-
 }

@@ -8,15 +8,25 @@
   --light-orange: #c78853;
   --coffee-black: #383330;
   --navy-blue: #080832;
-  --white-transparent: rgba(255, 255, 255, 0.613);
+  --white-transparent: rgba(255, 255, 255, 0.3);
 
   --navigation-background-color: #f0f6ff;
   --navigation-border-radius: 0.25em;
   --navigation-anchor-padding: 1em;
 
+  --gradient-background: rgb(69, 89, 71);
+  --gradient-background-radial: linear-gradient(
+    180deg,
+    rgba(69, 89, 71, 1) 44%,
+    rgba(8, 8, 50, 1) 100%
+  );
 
-  --gradient-background: rgb(69,89,71);
-  --gradient-background-radial: linear-gradient(180deg, rgba(69,89,71,1) 44%, rgba(8,8,50,1) 100%);
+  --gradient-green: rgb(69, 89, 71);
+  --gradient-green-background: linear-gradient(
+    0deg,
+    rgba(69, 89, 71, 1) 99%,
+    rgba(69, 89, 71, 0) 100%
+  );
   /*start custom property classes*/
 
   .flex-row {
@@ -53,4 +63,5 @@
     margin: 0rem 1rem;
     border-radius: 5px;
   }
+
 }

@@ -31,12 +31,18 @@ export async function getAlertsInformation(parkCode) {
             const plural = differenceInDays > 1 ? "s" : ""; //adding "s" to day if difference is greater than 1
       
             return `<div class="alert-container">
-                      <h4 class="alertsCategory" style="color:${color};">${title}</h4> 
-                      <p>${description}</p>
-                      <p>Alert Last Updated: ${preferredDateFormat}- (${differenceInDays} day${plural} ago)</p>
-                      <p><button class="button button-shadow button-shadow-border search-bar-button button50Percent">
-                      <a href="${url}" target="_blank">More Info Here</button>
-                    </div>`;
+            <h4 class="alertsCategory" style="color:${color};">${title}</h4> 
+            <p>${description}</p>
+            <p>Alert Last Updated: ${preferredDateFormat}- (${differenceInDays} day${plural} ago)</p>
+            <p>
+              <a href="${url}" target="_blank">
+                <button Title="More info on this Alert" class="button button-shadow button-shadow-border search-bar-button button50Percent">
+                  More Info Here
+                </button>
+              </a>
+            </p>
+          </div>
+          `;
           } else {
             //if alert is older than 90 days, return null
             return null;
@@ -46,11 +52,11 @@ export async function getAlertsInformation(parkCode) {
         .filter(alert => alert !== null) //filtering out alerts that are older than 90 days
         .join(""); //joining all alerts into one string
         //if there are no alerts within the last 90 days, return message
-        alertsInformation = filteredAlerts.length > 0 ? filteredAlerts  : "No alerts information could be retrieved for this park within the last 3 months";
+        alertsInformation = filteredAlerts.length > 0 ? filteredAlerts  : "No alerts were found for the last 90 days";
       } 
     } else {
       //if there is an error, return message saying Failed to fetch alerts data
-      alertsInformation = "Failed to fetch alerts data";
+      alertsInformation = "An error occured when fetching alerts data.";
     }
     return alertsInformation;
   } 

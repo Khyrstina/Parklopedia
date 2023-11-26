@@ -1,5 +1,8 @@
 # Parklopedia
 
+## DeepScan Status
+[![DeepScan grade](https://deepscan.io/api/teams/22444/projects/25766/branches/810965/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=22444&pid=25766&bid=810965)
+
 ## Overview
 
 The Parklopedia project assists the public with accessing National Parks information provided by the National Parks Service through their publically available API (all API information will be linked below in the section titled 'API Information'). 
@@ -99,5 +102,5 @@ Parklopedia exceeds the recommended requirements for a capstone project. Below y
 #### Create a node.js web server using a modern framework such as Express.js or Fastify. Serve at least one route that your app uses (must serve more than just the index.html file)
 - All pages and routes are served with Express.js, at the time of writing this there are four different routes.
 
-[![DeepScan grade](https://deepscan.io/api/teams/22444/projects/25766/branches/810965/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=22444&pid=25766&bid=810965)
+
 

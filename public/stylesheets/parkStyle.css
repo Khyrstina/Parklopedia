@@ -3,6 +3,7 @@
 @import "headerVideo.css";
 @import "parkAmenities.css";
 @import "weatherLayout.css";
+@import "buttons.css";
 
 html {
   margin: 0;
@@ -10,7 +11,8 @@ html {
   font-family: "Open Sans", sans-serif;
   font-size: 1rem;
   line-height: 1.5;
-  background-color: var(--light-green);
+  background: var(--gradient-background);
+  background: var(--gradient-background-radial);
 }
 
 body {
@@ -52,6 +54,7 @@ article {
   background-attachment: fixed;
   z-index: 0;
   background-clip: border-box;
+  background-repeat: round;
   overflow: hidden;
 }
 
@@ -73,7 +76,6 @@ p {
 }
 
 .customParkContent {
-  background-color: var(--light-green);
   position: relative;
   z-index: 2;
 }
@@ -85,23 +87,21 @@ p {
   grid-template-rows: repeat(2, auto);
   gap: 0.5rem 0.5rem;
   grid-auto-flow: row;
-
   grid-template-areas:
     "weather mainParkInformation mainParkInformation"
     "contact mainParkInformation mainParkInformation";
   justify-content: space-around;
   align-content: center;
-  background-color: var(--light-green);
   margin: 0.25rem;
   margin-right: 0.25rem;
 }
 
 .weather {
   grid-area: weather;
-  background-color: var(--dark-green-opaque);
   padding: 20px;
   color: #fff;
   border-radius: 5px;
+  border: solid #abb8c361;
 }
 
 .weatherHeader {
@@ -119,10 +119,10 @@ p {
 
 .contact {
   grid-area: contact;
-  background-color: var(--dark-green-opaque);
   color: #fff;
   padding: 20px;
   border-radius: 5px;
+  border: solid #abb8c361;
 }
 
 .contactHeader {
@@ -140,8 +140,8 @@ p {
 
 .alerts {
   /* grid-area: alerts; */
-  background-color: var(--dark-green-opaque);
   border-radius: 5px;
+  border: solid #abb8c361;
   color: #fff;
   padding: 20px;
   margin-bottom: 0.5rem;
@@ -150,6 +150,13 @@ p {
   margin-right: 0.25rem;
 }
 
+.alerts > * a {
+  text-decoration: none;
+}
+
+.alerts > h4 {
+  text-align: center;
+}
 
 
 /* Begin Alerts */
@@ -185,7 +192,7 @@ p {
     "specialHours"
     "feeInfo"
     "npsButton";
-  background-color: var(--dark-green-opaque);
+  border: solid #abb8c361;
   color: #fff;
   padding: 20px;
   border-radius: 5px;
@@ -243,15 +250,18 @@ p {
 
 .feeInfo {
   grid-area: feeInfo;
-  display: flex; 
+  display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.feeInfo > table, tbody, tr, td {
+.feeInfo > table,
+tbody,
+tr, th,
+td {
   border: 1px solid #864622;
   border-collapse: collapse;
-  padding: 0.5rem;
+  padding: 1rem;
   text-align: center;
   background-color: var(--light-green);
   color: #864622;
@@ -268,6 +278,7 @@ p {
   border: solid #abb8c361;
   border-radius: 5px;
   opacity: 0.95;
+  margin-bottom: 1rem;
 }
 
 .npsButton {
@@ -276,30 +287,9 @@ p {
   justify-content: center;
 }
 
-.mainParkInformation button {
-  font-size: 1rem;
-  cursor: pointer;
-  font-weight: bold;
-  background-color: var(--vanilla);
-  padding: 0.6rem 1rem;
-  transition: background-color 0.4s ease, border-color 0.4s ease,
-    color 0.4s ease;
-  position: relative;
-  border: 5px solid #864622;
-}
-
 .mainParkInformation button a {
-  color: #864622;
+  color: var(--coffee-black);
   text-decoration: none;
-}
-
-.mainParkInformation button:hover {
-  background-color: #c78853;
-  border: 5px solid #864622;
-}
-
-.mainParkInformation button:hover a {
-  color: #383330;
 }
 
 .parkName {
@@ -311,7 +301,7 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--dark-green-opaque);
+  border: solid #abb8c361;
   padding: 20px;
   margin: 0.5rem 0.25rem;
   border-radius: 5px;
@@ -319,83 +309,39 @@ p {
   z-index: 1;
 }
 
-.footer {
-  grid-area: footer;
-  text-align: center;
-  color: #fff;
-  background-color: var(--dark-green-opaque);
-  padding: 20px;
-  border-radius: 5px;
-}
-
-.footer ul {
-  display: flex;
-  flex-direction: row;
-}
-
-.footer ul li {
-  padding: 0.5em;
-}
-
-.footer ul li a {
-  color: #fff;
-  text-decoration: solid;
-}
 
 /* Specific to slideshow */
+
 .slideshow-container {
-  max-width: 100%;
+  background: var(--gradient-green-background);
   position: relative;
-  margin: auto;
-  background-color: #864622;
+  z-index: 1;
+}
+.imagesContainer {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 3.5rem;
+  margin-bottom: 1rem;
   z-index: 2;
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding-top: 66%; /* 1080/1920 = 0.5625 */
+  background-position: center;
 }
 
-.mySlides img {
+/* .mySlides img {
   width: 100%;
   height: auto;
-}
 
-.mySlides {
+  
+} */
+
+/* .mySlides {
   display: none;
-}
-
-.prevNextBox {
-  justify-content: space-between;
-  align-items: center;
-  border: 7px solid #864622;
-  border-top: transparent;
-  background-color: var(--light-green);
-  z-index: 2;
-}
-
-#generateURL {
-  align-items: center;
-  border: 7px solid #864622;
-  background-color: var(--light-green);
-  z-index: 2;
-}
-
-.prevNextBox button, #generateURL {
-  text-decoration: none;
-  font-size: 1rem;
-  cursor: pointer;
-  background-color: var(--light-green);
-  color: #864622;
-  padding: 0.6rem 1rem;
-  text-wrap: nowrap;
-  transition: background-color 0.4s ease, border-color 0.4s ease,
-    color 0.4s ease;
-  position: relative;
-  font-weight: bold;
-  z-index: 3;
-  min-width: 50%;
-}
-
-.prevNextBox button:hover, #generateURL:hover {
-  background-color: #c78853;
-  color: #383330;
-}
+} */
 
 article ul li {
   height: auto;
@@ -407,10 +353,6 @@ article ul li {
   justify-content: center;
   align-content: center;
 }
-
-
-
-
 
 /*Media queries*/
 @media screen and (max-width: 600px) {

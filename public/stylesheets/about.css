@@ -2,114 +2,183 @@
 @import "commonlyUsed.css";
 @import "nav.css";
 @import "headerVideo.css";
+@import "buttons.css";
 
 * {
-    box-sizing: border-box;
-  }
-  
+  box-sizing: border-box;
+}
+
+.container {
+  padding: 2px 16px;
+}
+ article > h2 {
+  margin: 2rem;
+ }
+
+.requirements {
+  text-align: left;
+  margin: 1rem;
+}
+
+/* 2/3 column */
+.column-66Left {
+  float: left;
+  width: 66.66666%;
+  padding: 20px;
+}
+
+/* 1/3 column */
+.column-33Left {
+  float: left;
+  width: 33.33333%;
+  padding: 20px;
+}
+
+/* 2/3 column */
+.column-66Right {
+  float: right;
+  width: 66.66666%;
+  padding: 20px;
+}
+
+/* 1/3 column */
+.column-33Right {
+  float: right;
+  width: 33.33333%;
+  padding: 20px;
+}
+
+.column-33Left img,
+.column-33Right img,
+.column-66Left img,
+.column-66Right img {
+  border-radius: 50%;
+  align-self: center;
+}
+
+.profile:nth-of-type(2) {
+  border-radius: 5px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.profile:nth-of-type(1) {
+  border-radius: 5px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: right;
+}
+
+.projectRequirements {
+  margin-bottom: 1rem;
+}
+
+.projectRequirements > * {
+  user-select: none;
+}
+.expandReq {
+  background-color: var(--dark-green-transparent);
+  border-radius: 5px;
+  padding: 1rem;
+  margin-bottom: 0;
+}
+
+.expandReq:hover {
+  background-color: var(--dark-green-opaque);
+  cursor: pointer;
+}
+
+.reqDiv {
+  display: none;
+  padding: 2rem;
+  text-align: left;
+  background-color: rgba(255,255,255,.08);
+  color: white;
+  margin: 0;
+}
+
+.resourceGrid {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  margin: 1rem;
+  grid-template-areas: "parkResource weatherResource" "iconResource codeResource";
+}
+
+.parkResource {
+  background-image: url("/images/resources/park.jpg");
+  border-radius: 5px;
+  padding: 1rem;
+  background-position: bottom;
+  grid-area: parkResource;
+}
+
+.weatherResource {
+  background-image: url("/images/resources/weather.jpg");
+  border-radius: 5px;
+  padding: 1rem;
+  grid-area: weatherResource;
+}
+
+.iconResource {
+  background-image: url("/images/resources/google.jpg");
+  border-radius: 5px;
+  padding: 1rem;
+  background-position: center;
+  grid-area: iconResource;
+}
+
+.codeResource {
+  background-image: url("/images/resources/code.jpg");
+  border-radius: 5px;
+  padding: 1rem;
+  background-position: center;
+  grid-area: codeResource;
+}
+
+@media (max-width: 768px) {
   .container {
-    padding: 64px;
+    align-items: center;
+    justify-content: center;
+  }
+  .column-66Left,
+  .column-66Right,
+  .column-33Left,
+  .column-33Right {
+    width: 100%;
   }
 
-  .profile:nth-of-type(even){
-    background-color: var(--dark-green-transparent);
+  .column-33Left img,
+  .column-33Right img,
+  .column-66Left img,
+  .column-66Right img {
+    width: 35%;
   }
 
-  .profile:nth-of-type(odd){
-    color: #000
+  .resourceGrid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "parkResource weatherResource"
+      "iconResource codeResource";
+    max-width: 100%;
   }
-  
-
-  
-  /* 2/3 column */
-  .column-66Left {
-    float: left;
-    width: 66.66666%;
-    padding: 20px;
-  }
-
-  
-  /* 1/3 column */
-  .column-33Left {
-    float: left;
-    width: 33.33333%;
-    padding: 20px;
-  }
-
-    /* 2/3 column */
-    .column-66Right {
-        float: right;
-        width: 66.66666%;
-        padding: 20px;
-      }
-    
-      
-      /* 1/3 column */
-      .column-33Right {
-        float: right;
-        width: 33.33333%;
-        padding: 20px;
-      }
-
-
-  .column-33Left img, .column-33Right img, .column-66Left img, .column-66Right img {
-    border-radius: 50%;
-    align-self: center;
-  }
-
-.profile:nth-of-type(n+2) {
-    background-color: var(--dark-green-transparent);
-    border-radius: 5px;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+  .profile:nth-of-type(1),
+  .profile:nth-of-type(2) {
+    text-align: left;
   }
 
   .resourceGrid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
     grid-gap: 1rem;
     margin: 1rem;
-    grid-template-areas: "parkResource weatherResource iconResource codeResource";
+    grid-template-areas:
+      "parkResource"
+      "weatherResource"
+      "iconResource"
+      "codeResource";
   }
-
-  .parkResource {
-    background-image: url("/images/resources/park.jpg");
-    border-radius: 5px;
-    padding: 1rem;
-    background-position: bottom;
-
-  }
-
-  .weatherResource {
-    background-image: url("/images/resources/weather.jpg");
-    border-radius: 5px;
-    padding: 1rem;
-  }
-
-    .iconResource {
-        background-image: url("/images/resources/google.jpg");
-        border-radius: 5px;
-        padding: 1rem;
-        background-position: center;
-    }
-
-    .codeResource {
-        background-image: url("/images/resources/code.jpg");
-        border-radius: 5px;
-        padding: 1rem;
-        background-position: center;
-    }
-  
-  @media screen and (max-width: 1000px) {
-    .column-66Left, .column-66Right, .column-33Left, .column-33Right {
-        width: 100%;
-      }
-      
-    .resourceGrid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-areas: 
-        "parkResource weatherResource" 
-        "iconResource codeResource";
-      }
-    }
-  
+}

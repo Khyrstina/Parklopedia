@@ -10,7 +10,7 @@ const nextButtonTop = document.getElementById("nextButtonTop");
 const nextButtonBottom = document.getElementById("nextButtonBottom");
 const searchInput = document.getElementById("searchInput");
 const searchButton = document.getElementById("searchBarButton");
-const selectASuggestionText = document.getElementById("labelSearchInput");
+const selectASuggestionText = document.getElementById("labelSearchInputId");
 
 let currentPage = 1;
 let fetchingData = false;
@@ -34,7 +34,7 @@ resultsSelect.addEventListener("input", (event) => {
 searchInput.addEventListener("input", () => {
   // Reset for new input
   suggestionSelected = false;
-  selectASuggestionText.style.color = "black";
+  selectASuggestionText.style.color = "whitesmoke";
   suggestionsContainer.style.borderColor = "none";
 
   const inputValue = searchInput.value.toUpperCase();
@@ -43,6 +43,7 @@ searchInput.addEventListener("input", () => {
   if (inputValue.trim() === "") {
     // Clear the suggestions box
     suggestionsContainer.innerHTML = "";
+    selectASuggestionText.style.color = "whitesmoke";
   } else {
     matchingStates = usStates.filter(
       (state) =>
@@ -73,7 +74,6 @@ searchInput.addEventListener("input", () => {
 searchButton.addEventListener("click", async (event) => {
   event.preventDefault();
 
-
   if (searchInput && !fetchingData) {
     const query = searchInput.value;
     if (suggestionSelected && query.trim() !== "") {
@@ -100,10 +100,10 @@ searchButton.addEventListener("click", async (event) => {
         );
         updatePaginationButtons();
       } else {
-        selectASuggestionText.style.color = "red";
+        selectASuggestionText.style.color = "var(--light-orange)";
       }
     } else {
-      selectASuggestionText.style.color = "red";
+      selectASuggestionText.style.color = "var(--light-orange)";
     }
   }
 });
@@ -119,7 +119,6 @@ async function getTotalNumberResults(selectedState) {
     let resp = await fetch(apiUrl);
     let data = await resp.json();
     totalAvailableSearchResults = data.total;
-    console.log(totalAvailableSearchResults);
     return totalAvailableSearchResults;
   } catch (error) {
     console.log(error);
@@ -136,7 +135,6 @@ async function getAllParks(
   try {
     let resp = await fetch(apiUrl);
     let data = await resp.json();
-    console.log("getAllParks url:" + apiUrl);
     return data.data;
   } catch (error) {
     console.log(error);

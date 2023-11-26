@@ -55,7 +55,6 @@ export const usStates = [
 
 export async function validateSearchInput(query) {
   queryInput = query.toUpperCase();
-  console.log(query.toUpperCase());
 
   // to account for Kansas
   const exactMatch = usStates.find(
@@ -63,7 +62,6 @@ export async function validateSearchInput(query) {
   );
 
   if (exactMatch) {
-    console.log(exactMatch.name + ", " + exactMatch.code);
     return exactMatch.code;
   }
 
@@ -80,10 +78,8 @@ export async function validateSearchInput(query) {
       .map((state) => state.code)
       .join(", ");
 
-    console.log(matchingStateNames + ", " + matchingStateCodes);
     return matchingStateCodes;
   } else {
-    console.log("No matching states found");
     return "";
   }
 }

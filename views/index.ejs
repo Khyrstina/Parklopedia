@@ -46,7 +46,7 @@
     </header>
 
     <main id="main" class="main" tabindex="-1">
-      <article class="flex-column-center text-align">
+      <article class="flex-row-center-wrap text-align">
         <section class="aboutVideo">
           <h2>More Than Information, It's a Journey:</h2>
           <h4 id="firstH4">
@@ -62,21 +62,22 @@
             allowfullscreen
             no-referrer
             showinfo
-            >Your browser does not support embedded frames.</iframe>
+            >Your browser does not support embedded frames.</iframe
+          >
         </div>
 
         <section class="parklopediaAbilitiesList">
           <div class="abilitiesListOne grid-features-list">
             <div class="abilitiesListOneText">
-              <h2>What can Parklopedia do for you?</h2>
+              <h2 title="Lets find out!">What can Parklopedia do for you?</h2>
             </div>
           </div>
-          <div class="abilitiesListTwo grid-features-list">
+          <div class="abilitiesListTwo grid-features-list" title="You'll get results with National Parks, Historical Parks, Nature Reserves, and more!">
             <div class="abilitiesListTwoText">
               <p>Search by State to find relevant parks near you.</p>
             </div>
           </div>
-          <div class="abilitiesListThree grid-features-list">
+          <div class="abilitiesListThree grid-features-list" title="So you can know before you go if the weather is going to cooperate!">
             <div class="abilitiesListThreeText">
               <p>
                 Retrieve the current and three-day forecast for a park you
@@ -84,7 +85,7 @@
               </p>
             </div>
           </div>
-          <div class="abilitiesListFour grid-features-list">
+          <div class="abilitiesListFour grid-features-list" title="Find out before you even leave! Learn about current road closures, safety concerns, and any other alerts the NPS have made!">
             <div class="abilitiesListFourText">
               <p>
                 Display any alerts made by the NPS about that park within the
@@ -92,7 +93,7 @@
               </p>
             </div>
           </div>
-          <div class="abilitiesListFive grid-features-list">
+          <div class="abilitiesListFive grid-features-list" title="Need to know if there are maps and information stations? Once you select a park you can see which amenities are available there!">
             <div class="abilitiesListFiveText">
               <p>
                 Search for amenity types you're interested in, and find out if
@@ -103,18 +104,21 @@
         </section>
 
         <section class="howItWorks">
-          <h2>Need more in depth instructions? Here's a step by step guide to Parklopedia.</h2>
+          <h2>
+            Ready for more in depth instructions? Here's a step by step guide to using
+            Parklopedia.
+          </h2>
 
           <div class="howItWorks">
             <p>
-              <img src="images/instructions/stepOne.png" alt="Search Box" />
+              <img src="images/instructions/stepOne.png" alt="Step One: Type in search box" />
               Step One: Start typing in the name of the State you want to find a
               park in.
             </p>
           </div>
           <div class="howItWorks">
             <p>
-              <img src="images/instructions/stepTwo.png" alt="Search Box" />
+              <img src="images/instructions/stepTwo.png" alt="Step Two: Select Suggestion" />
               Step Two: A list of suggestions will display below the Search
               button, select the State you're interested in searching. Note: You
               must select a State from the suggestions list, or you will be
@@ -123,7 +127,7 @@
           </div>
           <div class="howItWorks">
             <p>
-              <img src="images/instructions/stepThree.png" alt="Search Box" />
+              <img src="images/instructions/stepThree.png" alt="Step Three: Press search button" />
               Step Three: Click Search to retrieve the parks available in your
               selected State.
             </p>
@@ -131,14 +135,14 @@
 
           <div class="howItWorks">
             <p>
-              <img src="images/instructions/stepFour.png" alt="Search Box" />
+              <img src="images/instructions/stepFour.png" alt="Step Four: Select park" />
               Step Four: Look through the available parks that are returned, and
               select one you're interested in learning more about. selected.
             </p>
           </div>
           <div class="howItWorks">
             <p>
-              <img src="images/instructions/stepFive.png" alt="Search Box" />
+              <img src="images/instructions/stepFive.png" alt="Step Five: Park info page loads" />
               Step Five: You will be taken to a page specific to the park you
               selected. At the top you'll see images from that park, you can
               navigate through the set of images by clicking the Previous or
@@ -147,7 +151,7 @@
           </div>
           <div class="howItWorks">
             <p>
-              <img src="images/instructions/stepSix.png" alt="Search Box" />
+              <img src="images/instructions/stepSix.png" alt="Step Six: Get park Information" />
               Step Six: If you scroll down the page, on the left you'll see the
               current weather and the three day forecast for the park you
               selected. On the right you'll see an overview of park information
@@ -157,7 +161,7 @@
           </div>
           <div class="howItWorks">
             <p>
-              <img src="images/instructions/stepSeven.png" alt="Search Box" />
+              <img src="images/instructions/stepSeven.png" alt="Step Seven: Find out if there are Alerts" />
               Step Seven: Scrolling down a bit further you'll see a list of any
               alerts the NPS has posted for the park you selected. These alerts
               are updated regularly, and only those that were posted in the last
@@ -171,7 +175,7 @@
 
           <div class="howItWorks">
             <p>
-              <img src="images/instructions/stepEight.png" alt="Search Box" />
+              <img src="images/instructions/stepEight.png" alt="Step Eight: Filter amenities by using checkboxes" />
               Step Eight: A bit further down the page you'll reach the amenities
               section. You can use the checkboxes to filter the list of
               amenities to only categories that you are interested in for your
@@ -184,7 +188,7 @@
           </div>
           <div class="howItWorks">
             <p>
-              <img src="images/instructions/stepNine.png" alt="Search Box" />
+              <img src="images/instructions/stepNine.png" alt="Step Nine: Find amenities" />
               Step Nine: A list of confirmed amenities will display below the
               Search Button. They are organized under the amenity type they
               belong to.
@@ -195,7 +199,7 @@
             navigation bar at the top of the page, or click the button below!
           </h3>
           <button
-            class="goToSearchPage"
+            class="button button-shadow button-shadow-border search-bar-button button50Percent"
             onclick="window.location.href='/search'"
           >
             Search

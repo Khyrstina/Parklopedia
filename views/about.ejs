@@ -47,23 +47,6 @@
 
     <main id="main" class="main" tabindex="-1">
       <article>
-        <h2>Why this Project?</h2>
-        <h4>Have you ever been somewhere that just completely changes your perspective?</h4>
-        <p>I lived in Washington State for a few years, and in order to become an honorary Washintonian I was taken by some friends to picnic on "The Mountain".
-            Now whent they say "The Mountain" what they really mean is Mt. Rainier, and by "on" the mountain, they meant close enough to appreciate it but not close enough to require a hike.
-            When I stepped out of the car, Mt. Rainier was so close I felt like I could reach out and touch it. It took up almost the entirety of my field of view.
-            I did what anyone would do in my situation...
-        </p>
-        <h4>I had an existential crisis.</h4>
-        <p>Now, I wouldn't say I'm "pro existential crisis", however that moment changed the trajectory of my whole life.
-            I wanted to see more, I wanted to learn, and the only thing stopping me from more experiences like this was my health.
-            So I got stronger, I got healthier, and I started to explore. 
-        </p>
-        <p>I now know from looking through all the data the National Park Service provides that they do so much more than just maintaining these parks.
-            I began this project to learn more about HTML, CSS, and JavaScript, but I continued it because it was fun.
-            I hope you enjoy it too.
-        </p>
-
         <h2>The Parklopedia Team:</h2>
 
         <div class="flex-column-center profile">
@@ -87,13 +70,11 @@
                     Outside her studies, Khyrstina enjoys Arduino tinkering,
                     keeping up with 🪐NASA news, and watching Formula1. In her early
                     years, she aspired to be a paleontologist, favoring the
-                    Utahraptor 🦖. Open to collaboration and discussions,
-                    Khyrstina invites you to connect via LinkedIn or check out
-                    her GitHub!
+                    Utahraptor 🦖. You can check out her LinkedIn and GitHub below!
                   </p>
                   <div class="socialButtons flex-row-center">
-                    <p><button class="button">LinkedIn</button></p>
-                    <p><button class="button">GitHub</button></p>
+                    <p><button  class="button button-shadow button-shadow-border"><a href="https://www.linkedin.com/in/khyrstina/" target="_blank">LinkedIn</a></button></p>
+                    <p><button class="button button-shadow button-shadow-border"><a href="https://www.github.com/Khyrstina" target="_blank">GitHub</a></button></p>
                   </div>
                 </div>
               </div>
@@ -124,8 +105,8 @@
                         thanks to Hollie morale is at an all time high! She hopes to get her "Bark Ranger" badge this summer. 🌲
                     </p>
                     <div class="socialButtons flex-row-center">
-                      <p><button  class="button"><a href="https://www.nps.gov/subjects/pets/bark-rangers.htm">Bark Rangers Program</a></button></p>
-                      <p><button class="button"><a href="https://www.petfinder.com/">Find a Companion Like Hollie</a></button></p>
+                      <p><button  class="button button-shadow button-shadow-border"><a href="https://www.nps.gov/subjects/pets/bark-rangers.htm" target="_blank">Bark Rangers Program</a></button></p>
+                      <p><button class="button button-shadow button-shadow-border"><a href="https://www.petfinder.com/" target="_blank">Find a Companion Like Hollie</a></button></p>
                     </div>
                   </div>
                 </div>
@@ -133,25 +114,69 @@
             </section>
           </div>
 
+          <section class="projectRequirements">
+            <h2>Project Requirements:</h2>
+            <h3>Double-click any requirement below to learn how Parklopedia uses them!</h3>
+
+            <h4 tabindex="0" role="button" class="expandReq" id="reqOne">
+              Use arrays, object, sets, or maps to store and retrieve information that is displayed in your app.</h4>
+              <p class="reqDiv" id="reqDivOne">
+              Parklopedia utilizes arrays for storing and retrieving data. For instance, it maintains an array of objects representing parks, populated with data fetched from the National Park Service API.
+            </p>
+
+            <h4 tabindex="0" role="button"class="expandReq" id="reqTwo">Analyze data that is stored in arrays, objects, sets or maps and display information about it in your app.</h4>
+              <p class="reqDiv" id="reqDivTwoA">
+              The alerts section of the parkinfo page is color coded based on severity. This is done by analyzing the JSON that was returned, and changing the color accordingly.
+              </p>
+              <p class="reqDiv" id="reqDivTwoB">
+              The data that is stored in both the Park arrays, the objects that are a part of the Park arrays, and the slideshow array are all displayed in different parts of the application.
+              </p>
+
+              <h4 tabindex="0" role="button" class="expandReq" id="reqThree">Retrieve data from a third-party API and use it to display something within your app.</h4>
+              <p class="reqDiv" id="reqDivThree">
+              As explained above, currently two third-party APIs are in use.
+              </p>
+
+              <h4 tabindex="0" role="button" class="expandReq" id="reqFour">Implement modern interactive UI features (e.g. table/data sorting, autocomplete, drag-and-drop, calendar-date-picker, etc).</h4>
+              <p class="reqDiv" id="reqDivFour">
+              On the search page, the input into the search field is parsed in order to provide suggestions that autofill when clicked. This also allows the search to provide more accurate results as typos and input errors are corrected.
+              </p>
+
+
+              <h4 tabindex="0" role="button" class="expandReq" id="reqFive">Analyze text and display useful information about it. (e.g. word/character count in an input field)</h4>
+              <p class="reqDiv" id="reqDivFive">
+              The text input on the search page is analyzed to see if it matches any of the approved search options (U.S. States). If no State is selected, the search box will provide the user with a reminder of the instructions and not allow the search to submit.
+              </p>
+
+              <h4 tabindex="0" role="button" class="expandReq" id="reqSix">Calculate and display data based on an external factor (ex: get the current date, and display how many days remaining until some event).</h4>
+              <p class="reqDiv" id="reqDivSix">The alerts section of the parkinformation page only displays alerts that have been released in the last 3 months. It does this by taking the current date, as well as the date that the alert was created by the NPS, and calculating how many days it has been.
+              </p>
+
+              <h4 tabindex="0" role="button" class="expandReq" id="reqSeven">Create a node.js web server using a modern framework such as Express.js or Fastify. Serve at least one route that your app uses (must serve more than just the index.html file)</h4>
+              <p class="reqDiv" id="reqDivSeven">All pages and routes are served with Express.js, at the time of writing this there are four different routes. The index page, the search page, the park information page, and the about page.
+              </p>
+          </section>
+
+
           <h2>Resources:</h2>
           <section>
             <p>These are the resources that made this project possible.</p>
             <div class="resourceGrid">
-                <div class="resourceOne parkResource">
+                <div class="resourceOne parkResource flex-column-center">
                     <p class="resourceText">National Park Service API</p>
-                    <button><a href="https://www.nps.gov/subjects/developer/api-documentation.htm">More Info Here</a></button>
+                    <button class="button button-shadow button-shadow-border"><a href="https://www.nps.gov/subjects/developer/api-documentation.htm" target="_blank">More Info Here</a></button>
                 </div>
-                <div class="resourceTwo weatherResource">
+                <div class="resourceTwo weatherResource flex-column-center">
                     <p class="resourceText">Weather API</p>
-                    <button><a href="https://www.weatherapi.com/">More Info Here</a></button>
+                    <button class="button button-shadow button-shadow-border"><a href="https://www.weatherapi.com/" target="_blank">More Info Here</a></button>
                     </div>
-                <div class="resourceThree iconResource">
+                <div class="resourceThree iconResource flex-column-center">
                     <p class="resourceText">Google Material Icons</p>
-                    <button><a href="https://fonts.google.com/icons">More Info Here</a></button>
+                    <button class="button button-shadow button-shadow-border"><a href="https://fonts.google.com/icons" target="_blank">More Info Here</a></button>
                     </div>
-                <div class="resourceFour codeResource">
+                <div class="resourceFour codeResource flex-column-center">
                     <p class="resourceText">CODE: Kentucky</p>
-                    <button><a href="https://codekentucky.org/">More Info Here</a></button>
+                    <button class="button button-shadow button-shadow-border"><a href="https://codekentucky.org/" target="_blank">More Info Here</a></button>
                     </div>
             </div>
           </section>
@@ -161,6 +186,6 @@
     </main>
 
     <% include footer.ejs %>
-    <script src="javascripts/navigation.js"></script>
+    <script src="/javascripts/expandAbout.js"></script>
   </body>
 </html>

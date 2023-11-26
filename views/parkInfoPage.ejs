@@ -43,7 +43,9 @@
          <main id="main" class="main flex-column-center" tabindex="-1">
 
             <div class="blurBackground"> </div>
-            <h2>Curious about park fees? <br>Wondering what amenities our park offers? <br>It's all here, right at your fingertips. </h2>
+            <h2 class="noMarginsHeader">Wondering what amenities this park offers? </h2>
+            <h2 class="noMarginsHeader">Curious about park fees? </h2> 
+            <h2 class="noMarginsHeader">It's all here, right at your fingertips. </h2> 
             <p>Our park information page is your gateway to adventure, offering a glimpse of the awe-inspiring landscapes that await you. Take a journey through stunning imagery, stay informed with real-time park alerts, and find all the necessary contact information for a seamless visit.
 
                 And don't forget to check the current weather, ensuring you're fully prepared to make the most of your visit. </p>
@@ -153,36 +155,38 @@
             <h3>Alerts: </h3> </div>
         <div class="alertsColorKey">
             <table>
+                <caption>Alerts Header Color Key</caption>
                 <thead>
                     <tr>
-                        <th>Alert Type</th>
-                        <th>Color</th>
+                        <th scope="col">Alert Type</th>
+                        <th scope="col">Color</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Danger</td>
+                        <td scope="row">Danger</td>
                         <td style="background-color: #864622; color: #fff;">Dark Orange</td>
                     </tr>
                     <tr>
-                        <td>Caution</td>
+                        <td scope="row">Caution</td>
                         <td style="background-color: #FFD580; color: #000;">Light Orange</td>
                     </tr>
                     <tr>
-                        <td>Information</td>
+                        <td scope="row">Information</td>
                         <td style="background-color: #90EE90; color: #000;">Green</td>
                     </tr>
                     <tr>
-                        <td>Park Closure</td>
+                        <td scope="row">Park Closure</td>
                         <td style="background-color: #ADD8E6; color: #000;">Blue</td>
                     </tr>
                     <tr>
-                        <td>Other</td>
+                        <td scope="row">Other</td>
                         <td style="background-color: #fff; color: #000;">White</td>
                     </tr>
                 </tbody>
             </table>
         </div>
+        <h4>Alerts retrieved are only those made in the last 90 days.</h4>
         <div class="alertsInformationBox">
             
         </div>
@@ -190,63 +194,63 @@
     </section>
 
 
-    <section class="amenities">
+    <section class="amenities" role="menu" aria-labelledby="h3">
 
         <div class="amenitiesHeader" id="amenitiesHeader">
-            <h3 id="id-group-label">Amenities</h3>
+            <h3 aria-label="Amenities" id="id-group-label">Amenities</h3>
         </div>
 
         <label class="amenitiesCheckbox" id="accessibility">
             <input type="checkbox" id="accessibility" name="amenities" value="4E4D076A-6866-46C8-A28B-A129E2B8F3DB,04D29064-B9A1-4031-AD0E-98E31EF69604,CBD31D2A-DD1A-4C5D-88C1-67B6B7147CE9,BD2D6111-3E55-4838-A943-66203D9D95D6,7DC6C690-2BC3-4344-9691-EF9FCFB6E506,8BFB0FF0-0B32-402B-8B73-C8028E56501E,F4A842CB-C966-402E-BBD3-AB86EDCF8403,27A7E3AB-CA53-41D3-AEDE-FBF74D20F023,DA9F2E5C-E46B-4F62-893E-4364D35931DC,3B84C2C8-E890-4EE5-B0E7-FA157EFD8DAC,91062A96-BF79-4719-9679-BB5461B7620A,AB14DDED-4C61-4842-9D1F-1C9578A10802,0A8D7236-5316-4128-978D-31FE059031F8,6297C73A-5B8D-4D0E-BAD1-5E47F244D20A,163C13BC-0AD5-4190-8D1F-0B7E2C1B0BA3,75F2DA2A-1741-445A-9FA7-B63A81E4BD7F,347D79CD-4FEC-4218-86C4-079F0FE94945,1FF653F6-1F20-425C-A16A-B8D6210CD759,BF109EEC-1E9C-4015-B5D1-829FE122C64B,3A8EC9F0-6CC6-48CE-9AA2-1B257B074383,EAB59B1F-2FA1-4545-A322-2C19149AF7FC,1CF3D18E-C6A7-4462-9990-86B59383A9C3">
-            <span aria-checked="false" tabindex="0" class="custom-checkbox"></span>
+            <span aria-label="Accessibility" role="menuitemcheckbox" aria-checked="false" tabindex="0" class="custom-checkbox"></span>
             Accessibility
         </label>
     
         <label class="amenitiesCheckbox" id="campsites">
             <input type="checkbox" id="campsites" name="amenities" value="053D7823-0372-4A24-8316-A6D728C4DA65,E1467219-BFA0-4A9F-AB38-3B35E3CEC067">
-            <span aria-checked="false" tabindex="0" class="custom-checkbox"></span>
+            <span aria-label="Campsites" role="menuitemcheckbox" aria-checked="false" tabindex="0" class="custom-checkbox"></span>
             Campsites
         </label>
     
         <label class="amenitiesCheckbox"  id="convenience">
             <input type="checkbox" id="convenience" name="amenities" value="A1B0AD01-740C-41E7-8412-FBBEDD5F1443,B166EAD1-0D3E-4111-AE04-D5AB15DFDEDC,20291812-E85C-4A84-B8A2-E31C8D149704,48562BFB-834B-43F2-B865-E174C372032B,1C1B932D-32B6-4BAA-8AA6-497F08CC22BF">
-            <span aria-checked="false" tabindex="0" class="custom-checkbox"></span>
+            <span aria-label="Convenience" role="menuitemcheckbox" aria-checked="false" tabindex="0" class="custom-checkbox"></span>
             Convenience
         </label>
     
         <label class="amenitiesCheckbox" id="exhibits">
             <input type="checkbox" id="exhibits" name="amenities" value="2856392B-17A7-4413-8521-C13A8D2188EB,1FF653F6-1F20-425C-A16A-B8D6210CD759">
-            <span aria-checked="false" tabindex="0" class="custom-checkbox"></span>
+            <span aria-label="Exhibits" role="menuitemcheckbox" aria-checked="false" tabindex="0" class="custom-checkbox"></span>
             Exhibits
         </label>
     
         <label class="amenitiesCheckbox"  id="food-drink">
             <input type="checkbox" id="food-drink" name="amenities" value="383F944C-35BA-43E3-8EEA-24953836B8C5,D0D77D00-38EA-40F2-91E3-5FDCE3932A49,5D1ADBE5-E75D-4657-9577-FB5A6A90C7F9,3B482494-83EF-48D9-A626-FC00EFD4F4A4,2F798138-5D0A-468E-96DA-0A07F03031B0">
-            <span aria-checked="false" tabindex="0" class="custom-checkbox"></span>
+            <span aria-label="Food and Drink" role="menuitemcheckbox" aria-checked="false" tabindex="0" class="custom-checkbox"></span>
             Food & Drink
         </label>
     
         <label class="amenitiesCheckbox" id="information">
             <input type="checkbox" id="information" name="amenities" value="0AF7920C-2F54-42A7-88CA-F2EEBCB15655,7E66CA2E-40AD-487E-8A04-8A9A2E4897C9,8320DDEA-91E7-411D-81B4-5D31CCA2267B,80E207D6-E9C3-4075-9823-26D23E963FA2,4ACBE3CB-3CBB-47B6-8223-A7EE0342DC6D">
-            <span aria-checked="false" tabindex="0" class="custom-checkbox"></span>
+            <span aria-label="Information" role="menuitemcheckbox" aria-checked="false" tabindex="0" class="custom-checkbox"></span>
             Information
         </label>
     
         <label class="amenitiesCheckbox"  id="pet-friendly">
             <input type="checkbox" id="pet-friendly" name="amenities" value="D7D63B75-2A7E-4715-856A-D8479DB9602A">
-            <span aria-checked="false" tabindex="0" class="custom-checkbox"></span>
+            <span aria-label="Pet Friendly" role="menuitemcheckbox" aria-checked="false" tabindex="0" class="custom-checkbox"></span>
             Pet-friendly
         </label>
     
         <label class="amenitiesCheckbox" id="recreation">
             <input type="checkbox" id="recreation" name="amenities" value="B509969B-F06A-4DCC-BBB3-134964D896E2,63734D6E-3330-4EED-B916-52B3F625A091,5BDFF349-2F74-490E-A33E-C35286152050,EDA44DDD-DC61-4EAE-84AD-78FA52D98406,37E409E6-FD87-456F-8A29-7C8287220FBF,1FDBBA99-3E2C-4AAB-AEE3-35B015F744E7,73C1C87E-F4EC-464D-BAEE-1F95876C24F4,0A4F29B3-7FC1-4D4A-BD71-3B7E08CD4BCC">
-            <span aria-checked="false" tabindex="0" class="custom-checkbox"></span>
+            <span aria-label="Recreation" role="menuitemcheckbox" aria-checked="false" tabindex="0" class="custom-checkbox"></span>
             Recreation
         </label>
     
         <label class="amenitiesCheckbox"  id="safety">
             <input type="checkbox" id="safety" name="amenities" value="89397A1A,03A732CF-E5FD-473D-A78B-BDC4D20721BF,CABB4B31-8D23-4560-B359-6A12AF5621A9,7C64C0C4-5535-4E78-A04C-F78EBBFC3DAD,802BE109-511F-47D9-84D5-18DDA1C90771,5BA727FA-943D-418D-A238-44127EBA6EDB,2DEE6458-72F8-4C97-9279-5C3E90B19888">
-            <span aria-checked="true" tabindex="0" class="custom-checkbox"></span>
+            <span aria-label="Safety" role="menuitemcheckbox" aria-checked="false" tabindex="0" class="custom-checkbox"></span>
             Safety
         </label>
 

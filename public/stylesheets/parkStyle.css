@@ -150,6 +150,15 @@ p {
   margin-right: 0.25rem;
 }
 
+.alerts > * a {
+  text-decoration: none;
+}
+
+.alerts > h4 {
+  text-align: center;
+}
+
+
 /* Begin Alerts */
 .alertsHeader {
   background-image: url("/images/headerBackgrounds/header7.png");
@@ -248,11 +257,11 @@ p {
 
 .feeInfo > table,
 tbody,
-tr,
+tr, th,
 td {
   border: 1px solid #864622;
   border-collapse: collapse;
-  padding: 0.5rem;
+  padding: 1rem;
   text-align: center;
   background-color: var(--light-green);
   color: #864622;
@@ -269,6 +278,7 @@ td {
   border: solid #abb8c361;
   border-radius: 5px;
   opacity: 0.95;
+  margin-bottom: 1rem;
 }
 
 .npsButton {
@@ -299,28 +309,6 @@ td {
   z-index: 1;
 }
 
-.footer {
-  grid-area: footer;
-  text-align: center;
-  color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  border: solid #abb8c361;
-}
-
-.footer ul {
-  display: flex;
-  flex-direction: row;
-}
-
-.footer ul li {
-  padding: 0.5em;
-}
-
-.footer ul li a {
-  color: #fff;
-  text-decoration: solid;
-}
 
 /* Specific to slideshow */
 

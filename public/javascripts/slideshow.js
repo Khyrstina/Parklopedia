@@ -27,4 +27,5 @@ export function showSlides(index) {
   }
   let currentImage = slideshowArray[slideIndex].imageURL;
   slideshowContainer.style.backgroundImage = `url(${currentImage})`;
+  slideshowContainer.title = slideshowArray[slideIndex].imageCaption;
 }

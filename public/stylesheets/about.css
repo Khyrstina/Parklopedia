@@ -11,6 +11,9 @@
 .container {
   padding: 2px 16px;
 }
+ article > h2 {
+  margin: 2rem;
+ }
 
 .requirements {
   text-align: left;
@@ -67,6 +70,10 @@
   text-align: right;
 }
 
+.projectRequirements {
+  margin-bottom: 1rem;
+}
+
 .projectRequirements > * {
   user-select: none;
 }
@@ -74,6 +81,7 @@
   background-color: var(--dark-green-transparent);
   border-radius: 5px;
   padding: 1rem;
+  margin-bottom: 0;
 }
 
 .expandReq:hover {
@@ -83,8 +91,11 @@
 
 .reqDiv {
   display: none;
-  margin: 2rem;
+  padding: 2rem;
   text-align: left;
+  background-color: rgba(255,255,255,.08);
+  color: white;
+  margin: 0;
 }
 
 .resourceGrid {

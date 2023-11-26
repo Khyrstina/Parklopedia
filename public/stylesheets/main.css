@@ -51,11 +51,16 @@ body {
   text-align: center;
 }
 
+main {
+  margin-top: -1.5rem;
+}
+
 .aboutSearchParagraphBox {
   color: #fff;
   position: relative;
   z-index: 3;
   width: 100%;
+  translate: x(5%);
 }
 
 .blurBackground {
@@ -89,17 +94,19 @@ body {
   width: 100%;
 }
 
-.labelSearchInput h3 {
+
+.labelSearchInput {
   color: whitesmoke;
 }
+
 input[type="text"] {
   background-color: whitesmoke;
-  transition: width 1s ease-in-out;
   padding: 1rem 1rem;
   box-sizing: border-box;
   font-weight: bold;
   border: 5px solid var(--dark-orange);
   margin-bottom: 0.5rem;
+  width: 75%;
 }
 
 input[type="text"]:focus {
@@ -112,12 +119,18 @@ input[type="text"]:focus {
   margin: 1rem 0.5rem;
   margin-top: 0;
   width: 100%;
+  align-items: center;
 }
 
 .suggestions-container {
   background: var(--dark-green);
   color: #fff;
   width: 100%;
+}
+
+.suggestions-container .highlighted {
+  background-color: var(--light-green);
+  color: #383330;
 }
 
 .suggestion:hover {
@@ -155,37 +168,14 @@ select#numberResultsRetrieved {
   text-align: center;
 }
 
-/* Footer styles */
-footer {
-  font-size: 1rem;
-  color: whitesmoke;
-}
 
-footer p {
-  text-align: center;
-}
-
-footer ul {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-footer ul li {
-  padding: 0rem 2rem;
-  list-style: none;
-  text-decoration: none;
-}
-
-footer ul li a {
-  text-decoration: none;
-}
 
 /* Start Screen Size Info */
 @media (max-width: 768px) {
   body {
     max-width: 100%;
   }
+
 
   .hero {
     font-size: 1rem;
@@ -213,4 +203,6 @@ footer ul li a {
   .grid-container {
     width: 100%;
   }
+
+
 }

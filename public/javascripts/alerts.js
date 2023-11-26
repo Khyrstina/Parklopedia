@@ -3,6 +3,7 @@ import { apiKey } from "./config.js";
 export async function getAlertsInformation(parkCode) {
   const apiAlertUrl = `https://developer.nps.gov/api/v1/alerts?limit=10&start=0&parkCode=${parkCode}&api_key=${apiKey}`;
   let alertsInformation = "";
+  let buttonHTML = "";
   const oneDay = 1000 * 60 * 60 * 24;
 
     const response = await fetch(apiAlertUrl);
@@ -28,21 +29,30 @@ export async function getAlertsInformation(parkCode) {
             const newAlertDateFormat = new Date(lastIndexedDate); //converting date to new date object
             const preferredDateFormat = newAlertDateFormat.toLocaleDateString();//converting date to preferred format (MM/DD/YYYY)
       
-            const plural = differenceInDays > 1 ? "s" : ""; //adding "s" to day if difference is greater than 1
-      
-            return `<div class="alert-container">
-            <h4 class="alertsCategory" style="color:${color};">${title}</h4> 
-            <p>${description}</p>
-            <p>Alert Last Updated: ${preferredDateFormat}- (${differenceInDays} day${plural} ago)</p>
-            <p>
+            const plural = differenceInDays === 1 ? "" : "s"; //adding "s" to day if difference is greater than 1
+            
+            let needsButton = url !== "" ? true : false; //checking if url is empty
+
+            if (needsButton === true) {
+              buttonHTML = `<p>
               <a href="${url}" target="_blank">
                 <button Title="More info on this Alert" class="button button-shadow button-shadow-border search-bar-button button50Percent">
                   More Info Here
                 </button>
-              </a>
-            </p>
+              </a>`;
+            }
+            else {
+              buttonHTML = "";
+            }
+
+            let alertHTML = `<div class="alert-container">
+            <h4 class="alertsCategory" style="color:${color};">${title}</h4> 
+            <p>${description}</p>
+            <p>Alert Last Updated: ${preferredDateFormat}- (${differenceInDays} day${plural} ago)</p>
+            
           </div>
-          `;
+          `
+              return alertHTML + buttonHTML;
           } else {
             //if alert is older than 90 days, return null
             return null;

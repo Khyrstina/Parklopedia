@@ -5,7 +5,7 @@
 
 ## Overview
 
-The Parklopedia project assists the public with accessing National Parks information provided by the National Parks Service through their publically available API (all API information will be linked below in the section titled 'API Information'). 
+The Parklopedia project assists the public with accessing National Parks information provided by the National Parks Service through their publicly available API (all API information will be linked below in the section titled 'API Information'). 
 
 Parklopedia currently utilizes the National Park Service API to provide information and media, as well as a weather API to access current and future weather forecasts for a particular park using the Latitude and Longitude provided by the NPS. 
 
